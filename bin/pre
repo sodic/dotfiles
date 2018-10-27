@@ -1,0 +1,7 @@
+#!/bin/bash
+
+if [ "$#" -ne 1 ]; then
+	echo 'Provide a file name.'
+	exit 1
+fi
+highlight --out-format=ansi "$1" 2>/dev/null || cat "$1"

@@ -1,0 +1,11 @@
+#!/bin/bash
+sudo dpkg --configure -a
+sudo apt-get install -fy;
+sudo apt-get dist-upgrade -y;
+echo "Would you like to reboot now?";
+select yn in "Yes" "No"; do
+    case $yn in
+        Yes ) sudo reboot now; break;;
+        No ) break;;
+    esac
+done
