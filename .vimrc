@@ -23,6 +23,9 @@ Plug 'pangloss/vim-javascript'
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
+" tabs
+set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
+
 " syntastic checks for python3
 let g:syntastic_python_python_exec = 'python3'
 
