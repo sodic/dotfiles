@@ -126,6 +126,7 @@ fi
 export VISUAL=vim
 export EDITOR="$VISUAL"
 export PATH="/home/filip/.nimble/bin:$PATH"
+export PATH="/home/filip/dotfiles/bin:$PATH"
 
 # Path to the bash it configuration
 export BASH_IT="/home/filip/.bash_it"

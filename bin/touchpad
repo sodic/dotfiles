@@ -1,0 +1,7 @@
+#!/bin/bash
+case "$1" in
+ on) setting=0 ;;
+ off) setting=1 ;;
+ *) echo 'Invalid option'; exit 1
+esac
+synclient TouchpadOff=$setting
