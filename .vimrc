@@ -38,7 +38,7 @@ let base16colorspace=256  " Access colors present in 256 colorspace
 colorscheme base16-default-dark
 
 " theme settings
-set termguicolors 
+set termguicolors
 
 " currently sets materia
 if filereadable(expand("~/.vimrc_background"))
@@ -50,7 +50,7 @@ endif
 colorscheme base16-material
 
 " theme settings
-"set termguicolors 
+"set termguicolors
 "let g:gruvbox_italic=1
 "colorscheme gruvbox
 "set background=dark    " Setting dark mode
