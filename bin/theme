@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# for testing out themes in bash it
+# EDITS FILE IN PLACE
+
+echo Changed to $1
+sed -ri "s/(BASH_IT_THEME=')[^']*/\1$1/" ~/.bashrc && exec bash 
+
+

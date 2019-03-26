@@ -1,7 +1,15 @@
 #!/bin/bash
-case "$1" in
- on) setting=0 ;;
- off) setting=1 ;;
- *) echo 'Invalid option'; exit 1
-esac
-synclient TouchpadOff=$setting
+if [ $# -eq 0 ]; then   
+    if synclient -l | grep -q "TouchpadOff .*=.*0" ; then
+        synclient TouchpadOff=1 ;
+    else
+        synclient TouchpadOff=0 ;
+    fi 
+else
+    case "$1" in
+     on) setting=0 ;;
+     off) setting=1 ;;
+     *) echo 'Invalid option'; exit 1
+    esac
+    synclient TouchpadOff=$setting
+fi
