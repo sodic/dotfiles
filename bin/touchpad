@@ -1,10 +1,10 @@
 #!/bin/bash
-if [ $# -eq 0 ]; then   
+if [ $# -eq 0 ]; then
     if synclient -l | grep -q "TouchpadOff .*=.*0" ; then
         synclient TouchpadOff=1 ;
     else
         synclient TouchpadOff=0 ;
-    fi 
+    fi
 else
     case "$1" in
      on) setting=0 ;;

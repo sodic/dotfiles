@@ -67,7 +67,7 @@ plugins=(git)
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
- 
+
 export VISUAL=vim
 export EDITOR="$VISUAL"
 export PATH="/home/filip/.nimble/bin:$PATH"

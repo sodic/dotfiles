@@ -4,6 +4,6 @@
 # EDITS FILE IN PLACE
 
 echo Changed to $1
-sed -ri "s/(BASH_IT_THEME=')[^']*/\1$1/" ~/.bashrc && exec bash 
+sed -ri "s/(BASH_IT_THEME=')[^']*/\1$1/" ~/.bashrc && exec bash
 
 
