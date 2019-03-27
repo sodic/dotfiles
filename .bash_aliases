@@ -1,3 +1,4 @@
+#!/bin/bash
 alias o=xdg-open
 alias py=python3.6
 alias make-presentation='pandoc -V lang=croatian -t beamer --latex-engine=lualatex --slide-level=2'
