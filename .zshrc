@@ -71,8 +71,8 @@ source $ZSH/oh-my-zsh.sh
 
 export VISUAL=vim
 export EDITOR="$VISUAL"
-export PATH="/home/filip/.nimble/bin:$PATH"
-export PATH="/home/filip/dotfiles/bin:$PATH"
+export PATH="$HOME/.nimble/bin:$PATH"
+export PATH="$HOME/dotfiles/bin:$PATH"
 export LD_LIBRARY_PATH="/usr/local/lib:$LD_LIBRARY_PATH"
 # set -o vi
 
