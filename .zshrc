@@ -9,7 +9,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="crcandy"
+ZSH_THEME="bira"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -74,6 +74,12 @@ export EDITOR="$VISUAL"
 export PATH="$HOME/.nimble/bin:$PATH"
 export PATH="$HOME/dotfiles/bin:$PATH"
 export LD_LIBRARY_PATH="/usr/local/lib:$LD_LIBRARY_PATH"
+
+# go
+
+export GOROOT="/usr/local/go"
+export GOPATH="$HOME/GoProjects"
+export PATH="$GOPATH/bin:$GOROOT/bin:$PATH"
 # set -o vi
 
 # export MANPATH="/usr/local/man:$MANPATH"

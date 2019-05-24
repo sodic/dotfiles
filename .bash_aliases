@@ -5,6 +5,7 @@ alias make-presentation='pandoc -V lang=croatian -t beamer --latex-engine=lualat
 alias q='exit'
 alias c='clear'
 alias ll='ls -alh'
+alias t='gnome-terminal'
 
 if [ -f ~/.private_aliases ]; then
     . ~/.private_aliases
