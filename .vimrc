@@ -47,13 +47,13 @@ if filereadable(expand("~/.vimrc_background"))
 endif
 
 " Override materia
-colorscheme base16-material
+" colorscheme base16-material
 
 " theme settings
-"set termguicolors
-"let g:gruvbox_italic=1
-"colorscheme gruvbox
-"set background=dark    " Setting dark mode
+set termguicolors
+let g:gruvbox_italic=1
+colorscheme gruvbox
+set background=dark    " Setting dark mode
 
 
 " This sets the indicator for the 80 character line limit (Python, Haskell,

@@ -1,2 +1,4 @@
 install vim-plug
-symlink files
+get bash-it and oh-my-zsh (run dependencies script)
+symlink files (run link script)
+
