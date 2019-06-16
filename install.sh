@@ -3,7 +3,7 @@
 source "$HOME/dotfiles/util"
 
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
-    DISTRO="$HOME/dotfiles/distro-query"
+    source "$HOME/dotfiles/set-distro"
 
     if [ ! -d "$HOME/dotfiles/$DISTRO" ]; then
         echo "Unknown distribution, exiting"
