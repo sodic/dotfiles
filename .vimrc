@@ -20,6 +20,7 @@ Plug 'vim-syntastic/syntastic'
 Plug 'vim-scripts/indentpython.vim'
 Plug 'chriskempson/base16-vim'
 Plug 'pangloss/vim-javascript'
+Plug 'neovimhaskell/haskell-vim'
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
