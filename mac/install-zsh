@@ -1,0 +1,10 @@
+#!/bin/bash
+
+echo 'Installing zsh...'
+sudo brew install zsh 
+
+# set zsh as the default shell only if it was installed successfully
+if check_status $? "Zsh installed sucessfully." "Failed to install zsh."; then 
+    echo "Setting zsh as the default login shell"
+    sudo -s 'echo /usr/local/bin/zsh >> /etc/shells' && chsh -s /usr/local/bin/zsh
+fi
