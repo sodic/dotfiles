@@ -1,0 +1,17 @@
+#!/bin/bash
+
+check_status () {
+    local STATUS="$1"
+    local MSG_SUCCESS="$2"
+    local MSG_FAILURE="$3"
+
+    if [ "$STATUS" -eq 0 ]; then
+        echo "$MSG_SUCCESS" 
+        return 0
+    fi
+
+    echo "$MSG_FAILURE" 
+    return 1
+}
+
+

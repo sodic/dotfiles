@@ -1,0 +1,9 @@
+#!/bin/bash
+source "$HOME/dotfiles/util"
+
+echo "Installing Homebrew..."
+INSTALL_SCRIPT="https://raw.githubusercontent.com/Homebrew/install/master/install"
+/usr/bin/ruby -e "$(curl -fsSL $INSTALL_SCRIPT)"  
+check_status $? "Homebrew installed sucessfully." "Failed to install Homebrew."
+
+exit $?
