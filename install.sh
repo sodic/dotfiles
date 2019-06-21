@@ -26,7 +26,7 @@ fi
 
 
 # link config files
-for FILE_NAME in $(cat files); do
+for FILE_NAME in $(cat "$HOME/dotfiles/files"); do
     TARGET="$HOME/dotfiles/$FILE_NAME"
     LINK="$HOME/$FILE_NAME"
     echo "Creating a symbolic link: $LINK -> $TARGET".

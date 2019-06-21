@@ -1,4 +1,4 @@
 #!/bin/bash
-for FILE in $(cat files); do
+for FILE in $(cat "$HOME/dotfiles/files"); do
     rm "$HOME/$FILE"
 done
