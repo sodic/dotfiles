@@ -1,0 +1,11 @@
+#!/bin/bash
+
+echo "Running updates..."
+
+if sudo apt-get update && sudo apt-get upgrade; then
+    echo "Updates installed sucessfully."
+else
+    STATUS=$?
+    echo "Updates failed."
+    exit $STATUS
+fi

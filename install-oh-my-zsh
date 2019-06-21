@@ -1,0 +1,11 @@
+#!/bin/bash
+LINK="https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh"
+if sh -c "$(curl -fsSL $LINK)" &> /dev/null || sh -c "$(wget -O- $LINK)" &> /dev/null; then
+    echo "Successfully installed oh-my-zsh."
+    echo "Copying themes..."
+    ln -sf "$HOME/dotfiles/custom.zsh-theme" "$HOME/.oh-my-zsh/themes"
+else
+    STATUS=$?
+    echo "Failed to install oh-my-zsh"
+    exit $STATUS
+fi
