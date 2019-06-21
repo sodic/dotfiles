@@ -36,3 +36,5 @@ for FILE_NAME in $(cat "$HOME/dotfiles/files"); do
     echo "Creating a symbolic link: $LINK -> $TARGET".
     ln -sf "$TARGET" "$LINK"
 done
+
+ln -sf "$HOME/.profile" "$HOME/.zprofile" 
