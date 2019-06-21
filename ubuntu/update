@@ -2,10 +2,9 @@
 
 echo "Running updates..."
 
-sudo apt update
-sudo apt upgrade
-STATUS=$?
-
-check_status $STATUS "Updates installed sucessfully." "Updates failed."
-
-exit $STATUS
+if sudo apt-get update && sudo apt-get upgrade; then
+    echo "Updates installed sucessfully."
+else
+    STATUS=$?
+    echo "Updates failed."
+    exit $STATUS
