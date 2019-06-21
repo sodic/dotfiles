@@ -8,3 +8,4 @@ else
     STATUS=$?
     echo "Updates failed."
     exit $STATUS
+fi
