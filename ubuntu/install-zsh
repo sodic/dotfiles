@@ -1,10 +1,12 @@
 #!/bin/bash
 
 echo 'Installing zsh...'
-sudo apt install zsh
 
 # set zsh as default only if it was installed successfully
-if check_status $? "Zsh installed sucessfully." "Failed to install zsh."; then 
+if sudo apt install zsh; then 
+    echo "Zsh installed successfully."
     echo "Setting zsh as the default login shell"
     chsh -s "$(whereis zsh)"
+else
+    echo "Failed to install zsh."
 fi

@@ -1,6 +1,4 @@
 #!/bin/bash
-# shellcheck source=util
-source "$HOME/dotfiles/util"
 
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
     source "$HOME/dotfiles/set-distro"
