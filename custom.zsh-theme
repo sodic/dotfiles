@@ -8,7 +8,7 @@ local reset_colors='%{$reset_color%}'
 if [[ $UID -eq 0 ]]; then
     local user_host='%{$terminfo[bold]$fg[red]%}%n@%m'
 else
-    local user_host='%{$terminfo[bold]$fg[cyan]%}%n@%m'
+    local user_host='%{$terminfo[bold]$fg[green]%}%n@%m'
 fi
 
 PROMPT="${venv_prompt}${user_host} ➜ ${dir} ${git_info}
