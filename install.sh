@@ -24,6 +24,10 @@ else
     exit 1
 fi
 
+# run only if zsh is installed
+if which zsh; then
+    source "install-oh-my-zsh"
+fi
 
 # link config files
 for FILE_NAME in $(cat "$HOME/dotfiles/files"); do
