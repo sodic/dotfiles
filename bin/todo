@@ -32,7 +32,7 @@ add_todo () {
     else
         INDEX="$2"
         if [[ ! "$INDEX" =~ ^[0-9]+$ ]]; then
-            echo "The second argument must be a number"
+            echo "The second argument must be a line number"
             exit 1
         fi
         sed -i "$INDEX i $TEXT" "$TODO_FILE"
