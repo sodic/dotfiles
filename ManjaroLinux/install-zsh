@@ -1,0 +1,12 @@
+#!/bin/bash
+
+echo 'Installing zsh...'
+
+# set zsh as default only if it was installed successfully
+if sudo pacman --noconfirm -S zsh; then 
+    echo "Zsh installed successfully."
+    echo "Setting zsh as the default login shell"
+    chsh -s "$(which zsh)"
+else
+    echo "Failed to install zsh."
+fi

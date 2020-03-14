@@ -1,0 +1,11 @@
+#!/bin/bash
+
+echo "Running updates..."
+
+if sudo pacman -Syyu; then
+    echo "Updates installed sucessfully."
+else
+    STATUS=$?
+    echo "Updates failed."
+    exit $STATUS
+fi
