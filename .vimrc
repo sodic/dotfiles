@@ -36,23 +36,29 @@ let g:syntastic_python_python_exec = 'python3'
 :set cursorline
 :set number relativenumber
 
-let base16colorspace=256  " Access colors present in 256 colorspace
-colorscheme base16-default-dark
+" enable scrolling
+:set mouse=a
+
+" let base16colorspace=256  " Access colors present in 256 colorspace
+" colorscheme base16-default-dark
 
 " theme settings
-set termguicolors
+let colorterm=$COLORTERM
+if colorterm =~# 'truecolor' || colorterm =~# '24bit'
+  " set trucolors only if the terminal supports it
+  set termguicolors
+endif
 
 " currently sets materia
-if filereadable(expand("~/.vimrc_background"))
-  let base16colorspace=256
-  source ~/.vimrc_background
-endif
+" if filereadable(expand("~/.vimrc_background"))
+"   let base16colorspace=256
+"   source ~/.vimrc_background
+" endif
 
 " Override materia
 " colorscheme base16-material
 
 " theme settings
-set termguicolors
 let g:gruvbox_italic=1
 colorscheme gruvbox
 set background=dark    " Setting dark mode
