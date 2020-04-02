@@ -3,7 +3,10 @@
 
 # Path to your oh-my-zsh installation.
 HOME=~
-export ZSH="$HOME/.oh-my-zsh"
+
+if [[ -f "$HOME/.env" ]]; then
+    . "$HOME/.env"
+fi
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -26,9 +29,6 @@ CASE_SENSITIVE="true"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
 # DISABLE_AUTO_UPDATE="true"
-
-# Uncomment the following line to change how often to auto-update (in days).
-export UPDATE_ZSH_DAYS=13
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
@@ -69,19 +69,6 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-export VISUAL=vim
-export EDITOR="$VISUAL"
-export PATH="$HOME/.nimble/bin:$PATH"
-export PATH="$HOME/dotfiles/bin:$PATH"
-export LD_LIBRARY_PATH="/usr/local/lib:$LD_LIBRARY_PATH"
-
-# go
-
-export GOROOT="/usr/local/go"
-export GOPATH="$HOME/GoProjects"
-export PATH="$GOPATH/bin:$GOROOT/bin:$PATH"
-# set -o vi
-
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -112,3 +99,19 @@ export PATH="$GOPATH/bin:$GOROOT/bin:$PATH"
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
+
+# fuzzy finder
+fzf_dir='/usr/share/fzf'
+if [[ -d "$fzf_dir" ]]; then
+    . "$fzf_dir/completion.zsh"
+    export FZF_DEFAULT_OPTS="--layout=reverse --height 40%"
+    export FZF_COMPLETION_TRIGGER='**'
+fi
+
+if [[ ! $COLORTERM =~ ^(truecolor|24bit)$ ]]; then
+    # if we're dealing with a terminal not supporting trucolors (e.g., urxvt),
+    # then execute a script overriding the terminal's color defaults to enable
+    # gruvbox theme in vim found.
+    source "$HOME/.vim/plugged/gruvbox/gruvbox_256palette.sh"
+fi
+
