@@ -1,0 +1,33 @@
+#!/usr/bin/sh
+
+markup () {
+    echo -n "<span font=\"FontAwesome5Free 10\">$1</span>"
+}
+
+battery='/sys/class/power_supply/BAT0'
+capacity=$(cat "$battery"/capacity) || exit
+status=$(cat "$battery"/status)
+
+case "$status" in
+    'Discharging')
+        if [ "$capacity" -lt 10 ]; then
+            markup ""
+        elif [ "$capacity" -lt 25 ]; then
+            markup ""
+        elif [ "$capacity" -lt 50 ]; then
+            markup ""
+        elif [ "$capacity" -lt 75 ]; then
+            markup ""
+        else
+            markup ""
+        fi
+        ;;
+    'Charging')
+        markup  ""
+        ;;
+    'Not charging')
+        markup  ""
+        ;;
+esac
+
+printf " %s%%\n" "$capacity"
