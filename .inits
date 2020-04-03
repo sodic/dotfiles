@@ -1,0 +1,17 @@
+#!/bin/bash
+# This is the place for sourcing all third party initialization scripts
+
+# nvm
+nvm_init='/usr/share/nvm/init-nvm.sh'
+if [ -f "$nvm_init" ]; then
+    . "$nvm_init"
+fi
+
+# fuzzy finder
+fzf_completion="/usr/share/fzf/completion.$0"
+if [[ -f "$fzf_completion" ]]; then
+    . "$fzf_completion"
+    export FZF_DEFAULT_OPTS="--layout=reverse --height 40%"
+    export FZF_COMPLETION_TRIGGER='**'
+fi
+

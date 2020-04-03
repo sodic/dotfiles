@@ -159,14 +159,9 @@ export TODO="t"
 # Set this to false to turn off version control status checking within the prompt for all themes
 export SCM_CHECK=true
 
-# fuzzy finder
-fzf_dir='/usr/share/fzf'
-if [[ -d "$fzf_dir" ]]; then
-    . "$fzf_dir/completion.bash"
-    export FZF_DEFAULT_OPTS="--layout=reverse --height 40%"
-    export FZF_COMPLETION_TRIGGER='**'
+if [ -f ~/.inits ]; then
+    . ~/.inits
 fi
-
 # Set Xterm/screen/Tmux title with only a short hostname.
 # Uncomment this (or set SHORT_HOSTNAME to something else),
 # Will otherwise fall back on $HOSTNAME.
@@ -193,4 +188,6 @@ fi
 # export BASH_IT_RELOAD_LEGACY=1
 
 # Load Bash It
-source "$BASH_IT"/bash_it.sh
+if [ -d "$BASH_IT" ]; then
+    . "$BASH_IT"/bash_it.sh
+fi

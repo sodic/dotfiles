@@ -100,12 +100,8 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
-# fuzzy finder
-fzf_dir='/usr/share/fzf'
-if [[ -d "$fzf_dir" ]]; then
-    . "$fzf_dir/completion.zsh"
-    export FZF_DEFAULT_OPTS="--layout=reverse --height 40%"
-    export FZF_COMPLETION_TRIGGER='**'
+if [ -f ~/.inits ]; then
+    . ~/.inits
 fi
 
 if [[ ! $COLORTERM =~ ^(truecolor|24bit)$ ]]; then
