@@ -9,6 +9,8 @@ alias t='i3-sensible-terminal'
 alias nf='neofetch'
 alias sl='ls'
 alias copy='xclip -sel clip'
+alias init-nvm='. /usr/share/nvm/init-nvm.sh' # takes too long to init, use when needed
+alias node='node || [ $? -eq 127 ] && "To use node, you need to run init-nvm"'
 
 if [ -f ~/.private_aliases ]; then
     . ~/.private_aliases

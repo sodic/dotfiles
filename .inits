@@ -1,14 +1,10 @@
 #!/bin/bash
 # This is the place for sourcing all third party initialization scripts
 
-# nvm
-nvm_init='/usr/share/nvm/init-nvm.sh'
-if [ -f "$nvm_init" ]; then
-    . "$nvm_init"
-fi
-
 # fuzzy finder
-fzf_completion="/usr/share/fzf/completion.$0"
+# The completion file variable must be defined in the parent script because
+# It's difficult to determine the current shell, and by extension the
+# appropriate file to source.
 if [[ -f "$fzf_completion" ]]; then
     . "$fzf_completion"
     export FZF_DEFAULT_OPTS="--layout=reverse --height 40%"

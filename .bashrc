@@ -160,6 +160,7 @@ export TODO="t"
 export SCM_CHECK=true
 
 if [ -f ~/.inits ]; then
+    fzf_completion="/usr/share/fzf/completion.zsh"
     . ~/.inits
 fi
 # Set Xterm/screen/Tmux title with only a short hostname.

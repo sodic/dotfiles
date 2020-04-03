@@ -101,6 +101,7 @@ if [ -f ~/.bash_aliases ]; then
 fi
 
 if [ -f ~/.inits ]; then
+    fzf_completion="/usr/share/fzf/completion.zsh"
     . ~/.inits
 fi
 
