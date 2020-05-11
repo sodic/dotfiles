@@ -111,4 +111,3 @@ if [[ ! $COLORTERM =~ ^(truecolor|24bit)$ ]]; then
     # gruvbox theme in vim found.
     source "$HOME/.vim/plugged/gruvbox/gruvbox_256palette.sh"
 fi
-

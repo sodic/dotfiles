@@ -1,7 +1,22 @@
 #!/bin/bash
-IMAGE='/tmp/screen.png'
-scrot $IMAGE
-convert $IMAGE  -scale 10% -blur 0x1.7 -resize 1000%  $IMAGE
+
+# take screenshot
+import -window root /tmp/screenshot.png
+
+# blur it
+convert /tmp/screenshot.png -blur 0x5 /tmp/screenshotblur.png
+rm /tmp/screenshot.png
+
+# lock the screen
+i3lock -i /tmp/screenshotblur.png
+
+exit 0
+
+# old code
+# IMAGE='/tmp/screen.png'
+# rm $IMAGE
+# scrot $IMAGE
+# convert $IMAGE  -scale 10% -blur 0x0.5 -resize 1000%  $IMAGE
 # convert $IMAGE  -blur 0x8  $IMAGE
-i3lock -e -f -i $IMAGE
+# i3lock -e -f -i $IMAGE
 

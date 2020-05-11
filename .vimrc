@@ -63,6 +63,9 @@ let g:gruvbox_italic=1
 colorscheme gruvbox
 set background=dark    " Setting dark mode
 
+" uset background for transparency
+hi! Normal ctermbg=NONE guibg=NONE 
+
 
 " This sets the indicator for the 80 character line limit (Python, Haskell,
 " Nim...)
@@ -72,4 +75,5 @@ else
   au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
 endif
 
-
+" personal remappings
+vnoremap <C-c> "+y

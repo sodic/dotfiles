@@ -39,7 +39,7 @@ bindsym $mod+Shift+q kill
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
-bindsym $mod+d exec --no-startup-id rofi -show run
+bindsym $mod+d exec --no-startup-id rofi -show drun
 bindsym $mod+Shift+d exec --no-startup-id rofi -show ssh
 
 # launch categorized menu
@@ -86,9 +86,8 @@ bindsym $mod+F5 exec terminal -e 'mocp'
 # bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
 
 # screenshots
-bindsym Print exec --no-startup-id i3-scrot # entire screen
-bindsym Ctrl+Print --release exec --no-startup-id i3-scrot -w # current window
-bindsym Ctrl+Shift+Print --release exec --no-startup-id i3-scrot -s # selection
+bindsym Print exec --no-startup-id flameshot full -c # entire screen
+bindsym Ctrl+Shift+Print exec --no-startup-id flameshot gui # selection
 
 # i3 help
 bindsym $mod+F1 exec xdg-open /usr/share/doc/manjaro/i3_help.pdf
@@ -278,7 +277,7 @@ bindsym $mod+Shift+x exec --no-startup-id lock
 # distibutinons
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id nitrogen --restore; sleep 1; compton -b
-exec --no-startup-id manjaro-hello
+# exec --no-startup-id manjaro-hello
 exec --no-startup-id nm-applet
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id pamac-tray
@@ -286,7 +285,6 @@ exec --no-startup-id clipit
 # exec --no-startup-id blueman-applet
 # exec_always --no-startup-id sbxkb
 # exec --no-startup-id start_conky_maia
-exec --no-startup-id start_conky_green
 exec --no-startup-id xautolock -time 10 -locker lock
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
@@ -418,7 +416,6 @@ bindsym $mod+i resize grow height 10 px or 10 ppt
 bindsym $mod+u resize shrink height 10 px or 10 ppt
 bindsym $mod+o resize grow width 10 px or 10 ppt
 # end resize
-
 
 
 # Run these guys on each i3 restart
