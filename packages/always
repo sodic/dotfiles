@@ -4,3 +4,11 @@ zip
 unzip
 ranger
 fzf
+openbsd-netcat
+gdb
+tmux
+speedtest-cli
+strace
+
+vim:
+powerline-fonts (angle separators for airline)

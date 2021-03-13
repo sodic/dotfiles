@@ -1,0 +1,10 @@
+zdotdir
+zsh (moved manually)
+    zshrc
+    zshlogin
+urxvtd (only the socket, .urxvt had to stay because of the extensions)
+xauthority
+zsh_history (had to create .local/share/zsh/, add this to install script)
+nvm
+npm
+    

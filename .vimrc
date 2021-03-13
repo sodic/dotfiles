@@ -1,4 +1,4 @@
-" Install vim-plug if missing
+" Install vim-plug if missing.
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -12,7 +12,7 @@ Plug 'morhetz/gruvbox'
 Plug 'zah/nim.vim'
 Plug 'mattn/emmet-vim'
 Plug 'terryma/vim-multiple-cursors'
-Plug 'roman/golden-ratio'
+" Plug 'roman/golden-ratio'
 Plug 'godlygeek/tabular'
 Plug 'ervandew/supertab'
 Plug 'tpope/vim-surround'
@@ -22,8 +22,27 @@ Plug 'chriskempson/base16-vim'
 Plug 'pangloss/vim-javascript'
 Plug 'neovimhaskell/haskell-vim'
 Plug 'rust-lang/rust.vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
+
+" Vim is based on Vi. Setting `nocompatible` switches from the default
+" Vi-compatibility mode and enables useful Vim functionality. This
+" configuration option turns out not to be necessary for the file named
+" '~/.vimrc', because Vim automatically enters nocompatible mode if that file
+" is present. But we're including it here just in case this config file is
+" loaded some other way (e.g. saved as `foo`, and then Vim started with
+" `vim -u foo`).
+set nocompatible
+
+" Turn on syntax highlighting.
+syntax on
+
+" Always show the status line at the bottom, even if you only have one window
+" open. This is not really necessary when using the powerline plugin, but I
+" kept it just in case.
+set laststatus=2
 
 " tabs
 set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
@@ -31,13 +50,51 @@ set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
 " syntastic checks for python3
 let g:syntastic_python_python_exec = 'python3'
 
+" let g:airline_theme='gruvbox-light'
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
 
-" highlight the current line and show hybrid line numbers
+" Highlight the current line and show hybrid line numbers.
 :set cursorline
-:set number relativenumber
 
-" enable scrolling
-:set mouse=a
+" Show line numbers.
+:set number 
+
+" This enables relative line numbering mode. With both number and
+" relativenumber enabled, the current line shows the true line number, while
+" all other lines (above and below) are numbered relative to the current line.
+" This is useful because you can tell, at a glance, what count is needed to
+" jump up or down to a particular line, by {count}k to go up or {count}j to go
+" down.
+:set relativenumber
+
+" Enable scrolling and mouse support.
+:set mouse+=a
+
+" The backspace key has slightly unintuitive behavior by default. For example,
+" by default, you can't backspace before the insertion point set with 'i'.
+" This configuration makes backspace behave more reasonably, in that you can
+" backspace over anything. In newer versions of vim (8.0+), this is set
+" automatically. However, it's better to keep it here just in case.
+set backspace=indent,eol,start
+
+" This setting makes search case-insensitive when all characters in the string
+" being searched are lowercase. However, the search becomes case-sensitive if
+" it contains any capital letters. This makes searching more convenient.
+set ignorecase
+set smartcase
+
+" Enable searching as you type, rather than waiting till you press enter. I
+" think neovim does this by default, but I left it here for regular vim.
+set incsearch
+
+" Unbind some useless/annoying default key bindings.
+" 'Q' in normal mode enters Ex mode. I never found a use for Ex mode.
+nmap Q <Nop> 
+
+" Disable audible bell because. It's most likely already disabled by default,
+" but just in case.
+set noerrorbells visualbell t_vb=
 
 " let base16colorspace=256  " Access colors present in 256 colorspace
 " colorscheme base16-default-dark
@@ -64,7 +121,7 @@ colorscheme gruvbox
 set background=dark    " Setting dark mode
 
 " uset background for transparency
-hi! Normal ctermbg=NONE guibg=NONE 
+hi! Normal ctermbg=NONE guibg=NONE
 
 
 " This sets the indicator for the 80 character line limit (Python, Haskell,
@@ -77,3 +134,4 @@ endif
 
 " personal remappings
 vnoremap <C-c> "+y
+vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>

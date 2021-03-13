@@ -1,0 +1,11 @@
+#!/bin/sh
+if [ "$#" -ne 1 ]; then
+    echo "Provide an ssh endpoint"
+    exit 1
+fi
+    
+ssh_endpoint="$1"
+
+infocmp \
+    | ssh "$ssh_endpoint" \
+          'cat > "$TERM.info" && tic -x "$TERM.info" && rm "$TERM.info"'

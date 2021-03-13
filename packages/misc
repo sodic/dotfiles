@@ -1,0 +1,5 @@
+# for systemd nspawn, simulating a virtual environment for installed packages
+arch_install_scripts
+
+# dig, nslookup, etc
+bind-tools

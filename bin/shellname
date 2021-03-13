@@ -1,0 +1,3 @@
+#!/usr/bin/bash
+echo $SHELL | sed -E 's|.*\/(.*)|\1|'
+

@@ -1,0 +1,13 @@
+#!/bin/bash
+
+swap () {
+    local tmp_file="tmp.$$"
+    mv "$1" "$tmp_file"
+    mv "$2" "$1"
+    mv "$tmp_file" "$2"
+}
+
+config_root="/home/filip/.config/termite/"
+cat $config_root/config_other > /tmp/output
+swap "$config_root/config_other" "$config_root/config"
+killall -USR1 termite

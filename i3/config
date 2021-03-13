@@ -12,19 +12,20 @@ default_border pixel 1
 default_floating_border normal
 
 # Hide borders
-hide_edge_borders none 
+hide_edge_borders none
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 font pango:FontAwesome5Free 10
-font pango:DejaVu Sans Mono 12
+font pango:DejaVuSansMono Nerd Font 12
+# font pango:DejaVu Sans Mono 12
 
 # Use Mouse+$mod to drag floating windows
 floating_modifier $mod
 
-# start a terminal 
+# start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
 
 # start ranger
@@ -40,6 +41,7 @@ bindsym $mod+Shift+q kill
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 bindsym $mod+d exec --no-startup-id rofi -show drun
+bindsym $mod+space exec --no-startup-id rofi -show drun
 bindsym $mod+Shift+d exec --no-startup-id rofi -show ssh
 
 # launch categorized menu
@@ -86,7 +88,8 @@ bindsym $mod+F5 exec terminal -e 'mocp'
 # bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
 
 # screenshots
-bindsym Print exec --no-startup-id flameshot full -c # entire screen
+bindsym Print exec --no-startup-id flameshot full -p ~/Pictures/screenshots # entire screen save
+bindsym Ctrl+Print exec --no-startup-id flameshot full -c # entire screen clip
 bindsym Ctrl+Shift+Print exec --no-startup-id flameshot gui # selection
 
 # i3 help
@@ -134,10 +137,10 @@ bindsym $mod+e layout toggle split
 bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+bindsym $mod+comma focus mode_toggle
 
-# toggle sticky 
-# keep container when changing workspaces (todo find replacement) 
+# toggle sticky
+# keep container when changing workspaces (todo find replacement)
 # bindsym $mod+Shift+s sticky toggle
 
 # focus the parent container
@@ -153,6 +156,7 @@ bindsym $mod+minus scratchpad show
 # navigate workspaces next / previous
 bindsym $mod+n workspace prev
 bindsym $mod+m workspace next
+bindsym $mod+Tab exec rofi -show window -show-icons
 
 # Workspace names
 # to display names or symbols instead of plain workspace numbers you can use
@@ -284,7 +288,8 @@ exec --no-startup-id pamac-tray
 exec --no-startup-id clipit
 # exec --no-startup-id blueman-applet
 # exec_always --no-startup-id sbxkb
-# exec --no-startup-id start_conky_maia
+# Needed to write a spcial script for this
+exec --no-startup-id start_conky
 exec --no-startup-id xautolock -time 10 -locker lock
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
@@ -327,7 +332,7 @@ bar {
         background $bg
         # text color used for blocks that do not have a color specified.
         statusline $yellow
-        # workspaces section            
+        # workspaces section
         #                    border  backgr. text
         focused_workspace    $yellow $yellow $darkgray
         inactive_workspace   $darkgray $darkgray $yellow
@@ -335,47 +340,6 @@ bar {
         urgent_workspace     $red $red $bg
     }
 }
-# my bar
-#bar {
-# 	status_command i3blocks -c /home/filip/.config/i3/i3blocks.conf
-#	colors {
-#		background $bg-color
-#	    	separator #757575
-#		#                  border             background         text
-#		focused_workspace  $bg-color          $bg-color          $text-color
-#		inactive_workspace $bg-color          $bg-color          $inactive-text-color
-#		urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
-#	}
-#}
-
-# Start i3bar to display a workspace bar (plus the system information i3status if available)
-#bar {
-#	i3bar_command i3bar
-#	status_command i3status
-#	position bottom
-#
-### please set your primary output first. Example: 'xrandr --output eDP1 --primary'
-##	tray_output primary
-##	tray_output eDP1
-#
-#	bindsym button4 nop
-#	bindsym button5 nop
-##   font xft:URWGothic-Book 11
-#	strip_workspace_numbers yes
-#
-#    colors {
-#        background #222D31
-#        statusline #F9FAF9
-#        separator  #454947
-#
-##                      border  backgr. text
-#        focused_workspace  #F9FAF9 #16a085 #292F34
-#        active_workspace   #595B5B #353836 #FDF6E3
-#        inactive_workspace #595B5B #222D31 #EEE8D5
-#        binding_mode       #16a085 #2C2C2C #F9FAF9
-#        urgent_workspace   #16a085 #FDF6E3 #E5201D
-#    }
-#}
 
 # hide/unhide i3status bar
 bindsym $mod+semicolon bar mode toggle
@@ -386,7 +350,7 @@ bindsym $mod+semicolon bar mode toggle
 #############################
 
 # Set inner/outer gaps
-gaps inner 14
+gaps inner 8
 gaps outer -2
 
 # Additionally, you can issue commands with the following syntax. This is useful to bind keys to changing the gap size.
@@ -416,6 +380,9 @@ bindsym $mod+i resize grow height 10 px or 10 ppt
 bindsym $mod+u resize shrink height 10 px or 10 ppt
 bindsym $mod+o resize grow width 10 px or 10 ppt
 # end resize
+
+# toggle colors
+bindsym $mod+c exec --no-startup-id toggle-color
 
 
 # Run these guys on each i3 restart

@@ -1,5 +1,10 @@
 #!/bin/bash
-alias o=xdg-open
+
+# ask before overwriting
+alias mv='mv -i'
+alias cp='cp -i'
+
+alias open="xdg-open"
 alias py=python3
 alias make-presentation='pandoc -V lang=croatian -t beamer --latex-engine=lualatex --slide-level=2'
 alias q='exit'
