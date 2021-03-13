@@ -1,0 +1,9 @@
+[user]
+    email = filip.sodic@fer.hr
+    name = Filip Sodić
+
+[core]
+    autoclrf = input
+
+[alias]
+    graph=log --all --graph --decorate

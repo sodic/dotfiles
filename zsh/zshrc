@@ -96,13 +96,13 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
+if [ -f "$XDG_CONFIG_HOME/shell/aliases" ]; then
+    . "$XDG_CONFIG_HOME/shell/aliases"
 fi
 
-if [ -f ~/.inits ]; then
+if [ -f "$XDG_CONFIG_HOME/shell/inits" ]; then
     fzf_completion="/usr/share/fzf/completion.zsh"
-    . ~/.inits
+    . "$XDG_CONFIG_HOME/shell/inits"
 fi
 
 if [[ ! $COLORTERM =~ ^(truecolor|24bit)$ ]]; then

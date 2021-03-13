@@ -1,0 +1,27 @@
+- defaults:
+    link:
+      relink: true
+      create: true
+
+- clean: ['~', '~/.config']
+
+
+- link:
+    ~/.gitconfig:
+    ~/.Xresources:
+    ~/.config/i3:
+    ~/.config/tmux:
+    ~/.vimrc: vim/vimrc
+    ~/.vimrc_background: vim/vimrc_background
+    ~/.config/nvim: vim/nvim
+    ~/.config/compton.conf: compton/compton.conf
+    ~/.config/shell: shell
+    ~/.profile: shell/profile 
+    ~/.inits: shell/inits 
+    ~/.bash_profile: shell/profile 
+    ~/.zshenv: shell/env 
+    ~/.config/zsh/.zprofile: zsh/zprofile 
+    ~/.config/zsh/.zshrc: zsh/zshrc
+
+- shell:
+  - [git submodule update --init --recursive, Installing submodules]

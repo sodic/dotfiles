@@ -1,0 +1,3 @@
+#!/bin/zsh
+# This file is executed by all zsh shells
+. "$XDG_CONFIG_HOME/shell/env"
