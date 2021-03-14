@@ -16,14 +16,16 @@
     ~/.config/nvim: vim/nvim
     ~/.config/compton.conf: compton/compton.conf
     ~/.config/shell: shell
-    ~/.profile: shell/profile 
-    ~/.inits: shell/inits 
-    ~/.bash_profile: shell/profile 
-    ~/.bashrc: bash/bashrc 
-    ~/.bash_aliases: shell/aliases 
-    ~/.zshenv: shell/env 
-    ~/.config/zsh/.zprofile: zsh/zprofile 
+    ~/.profile: shell/profile
+    ~/.inits: shell/inits
+    ~/.bash_profile: shell/profile
+    ~/.bashrc: bash/bashrc
+    ~/.bash_aliases: shell/aliases
+    ~/.zshenv: shell/env
+    ~/.config/zsh/.zprofile: zsh/zprofile
     ~/.config/zsh/.zshrc: zsh/zshrc
+    ~/.config/zsh/plugins: zsh/plugins
+    ~/.config/zsh/theme.zsh: zsh/theme.zsh
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]

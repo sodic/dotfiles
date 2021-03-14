@@ -9,6 +9,8 @@ HOME=~
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="custom"
+# Someday, I'll replace the theme
+# . "$ZDOTDIR/theme.zsh"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -59,7 +61,10 @@ CASE_SENSITIVE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions)
+# plugins=(git zsh-autosuggestions)
+
+# Start replacing oh-my-zsh, this loads the autocomplete plugin
+. "$ZDOTDIR/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
 
 source $ZSH/oh-my-zsh.sh
 

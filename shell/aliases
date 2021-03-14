@@ -21,3 +21,68 @@ if [ -f ~/.private_aliases ]; then
     . ~/.private_aliases
 fi
 
+# Git aliases
+
+alias g='git'
+
+alias ga='git add'
+alias gaa='git add --all'
+
+alias gb='git branch'
+alias gba='git branch -a'
+alias gbd='git branch -d'
+
+alias gbs='git bisect'
+alias gbsb='git bisect bad'
+alias gbsg='git bisect good'
+alias gbsr='git bisect reset'
+alias gbss='git bisect start'
+
+alias gc='git commit -v'
+alias gcsm='git commit -s -m'
+
+alias gco='git checkout'
+alias gcb='git checkout -b'
+alias gcm='git checkout master'
+alias gcd='git checkout develop'
+
+alias gd='git diff'
+alias gdca='git diff --cached'
+alias gds='git diff --staged'
+
+alias gdct='git describe --tags $(git rev-list --tags --max-count=1)'
+
+function gdv() { git diff -w "$@" | view - }
+compdef _git gdv=git-diff
+
+alias gf='git fetch'
+alias gfo='git fetch origin'
+
+alias ggpull='git pull origin "$(git_current_branch)"'
+alias ggpush='git push origin "$(git_current_branch)"'
+
+alias ggsup='git branch --set-upstream-to=origin/$(git_current_branch)'
+alias gpsup='git push --set-upstream origin $(git_current_branch)'
+
+
+alias glg='git log --stat'
+alias glgp='git log --stat -p'
+alias glgg='git log --graph'
+alias glgga='git log --graph --decorate --all'
+alias glgm='git log --graph --max-count=10'
+alias glo='git log --oneline --decorate'
+alias glol="git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'"
+alias glols="git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --stat"
+alias glod="git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ad) %C(bold blue)<%an>%Creset'"
+alias glods="git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ad) %C(bold blue)<%an>%Creset' --date=short"
+alias glola="git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --all"
+alias glog='git log --oneline --decorate --graph'
+alias gloga='git log --oneline --decorate --graph --all'
+
+alias gm='git merge'
+alias gma='git merge --abort'
+
+alias gsb='git status -sb'
+alias gss='git status -s'
+alias gst='git status'
+alias gsps='git show --pretty=short --show-signature'
