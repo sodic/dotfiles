@@ -97,12 +97,9 @@ alias l='ls -CF'
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 # Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
+if [ -f "$XDG_CONFIG_HOME/shell/aliases" ]; then
+    . "$XDG_CONFIG_HOME/shell/aliases"
 fi
 
 # enable programmable completion features (you don't need to enable
@@ -157,9 +154,9 @@ export TODO="t"
 # Set this to false to turn off version control status checking within the prompt for all themes
 export SCM_CHECK=true
 
-if [ -f ~/.inits ]; then
-    fzf_completion="/usr/share/fzf/completion.zsh"
-    . ~/.inits
+if [ -f "$XDG_CONFIG_HOME/shell/inits" ]; then
+    fzf_completion="/usr/share/fzf/completion.bash"
+    . "$XDG_CONFIG_HOME/shell/inits"
 fi
 # Set Xterm/screen/Tmux title with only a short hostname.
 # Uncomment this (or set SHORT_HOSTNAME to something else),

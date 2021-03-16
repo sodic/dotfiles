@@ -1,0 +1,7 @@
+configuration {
+    modi: "window,drun,ssh";
+    color-window: "#A6222227";
+    ssh-command: "{terminal} -e \"{ssh-client} {host}\"";
+}
+
+@import "~/.config/rofi/gruvbox-dark-transparent.rasi"

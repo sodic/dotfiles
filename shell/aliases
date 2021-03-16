@@ -16,6 +16,7 @@ alias init-nvm='. /usr/share/nvm/init-nvm.sh' # takes too long to init, use when
 #alias node='node || [ $? -eq 127 ] && "To use node, you must first run init-nvm"'
 #alias npm='npm || [ $? -eq 127 ] && "To use npm, you must first run init-nvm"'
 alias cf='cf-tool'
+alias zconf="$EDITOR ${ZDOTDIR}/.zshrc"
 
 if [ -f ~/.private_aliases ]; then
     . ~/.private_aliases
@@ -52,9 +53,6 @@ alias gds='git diff --staged'
 
 alias gdct='git describe --tags $(git rev-list --tags --max-count=1)'
 
-function gdv() { git diff -w "$@" | view - }
-compdef _git gdv=git-diff
-
 alias gf='git fetch'
 alias gfo='git fetch origin'
 
@@ -86,3 +84,4 @@ alias gsb='git status -sb'
 alias gss='git status -s'
 alias gst='git status'
 alias gsps='git show --pretty=short --show-signature'
+

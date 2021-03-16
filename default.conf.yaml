@@ -1,26 +1,30 @@
+# This config is always applied regardless of the system
+
 - defaults:
     link:
       relink: true
       create: true
+      force: true
 
 - clean: ['~', '~/.config']
 
 
 - link:
+    ~/bin:
     ~/.gitconfig:
-    ~/.Xresources:
-    ~/.config/i3:
     ~/.config/tmux:
+    ~/.config/ranger/rc.conf: ranger/rc.conf
+    ~/.config/ranger/rifle.conf: ranger/rifle.conf
+    ~/.config/ranger/scope.sh: ranger/scope.sh
+    ~/.config/ranger/colorschemes/nonbright.py: ranger/colorschemes/nonbright.py
     ~/.vimrc: vim/vimrc
     ~/.vimrc_background: vim/vimrc_background
     ~/.config/nvim: vim/nvim
-    ~/.config/compton.conf: compton/compton.conf
     ~/.config/shell: shell
     ~/.profile: shell/profile
     ~/.inits: shell/inits
-    ~/.bash_profile: shell/profile
+    ~/.bash_profile: bash/bash_profile
     ~/.bashrc: bash/bashrc
-    ~/.bash_aliases: shell/aliases
     ~/.zshenv: shell/env
     ~/.config/zsh/.zprofile: zsh/zprofile
     ~/.config/zsh/.zshrc: zsh/zshrc

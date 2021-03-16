@@ -9,6 +9,8 @@ export XDG_DATA_HOME="$HOME/.local/share"
 # zsh, should move all zsh data to specified locations
 export ZDOTDIR="$XDG_CONFIG_HOME"/zsh
 export HISTFILE="$XDG_DATA_HOME/zsh/history"
+export HISTSIZE=10000000
+export SAVEHIST=10000000
 export ZSH="$XDG_CONFIG_HOME"/oh-my-zsh
 # Uncomment the following line to change how often to auto-update (in days).
 export UPDATE_ZSH_DAYS=13

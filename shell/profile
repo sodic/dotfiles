@@ -29,21 +29,12 @@ export LESS_TERMCAP_ue="$(printf '%b' '\e[0m')"; a="${a%_}"
 # set PATH so it includes user's private bin directories
 export PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 
-# personal binaries
-export PATH="$HOME/dotfiles/bin:$PATH"
-
 # nim, if exists
 if [[ -d "$HOME/.nimble/bin" ]]; then
     export PATH="$HOME/.nimble/bin:$PATH"
 fi
 
-# go, if exists
-if [[ -d '/usr/local/go' ]]; then 
-    export GOROOT='/usr/local/go'
-    export PATH="$GOROOT/bin:$PATH"
-fi
-
-# go anyway because that existence check is wrong
-export GOPATH="$HOME/go"
-export PATH="$GOPATH/bin:$PATH"
+# Go is currently uninstalled
+# export GOPATH="$HOME/go"
+# export PATH="$GOPATH/bin:$PATH"
 

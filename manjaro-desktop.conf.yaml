@@ -1,0 +1,36 @@
+# Apply this config only on desktop computers that run Manjaro
+
+- defaults:
+    link:
+      relink: true
+      create: true
+
+- shell:
+  - 
+    command: sudo pacman -Syyu
+    stdin: true
+    stdout: true
+    description: Updating the system 
+    quiet: true
+  -
+    command: sudo pacman --noconfirm -S zsh
+    stdin: true
+    stdout: true
+    description: Installing zsh
+    quiet: true
+  - 
+    command: source old/install-oh-my-zsh
+    stdin: true
+    stdout: true
+    description: Installing on-my-zsh 
+    quiet: true
+
+- link:
+    ~/.Xresources:
+    ~/.config/i3:
+    ~/.config/rofi:
+    ~/.config/conky:
+    ~/.config/termite:
+    ~/.config/dunst:
+    ~/.config/compton.conf: compton/compton.conf
+    ~/.config/oh-my-zsh/themes/custom.zsh-theme: zsh/theme.zsh
