@@ -1,6 +1,6 @@
 #!/bin/zsh
 # This file is executed by zsh login shells
 if [ -f "$XDG_CONFIG_HOME/shell/profile" ]; then
-    . "$XDG_CONFIG_HOME/shell/profile"
+    source "$XDG_CONFIG_HOME/shell/profile"
 fi
 

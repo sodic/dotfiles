@@ -1,0 +1,24 @@
+#!/bin/zsh
+
+HOME=~
+
+source "$ZDOTDIR/git.zsh"
+source "$ZDOTDIR/key-bindings.zsh"
+source "$ZDOTDIR/theme.zsh"
+source "$ZDOTDIR/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
+
+if [ -f "$XDG_CONFIG_HOME/shell/aliases" ]; then
+    source "$XDG_CONFIG_HOME/shell/aliases"
+fi
+
+if [ -f "$XDG_CONFIG_HOME/shell/inits" ]; then
+    fzf_completion="/usr/share/fzf/completion.zsh"
+    source "$XDG_CONFIG_HOME/shell/inits"
+fi
+
+if [[ ! $COLORTERM =~ ^(truecolor|24bit)$ ]]; then
+    # if we're dealing with a terminal not supporting trucolors (e.g., urxvt),
+    # then execute a script overriding the terminal's color defaults to enable
+    # gruvbox theme in vim found.
+    source "$HOME/.vim/plugged/gruvbox/gruvbox_256palette.sh"
+fi
