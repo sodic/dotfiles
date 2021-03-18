@@ -18,12 +18,6 @@
     stdout: true
     description: Installing zsh
     quiet: true
-  - 
-    command: source old/install-oh-my-zsh
-    stdin: true
-    stdout: true
-    description: Installing on-my-zsh 
-    quiet: true
 
 - link:
     ~/.Xresources:
@@ -33,4 +27,3 @@
     ~/.config/termite:
     ~/.config/dunst:
     ~/.config/compton.conf: compton/compton.conf
-    ~/.config/oh-my-zsh/themes/custom.zsh-theme: zsh/theme.zsh

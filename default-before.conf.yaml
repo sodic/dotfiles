@@ -1,0 +1,10 @@
+# This config is always applied regardless of the system.
+# It is applied at the start of the installation.
+
+- clean: ['~', '~/.config']
+
+- create:
+  - ~/.local/share/zsh
+
+- shell:
+  - [git submodule update --init --recursive, Installing submodules]

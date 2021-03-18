@@ -1,4 +1,5 @@
-# This config is always applied regardless of the system
+# This config is always applied regardless of the system.
+# It is applied at the end of the installation.
 
 - defaults:
     link:
@@ -6,8 +7,19 @@
       create: true
       force: true
 
-- clean: ['~', '~/.config']
-
+- shell:
+  - 
+    command: chsh -s $(which zsh)
+    stdin: true
+    stdout: true
+    description: Setting zsh as the default shell, enter your password
+    quiet: true
+  - 
+    command: source old/install-oh-my-zsh
+    stdin: true
+    stdout: true
+    description: Installing on-my-zsh 
+    quiet: true
 
 - link:
     ~/bin:
@@ -32,9 +44,4 @@
     ~/.config/ranger/colorschemes/:
       path: ranger/colorschemes/*
       glob: true
-
-- create:
-  - ~/.local/share/zsh
-
-- shell:
-  - [git submodule update --init --recursive, Installing submodules]
+    ~/.config/oh-my-zsh/themes/custom.zsh-theme: zsh/theme.zsh
