@@ -33,5 +33,8 @@
       path: ranger/colorschemes/*
       glob: true
 
+- create:
+  - ~/.local/share/zsh
+
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
