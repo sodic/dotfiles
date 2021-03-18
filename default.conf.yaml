@@ -13,10 +13,6 @@
     ~/bin:
     ~/.gitconfig:
     ~/.config/tmux:
-    ~/.config/ranger/rc.conf: ranger/rc.conf
-    ~/.config/ranger/rifle.conf: ranger/rifle.conf
-    ~/.config/ranger/scope.sh: ranger/scope.sh
-    ~/.config/ranger/colorschemes/nonbright.py: ranger/colorschemes/nonbright.py
     ~/.vimrc: vim/vimrc
     ~/.vimrc_background: vim/vimrc_background
     ~/.config/nvim: vim/nvim
@@ -26,10 +22,16 @@
     ~/.bash_profile: bash/bash_profile
     ~/.bashrc: bash/bashrc
     ~/.zshenv: shell/env
-    ~/.config/zsh/.zprofile: zsh/zprofile
-    ~/.config/zsh/.zshrc: zsh/zshrc
-    ~/.config/zsh/plugins: zsh/plugins
-    ~/.config/zsh/theme.zsh: zsh/theme.zsh
+    ~/.config/zsh/:
+      path: zsh/*
+      glob: true
+    ~/.config/ranger/:
+      path: ranger/*
+      glob: true
+      exclude: [ ranger/colorschemes ]
+    ~/.config/ranger/colorschemes/:
+      path: ranger/colorschemes/*
+      glob: true
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
