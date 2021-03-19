@@ -37,6 +37,11 @@
     ~/.config/zsh/:
       path: zsh/*
       glob: true
+      # We have to exlude special files...
+      exclude: [ zsh/zshrc, zsh/zprofile ]
+      # ... and map them as hidden
+    ~/.config/zsh/.zshrc: zsh/zshrc
+    ~/.config/zsh/.zprofile: zsh/zprofile
     ~/.config/ranger/:
       path: ranger/*
       glob: true
