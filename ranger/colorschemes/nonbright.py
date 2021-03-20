@@ -8,7 +8,7 @@ from __future__ import (absolute_import, division, print_function)
 from ranger.gui.colorscheme import ColorScheme
 from ranger.gui.color import (
     black, blue, cyan, green, magenta, red, white, yellow, default,
-    normal, dim, bold, reverse,
+    normal, dim, bold, reverse, BRIGHT,
     default_colors,
 )
 
@@ -71,6 +71,7 @@ class Default(ColorScheme):
                 if context.marked:
                     attr |= bold
                     fg = yellow
+                    fg += BRIGHT
             if context.badinfo:
                 if attr & reverse:
                     bg = magenta
