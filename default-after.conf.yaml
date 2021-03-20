@@ -45,8 +45,11 @@
     ~/.config/ranger/:
       path: ranger/*
       glob: true
-      exclude: [ ranger/colorschemes ]
+      exclude: [ ranger/colorschemes, ranger/plugins ]
     ~/.config/ranger/colorschemes/:
       path: ranger/colorschemes/*
+      glob: true
+    ~/.config/ranger/plugins/:
+      path: ranger/plugins/*
       glob: true
     ~/.config/oh-my-zsh/themes/custom.zsh-theme: zsh/theme.zsh
