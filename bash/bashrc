@@ -154,10 +154,13 @@ export TODO="t"
 # Set this to false to turn off version control status checking within the prompt for all themes
 export SCM_CHECK=true
 
-if [ -f "$XDG_CONFIG_HOME/shell/inits" ]; then
-    fzf_completion="/usr/share/fzf/completion.bash"
-    . "$XDG_CONFIG_HOME/shell/inits"
+if [ -d "/usr/share/fzf" ]; then
+    . /usr/share/fzf/completion.bash
+    . /usr/share/fzf/key-bindings.bash
+    export FZF_DEFAULT_OPTS="--layout=reverse --height 40%"
+    export FZF_COMPLETION_TRIGGER='**'
 fi
+
 # Set Xterm/screen/Tmux title with only a short hostname.
 # Uncomment this (or set SHORT_HOSTNAME to something else),
 # Will otherwise fall back on $HOSTNAME.

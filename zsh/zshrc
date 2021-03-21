@@ -67,7 +67,7 @@ CASE_SENSITIVE="true"
 # Start replacing oh-my-zsh, this loads the autocomplete plugin
 . "$ZDOTDIR/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
 
-source $ZSH/oh-my-zsh.sh
+source "$ZSH/oh-my-zsh.sh"
 
 # User configuration
 
@@ -102,9 +102,11 @@ if [ -f "$XDG_CONFIG_HOME/shell/aliases" ]; then
     . "$XDG_CONFIG_HOME/shell/aliases"
 fi
 
-if [ -f "$XDG_CONFIG_HOME/shell/inits" ]; then
-    fzf_completion="/usr/share/fzf/completion.zsh"
-    . "$XDG_CONFIG_HOME/shell/inits"
+if [ -d "/usr/share/fzf" ]; then
+    . /usr/share/fzf/completion.zsh
+    . /usr/share/fzf/key-bindings.zsh
+    export FZF_DEFAULT_OPTS="--layout=reverse --height 40%"
+    export FZF_COMPLETION_TRIGGER='**'
 fi
 
 if [[ ! $COLORTERM =~ ^(truecolor|24bit)$ ]]; then

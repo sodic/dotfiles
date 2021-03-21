@@ -30,7 +30,6 @@
     ~/.config/nvim: vim/nvim
     ~/.config/shell: shell
     ~/.profile: shell/profile
-    ~/.inits: shell/inits
     ~/.bash_profile: bash/bash_profile
     ~/.bashrc: bash/bashrc
     ~/.zshenv: shell/env
