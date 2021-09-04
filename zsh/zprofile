@@ -3,4 +3,3 @@
 if [ -f "$XDG_CONFIG_HOME/shell/profile" ]; then
     source "$XDG_CONFIG_HOME/shell/profile"
 fi
-
