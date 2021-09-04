@@ -18,11 +18,89 @@
     stdin: true
     stdout: true
     description: Installing GNU utilities
+  -
+    command: rm -f "$XDG_CONFIG_HOME/shell/platform-specific.profile"
+    stdout: true
+    quiet: true
+    description: Removing the old platform specific shell profile
   - 
     command: echo 'PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:/usr/local/opt/coreutils/libexec/gnubin:$PATH"' >> "$XDG_CONFIG_HOME/shell/platform-specific.profile"
     stdout: true
     description: Adjusting path to avoid prefixing GNU utilities
+    quiet: true
   - 
     command: echo 'MANPATH="/opt/homebrew/opt/coreutils/libexec/gnuman:/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"' >> "$XDG_CONFIG_HOME/shell/platform-specific.profile"
     stdout: true
     description: Adjusting man path for GNU utilities
+    quiet: true
+  - 
+    command: echo 'PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"' >> "$XDG_CONFIG_HOME/shell/platform-specific.profile"
+    stdout: true
+    description: Adjusting path to avoid prefixing GNU sed
+    quiet: true
+  - 
+    command: echo 'MANPATH="/opt/homebrew/opt/gnu-sed/libexec/gnuman:/usr/local/opt/gnu-sed/libexec/gnuman:$MANPATH"' >> "$XDG_CONFIG_HOME/shell/platform-specific.profile"
+    stdout: true
+    description: Adjusting man path for GNU sed
+    quiet: true
+  - 
+    command: echo 'PATH="/opt/homebrew/opt/gawk/libexec/gnubin:/usr/local/opt/gawk/libexec/gnubin:$PATH"' >> "$XDG_CONFIG_HOME/shell/platform-specific.profile"
+    stdout: true
+    description: Adjusting path to avoid prefixing GNU awk
+    quiet: true
+  - 
+    command: echo 'MANPATH="/opt/homebrew/opt/gawk/libexec/gnuman:/usr/local/opt/gawk/libexec/gnuman:$MANPATH"' >> "$XDG_CONFIG_HOME/shell/platform-specific.profile"
+    stdout: true
+    description: Adjusting man path for GNU awk
+    quiet: true
+  - 
+    command: echo 'PATH="/opt/homebrew/opt/gnu-tar/libexec/gnubin:/usr/local/opt/gnu-tar/libexec/gnubin:$PATH"' >> "$XDG_CONFIG_HOME/shell/platform-specific.profile"
+    stdout: true
+    description: Adjusting path to avoid prefixing GNU tar
+    quiet: true
+  - 
+    command: echo 'MANPATH="/opt/homebrew/opt/gnu-tar/libexec/gnuman:/usr/local/opt/gnu-tar/libexec/gnuman:$MANPATH"' >> "$XDG_CONFIG_HOME/shell/platform-specific.profile"
+    stdout: true
+    description: Adjusting man path for GNU tar
+    quiet: true
+  - 
+    command: echo 'PATH="/opt/homebrew/opt/gnu-getopt/bin:/usr/local/opt/gnu-getopt/bin:$PATH"' >> "$XDG_CONFIG_HOME/shell/platform-specific.profile"
+    stdout: true
+    description: Adjusting path to avoid prefixing GNU getopt
+    quiet: true
+  - 
+    command: echo 'MANPATH="/opt/homebrew/opt/gnu-getopt/share/man:/usr/local/opt/gnu-getopt/libexec/share/man:$MANPATH"' >> "$XDG_CONFIG_HOME/shell/platform-specific.profile"
+    stdout: true
+    description: Adjusting man path for GNU getopt
+    quiet: true
+  - 
+    command: echo 'PATH="/opt/homebrew/opt/gnu-indent/libexec/gnubin:/usr/local/opt/gnu-indent/libexec/gnubin:$PATH"' >> "$XDG_CONFIG_HOME/shell/platform-specific.profile"
+    stdout: true
+    description: Adjusting path to avoid prefixing GNU indent
+    quiet: true
+  - 
+    command: echo 'MANPATH="/opt/homebrew/opt/gnu-indent/libexec/gnuman:/usr/local/opt/gnu-indent/libexec/gnuman:$MANPATH"' >> "$XDG_CONFIG_HOME/shell/platform-specific.profile"
+    stdout: true
+    description: Adjusting man path for GNU indent
+    quiet: true
+  - 
+    command: echo 'PATH="/opt/homebrew/opt/grep/libexec/gnubin:/usr/local/opt/grep/libexec/gnubin:$PATH"' >> "$XDG_CONFIG_HOME/shell/platform-specific.profile"
+    stdout: true
+    description: Adjusting path to avoid prefixing GNU grep
+    quiet: true
+  - 
+    command: echo 'MANPATH="/opt/homebrew/opt/grep/libexec/gnuman:/usr/local/opt/grep/libexec/gnuman:$MANPATH"' >> "$XDG_CONFIG_HOME/shell/platform-specific.profile"
+    stdout: true
+    description: Adjusting man path for GNU grep
+    quiet: true
+  - 
+    command: echo 'PATH="/opt/homebrew/opt/findutils/libexec/gnubin:/usr/local/opt/find/libexec/gnubin:$PATH"' >> "$XDG_CONFIG_HOME/shell/platform-specific.profile"
+    stdout: true
+    description: Adjusting path to avoid prefixing GNU find
+    quiet: true
+  - 
+    command: echo 'MANPATH="/opt/homebrew/opt/findutils/libexec/gnuman:/usr/local/opt/find/libexec/gnuman:$MANPATH"' >> "$XDG_CONFIG_HOME/shell/platform-specific.profile"
+    stdout: true
+    description: Adjusting man path for GNU find
+    quiet: true
+
