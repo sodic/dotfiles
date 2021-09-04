@@ -1,0 +1,28 @@
+# Apply this config only on desktop computers that run OS X with M1
+
+- shell:
+  -
+    command: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    stdin: true
+    stdout: true
+    description: Installing Homebrew
+    quiet: true
+  - 
+    command: echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> "$XDG_CONFIG_HOME/shell/platform-specific.profile"
+    stdin: true
+    stdout: true
+    description: Adding Homebrew path setter
+    quiet: true
+  -
+    command: eval "$(/opt/homebrew/bin/brew shellenv)" && brew install coreutils findutils gnu-tar gnu-sed gawk gnutls gnu-indent gnu-getopt grep
+    stdin: true
+    stdout: true
+    description: Installing GNU utilities
+  - 
+    command: echo 'PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:/usr/local/opt/coreutils/libexec/gnubin:$PATH"' >> "$XDG_CONFIG_HOME/shell/platform-specific.profile"
+    stdout: true
+    description: Adjusting path to avoid prefixing GNU utilities
+  - 
+    command: echo 'MANPATH="/opt/homebrew/opt/coreutils/libexec/gnuman:/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"' >> "$XDG_CONFIG_HOME/shell/platform-specific.profile"
+    stdout: true
+    description: Adjusting man path for GNU utilities
