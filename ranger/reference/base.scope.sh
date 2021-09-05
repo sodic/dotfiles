@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# This is the file I modified to get scope.sh, for reference purposes when
+# updating
+
 set -o noclobber -o noglob -o nounset -o pipefail
 IFS=$'\n'
 
@@ -127,10 +130,10 @@ handle_image() {
 
     local mimetype="${1}"
     case "${mimetype}" in
-        # SVG
-         image/svg+xml|image/svg)
-             convert -- "${FILE_PATH}" "${IMAGE_CACHE_PATH}" && exit 6
-             exit 1;;
+        ## SVG
+        # image/svg+xml|image/svg)
+        #     convert -- "${FILE_PATH}" "${IMAGE_CACHE_PATH}" && exit 6
+        #     exit 1;;
 
         ## DjVu
         # image/vnd.djvu)
@@ -159,6 +162,27 @@ handle_image() {
         #     ffmpegthumbnailer -i "${FILE_PATH}" -o "${IMAGE_CACHE_PATH}" -s 0 && exit 6
         #     exit 1;;
 
+        ## PDF
+        # application/pdf)
+        #     pdftoppm -f 1 -l 1 \
+        #              -scale-to-x "${DEFAULT_SIZE%x*}" \
+        #              -scale-to-y -1 \
+        #              -singlefile \
+        #              -jpeg -tiffcompression jpeg \
+        #              -- "${FILE_PATH}" "${IMAGE_CACHE_PATH%.*}" \
+        #         && exit 6 || exit 1;;
+
+
+        ## ePub, MOBI, FB2 (using Calibre)
+        # application/epub+zip|application/x-mobipocket-ebook|\
+        # application/x-fictionbook+xml)
+        #     # ePub (using https://github.com/marianosimone/epub-thumbnailer)
+        #     epub-thumbnailer "${FILE_PATH}" "${IMAGE_CACHE_PATH}" \
+        #         "${DEFAULT_SIZE%x*}" && exit 6
+        #     ebook-meta --get-cover="${IMAGE_CACHE_PATH}" -- "${FILE_PATH}" \
+        #         >/dev/null && exit 6
+        #     exit 1;;
+
         ## Font
         application/font*|application/*opentype)
             preview_png="/tmp/$(basename "${IMAGE_CACHE_PATH%.*}").png"
@@ -179,7 +203,66 @@ handle_image() {
                 exit 1
             fi
             ;;
+
+        ## Preview archives using the first image inside.
+        ## (Very useful for comic book collections for example.)
+        # application/zip|application/x-rar|application/x-7z-compressed|\
+        #     application/x-xz|application/x-bzip2|application/x-gzip|application/x-tar)
+        #     local fn=""; local fe=""
+        #     local zip=""; local rar=""; local tar=""; local bsd=""
+        #     case "${mimetype}" in
+        #         application/zip) zip=1 ;;
+        #         application/x-rar) rar=1 ;;
+        #         application/x-7z-compressed) ;;
+        #         *) tar=1 ;;
+        #     esac
+        #     { [ "$tar" ] && fn=$(tar --list --file "${FILE_PATH}"); } || \
+        #     { fn=$(bsdtar --list --file "${FILE_PATH}") && bsd=1 && tar=""; } || \
+        #     { [ "$rar" ] && fn=$(unrar lb -p- -- "${FILE_PATH}"); } || \
+        #     { [ "$zip" ] && fn=$(zipinfo -1 -- "${FILE_PATH}"); } || return
+        #
+        #     fn=$(echo "$fn" | python -c "import sys; import mimetypes as m; \
+        #             [ print(l, end='') for l in sys.stdin if \
+        #               (m.guess_type(l[:-1])[0] or '').startswith('image/') ]" |\
+        #         sort -V | head -n 1)
+        #     [ "$fn" = "" ] && return
+        #     [ "$bsd" ] && fn=$(printf '%b' "$fn")
+        #
+        #     [ "$tar" ] && tar --extract --to-stdout \
+        #         --file "${FILE_PATH}" -- "$fn" > "${IMAGE_CACHE_PATH}" && exit 6
+        #     fe=$(echo -n "$fn" | sed 's/[][*?\]/\\\0/g')
+        #     [ "$bsd" ] && bsdtar --extract --to-stdout \
+        #         --file "${FILE_PATH}" -- "$fe" > "${IMAGE_CACHE_PATH}" && exit 6
+        #     [ "$bsd" ] || [ "$tar" ] && rm -- "${IMAGE_CACHE_PATH}"
+        #     [ "$rar" ] && unrar p -p- -inul -- "${FILE_PATH}" "$fn" > \
+        #         "${IMAGE_CACHE_PATH}" && exit 6
+        #     [ "$zip" ] && unzip -pP "" -- "${FILE_PATH}" "$fe" > \
+        #         "${IMAGE_CACHE_PATH}" && exit 6
+        #     [ "$rar" ] || [ "$zip" ] && rm -- "${IMAGE_CACHE_PATH}"
+        #     ;;
     esac
+
+    # openscad_image() {
+    #     TMPPNG="$(mktemp -t XXXXXX.png)"
+    #     openscad --colorscheme="${OPENSCAD_COLORSCHEME}" \
+    #         --imgsize="${OPENSCAD_IMGSIZE/x/,}" \
+    #         -o "${TMPPNG}" "${1}"
+    #     mv "${TMPPNG}" "${IMAGE_CACHE_PATH}"
+    # }
+
+    # case "${FILE_EXTENSION_LOWER}" in
+    #     ## 3D models
+    #     ## OpenSCAD only supports png image output, and ${IMAGE_CACHE_PATH}
+    #     ## is hardcoded as jpeg. So we make a tempfile.png and just
+    #     ## move/rename it to jpg. This works because image libraries are
+    #     ## smart enough to handle it.
+    #     csg|scad)
+    #         openscad_image "${FILE_PATH}" && exit 6
+    #         ;;
+    #     3mf|amf|dxf|off|stl)
+    #         openscad_image <(echo "import(\"${FILE_PATH}\");") && exit 6
+    #         ;;
+    # esac
 }
 
 handle_mime() {
@@ -215,8 +298,15 @@ handle_mime() {
             if [[ "$( stat --printf='%s' -- "${FILE_PATH}" )" -gt "${HIGHLIGHT_SIZE_MAX}" ]]; then
                 exit 2
             fi
+            if [[ "$( tput colors )" -ge 256 ]]; then
+                local pygmentize_format='terminal256'
+                local highlight_format='xterm256'
+            else
+                local pygmentize_format='terminal'
+                local highlight_format='ansi'
+            fi
             env HIGHLIGHT_OPTIONS="${HIGHLIGHT_OPTIONS}" highlight \
-                --out-format=ansi \
+                --out-format="${highlight_format}" \
                 --force -- "${FILE_PATH}" && exit 5
             env COLORTERM=8bit bat --color=always --style="plain" \
                 -- "${FILE_PATH}" && exit 5

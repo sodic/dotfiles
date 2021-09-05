@@ -41,7 +41,7 @@
     ~/.config/ranger/:
       path: ranger/*
       glob: true
-      exclude: [ ranger/colorschemes, ranger/plugins ]
+      exclude: [ ranger/colorschemes, ranger/plugins, ranger/reference ]
     ~/.config/ranger/colorschemes/:
       path: ranger/colorschemes/*
       glob: true
