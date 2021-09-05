@@ -1,3 +1,4 @@
+#!/bin/bash
 # Homebrew path setter
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
