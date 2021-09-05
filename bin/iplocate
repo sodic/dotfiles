@@ -1,2 +1,4 @@
-#!/bin/sh
-curl -s "https://freegeoip.app/json/$1" | python3 -m json.tool
+#!/bin/bash
+curl -s "https://freegeoip.app/json/$1"  \
+    | (which python3 &> /dev/null && python3 -m json.tool || cat) \
+    | (which highlight &> /dev/null && highlight --out-format=ansi --syntax=json || cat)
