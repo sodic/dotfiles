@@ -1,5 +1,5 @@
 #!/bin/bash
-brew install
+brew install \
     ranger        ` # Terminal-based file manager                      ` \
     poppler       ` # PDF previews in ranger                           ` \
     atool         ` # Archive previews in ranger                       ` \
