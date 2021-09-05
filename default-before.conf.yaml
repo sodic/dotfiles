@@ -22,6 +22,7 @@
     ~/.vimrc: vim/vimrc
     ~/.vimrc_background: vim/vimrc_background
     ~/.config/nvim: vim/nvim
+    ~/.config/bat:
     ~/.config/shell/:
       path: shell/*
       glob: true
