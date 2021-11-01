@@ -23,39 +23,6 @@
     ~/.vimrc_background: vim/vimrc_background
     ~/.config/nvim: vim/nvim
     ~/.config/ideavim: vim/ideavim
-    ~/.config/shell: shell
-    ~/.profile: shell/profile
-    ~/.bash_profile: bash/bash_profile
-    ~/.bashrc: bash/bashrc
-    ~/.zshenv: shell/env
-    ~/.config/zsh/:
-      path: zsh/*
-      glob: true
-      # We have to exlude special files...
-      exclude: [ zsh/zshrc, zsh/zprofile ]
-      # ... and map them as hidden
-    ~/.config/zsh/.zshrc: zsh/zshrc
-    ~/.config/zsh/.zprofile: zsh/zprofile
-    ~/.config/ranger/:
-      path: ranger/*
-      glob: true
-      exclude: [ ranger/colorschemes, ranger/plugins ]
-    ~/.config/ranger/colorschemes/:
-      path: ranger/colorschemes/*
-      glob: true
-    ~/.config/ranger/plugins/:
-      path: ranger/plugins/*
-      glob: true
-    ~/.config/oh-my-zsh/themes/custom.zsh-theme: zsh/theme.zsh
-
-- link:
-    ~/bin:
-    ~/.gitconfig:
-    ~/.config/tmux:
-    ~/.vimrc: vim/vimrc
-    ~/.vimrc_background: vim/vimrc_background
-    ~/.config/nvim: vim/nvim
-    ~/.config/ideavim: vim/ideavim
     ~/.config/bat:
     ~/.config/shell/:
       path: shell/*
