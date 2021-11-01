@@ -34,7 +34,6 @@ if [[ -d "$HOME/.nimble/bin" ]]; then
     export PATH="$HOME/.nimble/bin:$PATH"
 fi
 
-# Go is currently uninstalled
-# export GOPATH="$HOME/go"
-# export PATH="$GOPATH/bin:$PATH"
+export GOPATH="$HOME/go"
+export PATH="$GOPATH/bin:$PATH"
 

@@ -3,3 +3,6 @@ arch_install_scripts
 
 # dig, nslookup, etc
 bind-tools
+
+# wifi cracking
+aircrack-ng

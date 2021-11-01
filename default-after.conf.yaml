@@ -28,6 +28,7 @@
     ~/.vimrc: vim/vimrc
     ~/.vimrc_background: vim/vimrc_background
     ~/.config/nvim: vim/nvim
+    ~/.config/ideavim: vim/ideavim
     ~/.config/shell: shell
     ~/.profile: shell/profile
     ~/.bash_profile: bash/bash_profile
