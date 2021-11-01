@@ -102,9 +102,17 @@ if [ -f "$XDG_CONFIG_HOME/shell/aliases" ]; then
     . "$XDG_CONFIG_HOME/shell/aliases"
 fi
 
+# Set Fuzzy Finder path depending on OS
 if [ -d "/usr/share/fzf" ]; then
-    . /usr/share/fzf/completion.zsh
-    . /usr/share/fzf/key-bindings.zsh
+    FZF_PATH='/usr/share/fzf'
+elif [ -d '/opt/homebrew/opt/fzf/shell/' ]; then
+    FZF_PATH='/opt/homebrew/opt/fzf/shell'
+fi
+
+# Configure Fuzzy Finder
+if [ ! -z "$FZF_PATH" ]; then
+    [[ $- == *i* ]] && . "${FZF_PATH}/completion.zsh" 2> /dev/null
+    . "${FZF_PATH}/key-bindings.zsh"
     export FZF_DEFAULT_OPTS="--layout=reverse --height 40%"
     export FZF_COMPLETION_TRIGGER='**'
 fi

@@ -1,10 +1,56 @@
 # This config is always applied regardless of the system.
 # It is applied at the start of the installation.
+#
+- defaults:
+    link:
+      relink: true
+      create: true
+      force: true
+
+- shell:
+  - [git submodule update --init --recursive, Installing submodules]
 
 - clean: ['~', '~/.config']
 
 - create:
   - ~/.local/share/zsh
 
+- link:
+    ~/bin:
+    ~/.gitconfig:
+    ~/.config/tmux:
+    ~/.vimrc: vim/vimrc
+    ~/.vimrc_background: vim/vimrc_background
+    ~/.config/nvim: vim/nvim
+    ~/.config/bat:
+    ~/.config/shell/:
+      path: shell/*
+      glob: true
+    ~/.profile: shell/profile
+    ~/.bash_profile: bash/bash_profile
+    ~/.bashrc: bash/bashrc
+    ~/.zshenv: shell/env
+    ~/.config/zsh/:
+      path: zsh/*
+      glob: true
+      # We have to exlude special files...
+      exclude: [ zsh/zshrc, zsh/zprofile ]
+      # ... and map them as hidden
+    ~/.config/zsh/.zshrc: zsh/zshrc
+    ~/.config/zsh/.zprofile: zsh/zprofile
+    ~/.config/ranger/:
+      path: ranger/*
+      glob: true
+      exclude: [ ranger/colorschemes, ranger/plugins, ranger/reference ]
+    ~/.config/ranger/colorschemes/:
+      path: ranger/colorschemes/*
+      glob: true
+    ~/.config/ranger/plugins/:
+      path: ranger/plugins/*
+      glob: true
+
 - shell:
-  - [git submodule update --init --recursive, Installing submodules]
+  - 
+    command: rm -f ~/.zprofile ~/.zshrc 
+    stdout: true
+    description: Cleaning old config files from the home directory

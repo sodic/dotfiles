@@ -1,7 +1,12 @@
 #!/bin/bash
 # TODO: deprecate oh-my-zsh and this file
 LINK="https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh"
-if sh -c "$(curl -fsSL $LINK  | sed -E 's/\.git\}/}/')" || sh -c "$(wget -O- $LINK)"; then
+ZSH_PATH="$HOME/.config/oh-my-zsh"
+
+rm -rf $ZSH_PATH
+
+if which curl && ZSH=$ZSH_PATH sh -c "$(curl -fsSL $LINK  | sed -E 's/\.git\}/}/')" \
+   || which wget && ZSH=$ZSH_PATH sh -c "$(wget -O- $LINK)"; then
     echo "Successfully installed oh-my-zsh."
 else
     STATUS=$?

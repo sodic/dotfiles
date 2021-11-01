@@ -1,0 +1,25 @@
+#!/bin/bash
+brew install \
+    ranger        ` # Terminal-based file manager                      ` \
+    poppler       ` # PDF previews in ranger                           ` \
+    atool         ` # Archive previews in ranger                       ` \
+    highlight     ` # Syntax highlighting in ranger                    ` \
+    mediainfo     ` # Information about media files in ranger          ` \
+    highlight     ` # Also for information about media files in ranger ` \
+    bat           ` # File previews with syntax highlighting           ` \
+    neofetch      ` # System information summary                       ` \
+    htop          ` # Terminal-based resource monitor                  ` \
+    coreutils     ` # GNU core utilities                               ` \
+    findutils     ` # GNU find                                         ` \
+    gnu-tar       ` # GNU tar                                          ` \
+    gnu-sed       ` # GNU sed                                          ` \
+    gawk          ` # GNU awk                                          ` \
+    gnutls        ` # GNU communications librar                        ` \
+    gnu-indent    ` # GNU indent                                       ` \
+    gnu-getopt    ` # GNU getopt                                       ` \
+    grep          ` # GNU grep                                         ` \
+    neovim        ` # A user-friendly Vim fork                         ` \
+    nmap          ` # Network mapper                                   ` \
+    fzf           ` # Fuzzy finder                                     ` \
+    speedtest-cli ` # Fuzzy finder                                     ` \
+

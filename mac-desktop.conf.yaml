@@ -1,0 +1,22 @@
+# Apply this config only on desktop computers that run OS X with M1
+
+- defaults:
+    link:
+      relink: true
+      create: true
+
+- shell:
+  -
+    command: brew --version || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    stdin: true
+    stdout: true
+    description: Installing Homebrew
+    quiet: true
+  -
+    command: eval "$(/opt/homebrew/bin/brew shellenv)" && source packages/mac
+    stdin: true
+    stdout: true
+    description: Installing packages
+
+- link:
+    ~/.config/shell/platform-specific.profile: platform-specific/mac.profile
