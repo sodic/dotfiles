@@ -8,6 +8,7 @@ endif
 " Plugins will be downloaded under the specified directory.
 call plug#begin('~/.vim/plugged')
 " Declare the list of plugins.
+Plug 'preservim/nerdtree'
 Plug 'morhetz/gruvbox'
 Plug 'zah/nim.vim'
 Plug 'mattn/emmet-vim'
@@ -106,6 +107,9 @@ if colorterm =~# 'truecolor' || colorterm =~# '24bit'
   set termguicolors
 endif
 
+" Toggle nerdtree
+nnoremap <C-a> :NERDTreeToggle<CR>
+
 " currently sets materia
 " if filereadable(expand("~/.vimrc_background"))
 "   let base16colorspace=256
@@ -121,7 +125,7 @@ colorscheme gruvbox
 set background=dark    " Setting dark mode
 
 " uset background for transparency
-hi! Normal ctermbg=NONE guibg=NONE
+"hi! Normal ctermbg=NONE guibg=NONE
 
 
 " This sets the indicator for the 80 character line limit (Python, Haskell,

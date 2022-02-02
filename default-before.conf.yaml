@@ -19,6 +19,8 @@
     ~/bin:
     ~/.gitconfig:
     ~/.config/tmux:
+    ~/.config/tmux:
+    ~/.config/ideavim:
     ~/.vimrc: vim/vimrc
     ~/.vimrc_background: vim/vimrc_background
     ~/.config/nvim: vim/nvim

@@ -1,6 +1,6 @@
 #!/bin/bash
 # This file is executed by bash login shells
 
-if [ -f "$HOME/.profile" ]; then
-    . "$HOME/.profile"
+if [ -f "$XDG_CONFIG_HOME/shell/profile" ]; then
+    . "$XDG_CONFIG_HOME/shell/profile"
 fi

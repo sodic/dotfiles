@@ -123,3 +123,5 @@ if [[ ! $COLORTERM =~ ^(truecolor|24bit)$ ]]; then
     # gruvbox theme in vim found.
     source "$HOME/.vim/plugged/gruvbox/gruvbox_256palette.sh"
 fi
+
+test -e /Users/sodic/.config/zsh/.iterm2_shell_integration.zsh && source /Users/sodic/.config/zsh/.iterm2_shell_integration.zsh || true

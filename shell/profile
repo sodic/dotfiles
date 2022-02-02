@@ -41,6 +41,10 @@ if [[ -e "$XDG_CONFIG_HOME/shell/platform-specific.profile" ]]; then
     source "$XDG_CONFIG_HOME/shell/platform-specific.profile"
 fi
 
+if [[ -e "$XDG_CONFIG_HOME/shell/work.profile" ]]; then
+    source "$XDG_CONFIG_HOME/shell/work.profile"
+fi
+
 # Go is currently uninstalled
 # export GOPATH="$HOME/go"
 # export PATH="$GOPATH/bin:$PATH"
