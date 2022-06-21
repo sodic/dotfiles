@@ -24,7 +24,8 @@ Plug 'pangloss/vim-javascript'
 Plug 'neovimhaskell/haskell-vim'
 Plug 'rust-lang/rust.vim'
 Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'preservim/nerdtree'
+
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
@@ -82,8 +83,8 @@ set backspace=indent,eol,start
 " This setting makes search case-insensitive when all characters in the string
 " being searched are lowercase. However, the search becomes case-sensitive if
 " it contains any capital letters. This makes searching more convenient.
-set ignorecase
-set smartcase
+" set ignorecase
+" set smartcase
 
 " Enable searching as you type, rather than waiting till you press enter. I
 " think neovim does this by default, but I left it here for regular vim.
@@ -91,7 +92,7 @@ set incsearch
 
 " Unbind some useless/annoying default key bindings.
 " 'Q' in normal mode enters Ex mode. I never found a use for Ex mode.
-nmap Q <Nop> 
+map Q gq
 
 " Disable audible bell because. It's most likely already disabled by default,
 " but just in case.
@@ -122,10 +123,10 @@ nnoremap <C-a> :NERDTreeToggle<CR>
 " theme settings
 let g:gruvbox_italic=1
 colorscheme gruvbox
-set background=dark    " Setting dark mode
+set background=dark
 
 " uset background for transparency
-"hi! Normal ctermbg=NONE guibg=NONE
+" hi! Normal ctermbg=NONE guibg=NONE
 
 
 " This sets the indicator for the 80 character line limit (Python, Haskell,
@@ -139,3 +140,4 @@ endif
 " personal remappings
 vnoremap <C-c> "+y
 vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
+

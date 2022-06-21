@@ -8,17 +8,17 @@
       force: true
 
 - shell:
-  - 
+  -
     command: chsh -s $(which zsh)
     stdin: true
     stdout: true
     description: Setting zsh as the default shell, enter your password
     quiet: true
-  - 
+  -
     command: source old/install-oh-my-zsh
     stdin: true
     stdout: true
-    description: Installing on-my-zsh 
+    description: Installing on-my-zsh
     quiet: true
 
 - link:

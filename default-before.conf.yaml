@@ -24,6 +24,7 @@
     ~/.vimrc: vim/vimrc
     ~/.vimrc_background: vim/vimrc_background
     ~/.config/nvim: vim/nvim
+    ~/.config/ideavim: vim/ideavim
     ~/.config/bat:
     ~/.config/shell/:
       path: shell/*
@@ -50,9 +51,10 @@
     ~/.config/ranger/plugins/:
       path: ranger/plugins/*
       glob: true
+    ~/.config/oh-my-zsh/themes/custom.zsh-theme: zsh/theme.zsh
 
 - shell:
-  - 
-    command: rm -f ~/.zprofile ~/.zshrc 
+  -
+    command: rm -f ~/.zprofile ~/.zshrc
     stdout: true
     description: Cleaning old config files from the home directory

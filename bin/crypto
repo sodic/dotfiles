@@ -1,0 +1,1 @@
+curl --silent 'rate.sx/?qF&n=20' | sed -n '/^Market Cap/,$p' | less

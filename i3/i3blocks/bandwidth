@@ -19,7 +19,7 @@
 # Use the provided interface, otherwise the device used for the default route.
 
 markup () {
-    echo -n "<span font=\"FontAwesome5Free 10\">$1</span>"
+    echo -n "$1"
 }
 
 if [[ -n $BLOCK_INSTANCE ]]; then

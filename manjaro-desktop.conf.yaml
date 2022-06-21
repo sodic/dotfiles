@@ -5,6 +5,18 @@
       relink: true
       create: true
 
+- link:
+    ~/.Xresources:
+    ~/.config/i3:
+    ~/.config/rofi:
+    ~/.config/conky:
+    ~/.config/termite:
+    ~/.config/dunst:
+    ~/.config/compton.conf: compton/compton.conf
+    ~/.config/systemd/user/:
+        path: systemd/user/*
+        glob: true
+
 - shell:
   - 
     command: sudo pacman -Syyu
@@ -18,12 +30,7 @@
     stdout: true
     description: Installing zsh
     quiet: true
-
-- link:
-    ~/.Xresources:
-    ~/.config/i3:
-    ~/.config/rofi:
-    ~/.config/conky:
-    ~/.config/termite:
-    ~/.config/dunst:
-    ~/.config/compton.conf: compton/compton.conf
+  - 
+    command: systemctl --user enable --now geoclue-agent.service 
+    description: Initializing the Geoclue agent for Redshift
+      

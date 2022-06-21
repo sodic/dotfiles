@@ -15,7 +15,8 @@ alias init-nvm='. /usr/share/nvm/init-nvm.sh' # takes too long to init, use when
 #alias node='node || [ $? -eq 127 ] && "To use node, you must first run init-nvm"'
 #alias npm='npm || [ $? -eq 127 ] && "To use npm, you must first run init-nvm"'
 alias cf='cf-tool'
-alias zconf="$VISUAL ${ZDOTDIR}/.zshrc"
+alias zconf="$EDITOR ${ZDOTDIR}/.zshrc"
+alias vimconf="$EDITOR .vimrc"
 
 if [ -f ~/.private_aliases ]; then
     . ~/.private_aliases
