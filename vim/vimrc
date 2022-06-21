@@ -8,6 +8,7 @@ endif
 " Plugins will be downloaded under the specified directory.
 call plug#begin('~/.vim/plugged')
 " Declare the list of plugins.
+Plug 'preservim/nerdtree'
 Plug 'morhetz/gruvbox'
 Plug 'zah/nim.vim'
 Plug 'mattn/emmet-vim'
@@ -106,6 +107,9 @@ if colorterm =~# 'truecolor' || colorterm =~# '24bit'
   " set trucolors only if the terminal supports it
   set termguicolors
 endif
+
+" Toggle nerdtree
+nnoremap <C-a> :NERDTreeToggle<CR>
 
 " currently sets materia
 " if filereadable(expand("~/.vimrc_background"))
