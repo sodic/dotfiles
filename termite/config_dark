@@ -43,13 +43,41 @@ cursor_shape = ibeam
 #scrollbar = off
 
 [colors]
-# hard contrast: background = #1d2021
-background = #282828
+# If both of these are unset, cursor falls back to the foreground color,
+# and cursor_foreground falls back to the background color.
+#cursor = #dcdccc
+#cursor_foreground = #dcdccc
+
+color0 = #073641
+color1 = #eb606b
+color2 = #c3e88d
+color3 = #f7eb95
+color4 = #80cbc3
+color5 = #ff2490
+color6 = #aeddff
+color7 = #ffffff
+color8 = #002b36
+color9 = #eb606b
+color10 = #c3e88d
+color11 = #f7eb95
+color12 = #7dc6bf
+color13 = #6c71c3
+color14 = #34434d
+color15 = #ffffff
+background = #1e282c
+foreground = #c3c7d1
+
+# If unset, will reverse foreground and background
+#highlight = #2f2f2f
+
+# hard contrast:
+background = #1d2021
+# background = #282828
+# soft contrast: background = #32302f
 
 # 20% background transparency (requires a compositor)
-background = rgba(40, 40, 40, 1)
+#background = rgba(40, 40, 40, 1)
 
-# soft contrast: background = #32302f
 foreground = #ebdbb2
 foreground_bold = #ebdbb2
 

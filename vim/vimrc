@@ -26,6 +26,9 @@ Plug 'rust-lang/rust.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'preservim/nerdtree'
 
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
@@ -122,6 +125,7 @@ nnoremap <C-a> :NERDTreeToggle<CR>
 
 " theme settings
 let g:gruvbox_italic=1
+let g:gruvbox_contrast_dark="hard"
 colorscheme gruvbox
 set background=dark
 
@@ -140,4 +144,7 @@ endif
 " personal remappings
 vnoremap <C-c> "+y
 vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
+map <F2> :NERDTreeFocus<CR>
+map <F3> :NERDTreeToggle<CR>
+map <C-a> :NERDTreeFocus<CR>
 

@@ -7,6 +7,7 @@ configuration {
 * {
     /* Gruvbox dark colors */
     gruvbox-dark-bg0:          #282828;
+    gruvbox-dark-bg0-hard:     #1d2021;
     gruvbox-dark-bg0-soft:     #32302f;
     gruvbox-dark-bg3:          #665c54;
     gruvbox-dark-fg0:          #fbf1c7;
@@ -20,7 +21,7 @@ configuration {
 
     lines: 15;
     columns: 1;
-    background: @gruvbox-dark-bg0; 
+    background: @gruvbox-dark-bg0-hard; 
     normal-background: @background;
     alternate-normal-background: @background;
     border-color: #00000000;

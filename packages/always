@@ -10,3 +10,5 @@ tmux
 speedtest-cli
 strace
 powerline-fonts # angle separators for airline
+jq
+

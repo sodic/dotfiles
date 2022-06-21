@@ -78,6 +78,10 @@ color13 = #8f3f71
 color6 = #689d6a
 color14 = #427b58
 
+# dark4 + dark1
+color7 = #7c6f64
+color15 = #3c3836
+
 
 [hints]
 #font = Monospace 12

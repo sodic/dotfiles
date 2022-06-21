@@ -7,7 +7,25 @@ swap () {
     mv "$tmp_file" "$2"
 }
 
-config_root="/home/filip/.config/termite/"
-cat $config_root/config_other > /tmp/output
-swap "$config_root/config_other" "$config_root/config"
-killall -USR1 termite
+swap_vim() {
+    color=$(grep -E 'background=(light|dark)' | sed -E 's/.*(dark|light).*/\1/')
+    case $color in
+        'light')
+            color=dark
+        ;;
+        'dark')
+            color=light
+        ;;
+    esac
+    :w
+
+}
+
+swap_termite() {
+    config_root="/home/filip/.config/termite/"
+    swap "$config_root/config_other" "$config_root/config"
+    killall -USR1 termite
+}
+
+swap_termite
+

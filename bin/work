@@ -1,0 +1,61 @@
+#!/bin/bash
+if [[ "$#" -lt 1 ]]; then
+    echo 'Possible commands: ls, rm, add'
+fi
+
+COMMAND="$1"
+TODO_FILE="${HOME}/Documents/work-todos"
+
+print_todos () {
+    cat -b "$TODO_FILE"
+}
+
+remove_todo () {
+    if [[ -z "$1" ]]; then
+        echo 'Specify a line number to remove'
+        exit 1
+    fi
+
+    LINE="$1"
+    sed -i -e "${LINE}d" "$TODO_FILE"
+}
+
+add_todo () {
+    if [[ -z "$1" ]]; then
+        echo 'Specify todo text'
+        exit 1
+    fi
+
+    TEXT="$1"
+    if [[ -z "$2" ]]; then
+        sed -i "$ a $TEXT" "$TODO_FILE"
+    else
+        INDEX="$2"
+        if [[ ! "$INDEX" =~ ^[0-9]+$ ]]; then
+            echo "The second argument must be a line number"
+            exit 1
+        fi
+        sed -i "$INDEX i $TEXT" "$TODO_FILE"
+    fi
+}
+
+case "$COMMAND" in
+    'ls')
+        print_todos
+    ;;
+    '')
+        echo "Assuming 'ls'"
+        print_todos
+    ;;
+    'rm')
+        remove_todo "$2"
+        print_todos
+    ;;
+    'add')
+        add_todo "$2" "$3"
+        print_todos
+    ;;
+    *)
+        echo "Invalid command"
+esac
+

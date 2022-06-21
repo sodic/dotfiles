@@ -37,6 +37,9 @@ if [[ -d "$HOME/.nimble/bin" ]]; then
     export PATH="$HOME/.nimble/bin:$PATH"
 fi
 
+# add ghcup binaries to path
+[ -f "/home/filip/.ghcup/env" ] && source "/home/filip/.ghcup/env" # ghcup-env
+
 if [[ -e "$XDG_CONFIG_HOME/shell/platform-specific.profile" ]]; then
     source "$XDG_CONFIG_HOME/shell/platform-specific.profile"
 fi
@@ -48,3 +51,5 @@ fi
 # Go is currently uninstalled
 # export GOPATH="$HOME/go"
 # export PATH="$GOPATH/bin:$PATH"
+
+export WASP_TELEMETRY_DISABLE=1

@@ -295,7 +295,7 @@ exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
 
 
-set $bg #282828
+set $bg #1d2021 
 set $red #cc241d
 set $green #98971a
 set $yellow #d79921

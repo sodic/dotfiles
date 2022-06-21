@@ -70,12 +70,13 @@ foreground = #c3c7d1
 # If unset, will reverse foreground and background
 #highlight = #2f2f2f
 
-# hard contrast: background = #1d2021
-background = #282828
+# hard contrast:
+background = #1d2021
+# background = #282828
 # soft contrast: background = #32302f
 
 # 20% background transparency (requires a compositor)
-background = rgba(40, 40, 40, 1)
+#background = rgba(40, 40, 40, 1)
 
 foreground = #ebdbb2
 foreground_bold = #ebdbb2
