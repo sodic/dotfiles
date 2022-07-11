@@ -23,11 +23,11 @@ case "$status" in
         fi
         ;;
     'Charging')
-        markup  ""
+        markup  " "
         ;;
-    'Not charging')
-        markup  ""
+    'Full'|'Unknown')
+        markup  " "
         ;;
 esac
 
-printf " %s%%\n" "$capacity"
+printf "%s%%\n" "$capacity"

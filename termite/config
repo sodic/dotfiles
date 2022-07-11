@@ -75,8 +75,8 @@ background = #1d2021
 # background = #282828
 # soft contrast: background = #32302f
 
-# 20% background transparency (requires a compositor)
-#background = rgba(40, 40, 40, 1)
+# background transparency (requires a compositor)
+# background = rgba(29, 32, 33, 0.98)
 
 foreground = #ebdbb2
 foreground_bold = #ebdbb2

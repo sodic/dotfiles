@@ -1,0 +1,71 @@
+configuration {
+    ssh-command: "{terminal} -e \"{ssh-client} {host}\"";
+    show-icons:true;
+}
+
+
+* {
+    /* Gruvbox dark colors */
+    gruvbox-dark-bg0:          #282828;
+    gruvbox-dark-bg0-hard:     #1d2021;
+    gruvbox-dark-bg0-soft:     #32302f;
+    gruvbox-dark-bg3:          #665c54;
+    gruvbox-dark-fg0:          #fbf1c7;
+    gruvbox-dark-fg1:          #ebdbb2;
+    gruvbox-dark-red-dark:     #cc241d;
+    gruvbox-dark-red-light:    #fb4934;
+    gruvbox-dark-yellow-dark:  #d79921;
+    gruvbox-dark-yellow-light: #fabd2f;
+    gruvbox-dark-gray:         #a89984;
+    gruvbox-dark-blue:           #458588;
+
+    lines: 15;
+    columns: 1;
+    background: @gruvbox-dark-bg0-hard; 
+    normal-background: @background;
+    alternate-normal-background: @background;
+    border-color: #00000000;
+    foreground: @gruvbox-dark-fg0;
+    selected-normal-background: @gruvbox-dark-blue;
+    selected-alternate-background: @gruvbox-dark-blue;
+    font: "sans-serif 20";
+}
+
+window {
+    border: 2px;
+    border-radius: 8px;
+    border-color: @gruvbox-dark-blue;
+    padding: 13px 33px;
+    width: 20%;
+    height: 40%;
+}
+
+mainbox {
+    children: [inputbar, listview];
+    spacing: 7px;
+    padding: 27px 0;
+}
+
+listview {
+  fixed-height: 0;
+    border: 0px;
+    spacing: 7px;
+    scrollbar: false;
+    padding: 7px 7px 0px;
+}
+
+element {
+  border: 0;
+    border-radius: 20px;
+    padding: 7 0 7 13 ;
+}
+
+element-icon {
+  margin: 0 11px 0 0;
+}
+
+
+inputbar {
+    children:   [ entry,case-indicator ];
+    padding: 0 0 13 19;
+}

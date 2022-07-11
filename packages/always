@@ -8,7 +8,14 @@ openbsd-netcat
 gdb
 tmux
 speedtest-cli
-strace
-powerline-fonts # angle separators for airline
 jq
+neofetch
 
+# probably don't really need this
+# strace
+
+ # angle separators for airline, didn't need it last time (dell XPS 15)
+# powerline-fonts
+
+# Node LTS (will probably be different next time)
+# nodejs-lts-gallium 

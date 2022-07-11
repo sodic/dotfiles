@@ -80,9 +80,9 @@ bindsym $mod+Shift+F3 exec pcmanfm_pkexec
 # start music on console
 bindsym $mod+F5 exec terminal -e 'mocp'
 
-# compton controls
-# bindsym $mod+q exec --no-startup-id pkill compton
-# bindsym $mod+Ctrl+q exec --no-startup-id compton -b
+# picom controls
+# bindsym $mod+q exec --no-startup-id pkill picom
+# bindsym $mod+Ctrl+q exec --no-startup-id picom -b
 
 # restart dunst (notification service)
 # bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
@@ -111,6 +111,10 @@ bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
+
+bindsym $mod+greater move workspace to output right
+bindsym $mod+less move workspace to output left
+bindsym $mod+slash move workspace to output next
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left move left 30
@@ -204,43 +208,36 @@ bindsym $mod+Shift+6 move container to workspace $ws6; workspace $ws6
 bindsym $mod+Shift+7 move container to workspace $ws7; workspace $ws7
 bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
 
-# Open applications on specific workspaces
-assign [class="Firefox"] $ws1
-assign [class="Brave"] $ws1
-assign [class="Google-chrome"] $ws1
-assign [class="Opera"] $ws1
-assign [class="Code"] $ws2
-
 # Open specific applications in floating mode
 # found with manjaro and left it (if the programs don't exist, it won't cause
 # errors)
 # todo: go through and figure out what you don't use
-for_window [title="alsamixer"] floating enable border pixel 1
-for_window [class="calamares"] floating enable border normal
+for_window [title="alsamixer"] floating enable 
+for_window [class="calamares"] floating enable 
 for_window [class="Clipgrab"] floating enable
 for_window [title="File Transfer*"] floating enable
 for_window [class="fpakman"] floating enable
-for_window [class="Galculator"] floating enable border pixel 1
-for_window [class="GParted"] floating enable border normal
-for_window [title="i3_help"] floating enable sticky enable border normal
+for_window [class="Galculator"] floating enable
+for_window [class="GParted"] floating enable
+for_window [title="i3_help"] floating enable sticky enable 
 for_window [class="Lightdm-settings"] floating enable
-for_window [class="Lxappearance"] floating enable sticky enable border normal
+for_window [class="Lxappearance"] floating enable sticky enable
 for_window [class="Manjaro-hello"] floating enable
-for_window [class="Manjaro Settings Manager"] floating enable border normal
+for_window [class="Manjaro Settings Manager"] floating enable
 for_window [title="MuseScore: Play Panel"] floating enable
-for_window [class="Nitrogen"] floating enable sticky enable border normal
+for_window [class="Nitrogen"] floating enable sticky enable
 for_window [class="Oblogout"] fullscreen enable
 for_window [class="octopi"] floating enable
 for_window [title="About Pale Moon"] floating enable
 for_window [class="Pamac-manager"] floating enable
 for_window [class="Pavucontrol"] floating enable
-for_window [class="qt5ct"] floating enable sticky enable border normal
-for_window [class="Qtconfig-qt4"] floating enable sticky enable border normal
+for_window [class="qt5ct"] floating enable sticky enable
+for_window [class="Qtconfig-qt4"] floating enable sticky enable
 for_window [class="Simple-scan"] floating enable border normal
-for_window [class="(?i)System-config-printer.py"] floating enable border normal
-for_window [class="Skype"] floating enable border normal
-for_window [class="Timeset-gui"] floating enable border normal
-for_window [class="(?i)virtualbox"] floating enable border normal
+for_window [class="(?i)System-config-printer.py"] floating enable
+for_window [class="Skype"] floating enable
+for_window [class="Timeset-gui"] floating enable
+for_window [class="(?i)virtualbox"] floating enable
 for_window [class="Xfburn"] floating enable
 
 # switch to workspace with urgent window automatically
@@ -272,15 +269,28 @@ mode "$mode_system" {
     bindsym Escape mode "default"
 }
 
+# Set quick access features
+bindsym $mod+semicolon mode "$work"
+set $work (b)rowser, (c)ode, (d)iscord
+mode "$work" {
+    bindsym b exec --no-startup-id google-chrome-stable, mode "default"
+    bindsym c exec --no-startup-id code, mode "default"
+    bindsym d exec --no-startup-id discord, mode "default"
+
+    # exit system mode: "Enter" or "Escape"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
 # Lock screen
-bindsym $mod+Shift+x exec --no-startup-id lock
+bindsym $mod+Shift+x exec --no-startup-id blurlock
 
 # Autostart applications
 # Came with manjaro.
 # todo: Make sure to clean up if using on different
 # distibutinons
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec --no-startup-id nitrogen --restore; sleep 1; compton -b
+exec --no-startup-id nitrogen --restore; sleep 1; picom -b
 # exec --no-startup-id manjaro-hello
 exec --no-startup-id nm-applet
 exec --no-startup-id xfce4-power-manager
@@ -289,7 +299,6 @@ exec --no-startup-id clipit
 # exec --no-startup-id blueman-applet
 # exec_always --no-startup-id sbxkb
 # Needed to write a spcial script for this
-exec --no-startup-id start_conky
 exec --no-startup-id xautolock -time 10 -locker lock
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
@@ -342,7 +351,7 @@ bar {
 }
 
 # hide/unhide i3status bar
-bindsym $mod+semicolon bar mode toggle
+# bindsym $mod+semicolon bar mode toggle
 
 
 #############################
@@ -350,8 +359,7 @@ bindsym $mod+semicolon bar mode toggle
 #############################
 
 # Set inner/outer gaps
-gaps inner 8
-gaps outer -2
+gaps inner 5
 
 # Additionally, you can issue commands with the following syntax. This is useful to bind keys to changing the gap size.
 # gaps inner|outer current|all set|plus|minus <px>
@@ -386,12 +394,12 @@ bindsym $mod+c exec --no-startup-id toggle-color
 
 
 # Run these guys on each i3 restart
-exec --no-startup-id "feh --bg-fill Pictures/Wallpapers/background"
+exec --no-startup-id "feh --bg-fill Pictures/background --no-fehbg"
 exec --no-startup-id redshift
 
 ##### todo (find a place) #####
 # exec --no-startup-id "setxkbmap -layout hr -variant us"
-# exec --no-startup-id compton --config ~/.config/compton.conf -b
+# exec --no-startup-id picom --config ~/.config/picom.conf -b
 
 # Control keys (sound and touchpad)
 # Pulse Audio controls

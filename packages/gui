@@ -1,18 +1,30 @@
-brave
-redshift
 xclip
-gimp
 zathura
 zathura-pdf-poppler
 flameshot
-virtualbox
+rofi
+discord
 
 # i3 bar
 i3blocks
 sysstat
-ttf-font-awesome # if it works
 
-tor
-torbrowser-launcher
-snap (malo kompliciranija procedura)
-webstorm
+## Extra stuff
+
+# brave
+# redshift
+# tor
+# torbrowser-launcher
+# snap (malo kompliciranija procedura)
+# webstorm
+# feh
+# virtualbox
+# gimp
+# fingerprint reader
+# fprintd 
+
+# Didn't need this yet on Dell XPS 15
+# ttf-font-awesome
+
+# customizing login
+# lightdm settings

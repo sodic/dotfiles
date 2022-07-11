@@ -1,5 +1,8 @@
 #!/bin/bash
 
+#### DEPRECATED ####
+# i3 comes with blurlock which is a bit faster
+
 # take screenshot
 import -window root /tmp/screenshot.png
 

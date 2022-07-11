@@ -5,8 +5,8 @@ ZSH_PATH="$HOME/.config/oh-my-zsh"
 
 rm -rf $ZSH_PATH
 
-if which curl && ZSH=$ZSH_PATH sh -c "$(curl -fsSL $LINK  | sed -E 's/\.git\}/}/')" \
-   || which wget && ZSH=$ZSH_PATH sh -c "$(wget -O- $LINK)"; then
+# had problems with wget (check file history if you want to bring it back)
+if which curl && ZSH=$ZSH_PATH sh -c "$(curl -fsSL $LINK  | sed -E 's/\.git\}/}/')"; then
     echo "Successfully installed oh-my-zsh."
 else
     STATUS=$?

@@ -1,5 +1,5 @@
 #!/bin/bash
-# Removoes trailing spaces from a file, does not work on OSX
+# Removes trailing spaces from a file, does not work on OSX
 # See: https://stackoverflow.com/questions/4438306/how-to-remove-trailing-whitespaces-with-sed
 sed -i 's/[ \t]*$//' "$1"
 

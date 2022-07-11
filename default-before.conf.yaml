@@ -14,11 +14,12 @@
 
 - create:
   - ~/.local/share/zsh
+  - ~/.local/share/tig
 
 - link:
     ~/bin:
     ~/.gitconfig:
-    ~/.config/tmux:
+    ~/.config/tig:
     ~/.config/tmux:
     ~/.config/ideavim:
     ~/.vimrc: vim/vimrc
@@ -32,7 +33,6 @@
     ~/.profile: shell/profile
     ~/.bash_profile: bash/bash_profile
     ~/.bashrc: bash/bashrc
-    ~/.zshenv: shell/env
     ~/.config/zsh/:
       path: zsh/*
       glob: true

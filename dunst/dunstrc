@@ -2,6 +2,7 @@
     font = sans-serif 12
     allow_markup = yes
     format = "<b>%s</b> %p\n%b"
+    offset = 40x40
     sort = yes
     indicate_hidden = yes
     alignment = center
@@ -16,14 +17,17 @@
     follow = mouse
     sticky_history = yes
     line_height = 0
-    separator_height = 2
+    separator_height = 1
     padding = 8
     horizontal_padding = 8
-    separator_color = "#585858"
+    separator_color = "#458588"
+    frame_color = "#458588"
+    frame_width = 1
     startup_notification = false
     # https://github.com/knopwob/dunst/issues/26#issuecomment-36159395
     icon_position = left
-    icon_path = /usr/share/icons/Adwaita/16x16/status/:/usr/share/icons/Adwaita/16x16/devices/
+    icon_theme="Gruvbox-Dark"
+    enable_recursive_icon_lookup = true
     max_icon_size=128
     #icon_folders = /usr/share/icons/elementary/actions/16/
 
@@ -38,17 +42,20 @@
     context = ctrl+shift+period
 
 [urgency_low]
-    background = "#282828"
+    background = "#1d2021"
     foreground = "#ebdbb2"
+    highlight = "#458588"
     timeout = 5
 
 [urgency_normal]
-    background = "#282828"
+    background = "#1d2021"
     foreground = "#ebdbb2"
+    highlight = "#458588"
     timeout = 5
 
 [urgency_critical]
-    background = "#282828"
+    background = "#1d2021"
     foreground = "#ebdbb2"
+    highlight = "#458588"
     timeout = 0
  vim: ft=cfg

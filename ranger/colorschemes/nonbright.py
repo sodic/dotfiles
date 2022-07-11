@@ -54,7 +54,8 @@ class Default(ColorScheme):
                 if context.device:
                     attr |= bold
             if context.link:
-                fg = cyan if context.good else magenta
+                fg = cyan if context.good else red + BRIGHT
+
             if context.tag_marker and not context.selected:
                 attr |= bold
                 if fg in (red, magenta):

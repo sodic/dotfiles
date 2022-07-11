@@ -4,6 +4,7 @@
     link:
       relink: true
       create: true
+      force: true
 
 - link:
     ~/.Xresources:
@@ -12,7 +13,9 @@
     ~/.config/conky:
     ~/.config/termite:
     ~/.config/dunst:
+    # Remove the compton config once everything adopts picom
     ~/.config/compton.conf: compton/compton.conf
+    ~/.config/picom.conf: picom/picom.conf
     ~/.config/systemd/user/:
         path: systemd/user/*
         glob: true
@@ -30,7 +33,4 @@
     stdout: true
     description: Installing zsh
     quiet: true
-  - 
-    command: systemctl --user enable --now geoclue-agent.service 
-    description: Initializing the Geoclue agent for Redshift
       

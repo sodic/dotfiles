@@ -1,3 +1,14 @@
 #!/bin/zsh
 # This file is executed by all zsh shells
+#
+# I am not using it because Arch, Ubuntu and possibly others ignore it when
+# starting applications from desktop sessions (source:
+# https://unix.stackexchange.com/a/592464). I am setting the environment using
+# `zprofile` instead.
+#
+# For example, VS Code started from Rofi does not know about programs in XDG
+# dirs, which prevents it from working properly (e.g., it couldn't find hls,
+# stack, ghc and cabal installed through ghcup because it wasn't expecting
+# ghcup to be in ~/.local/share/ghcup)
+
 source "$XDG_CONFIG_HOME/shell/env"

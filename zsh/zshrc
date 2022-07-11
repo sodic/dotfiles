@@ -64,8 +64,10 @@ CASE_SENSITIVE="true"
 # Add wisely, as too many plugins slow down shell startup.
 # plugins=(git zsh-autosuggestions)
 
-# Start replacing oh-my-zsh, this loads the autocomplete plugin
+# Start replacing oh-my-zsh, this loads the plugins plugin
 . "$ZDOTDIR/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
+# too colorful for my taste
+# . "$ZDOTDIR/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
 source "$ZSH/oh-my-zsh.sh"
 
