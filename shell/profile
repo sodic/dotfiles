@@ -11,9 +11,6 @@
 # I source this here for reasons described inside 'dotfiles/zsh/zshenv'
 source ~/.config/shell/env
 
-export TERM="xterm-256color"
-export TERMINAL="termite"
-
 # less/man colors
 export LESS=-R
 export LESS_TERMCAP_mb="$(printf '%b' '\e[1;36m')"; a="${a%_}"
