@@ -273,7 +273,7 @@ mode "$mode_system" {
 bindsym $mod+semicolon mode "$work"
 set $work (b)rowser, (c)ode, (d)iscord
 mode "$work" {
-    bindsym b exec --no-startup-id google-chrome-stable, mode "default"
+    bindsym b exec --no-startup-id google-chrome-stable --profile-directory="Profile 2", mode "default"
     bindsym c exec --no-startup-id code, mode "default"
     bindsym d exec --no-startup-id discord, mode "default"
 
@@ -300,8 +300,11 @@ exec --no-startup-id clipit
 # exec_always --no-startup-id sbxkb
 # Needed to write a spcial script for this
 exec --no-startup-id xautolock -time 10 -locker lock
-exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
+
+# This came with the config but there was no such executable
+# It was causing errors in .xsession-errors so I commented it.
+# exec_always --no-startup-id ff-theme-util
 
 
 set $bg #1d2021 
@@ -396,9 +399,9 @@ bindsym $mod+c exec --no-startup-id toggle-color
 # Run these guys on each i3 restart
 exec --no-startup-id "feh --bg-fill Pictures/background --no-fehbg"
 exec --no-startup-id redshift
+exec --no-startup-id "setxkbmap -layout hr -variant us"
 
 ##### todo (find a place) #####
-# exec --no-startup-id "setxkbmap -layout hr -variant us"
 # exec --no-startup-id picom --config ~/.config/picom.conf -b
 
 # Control keys (sound and touchpad)
