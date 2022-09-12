@@ -85,3 +85,7 @@ alias gss='git status -s'
 alias gst='git status'
 alias gsps='git show --pretty=short --show-signature'
 
+# monitors
+alias activate-monitors='xrandr --output eDP-1 --off --output DP-2 --mode 3840x2160 --output DP-3 --mode 3840x2160 --right-of DP-2'
+
+

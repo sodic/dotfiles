@@ -116,6 +116,9 @@ if [ ! -z "$FZF_PATH" ]; then
     [[ $- == *i* ]] && . "${FZF_PATH}/completion.zsh" 2> /dev/null
     . "${FZF_PATH}/key-bindings.zsh"
     export FZF_DEFAULT_OPTS="--layout=reverse --height 40%"
+    export FZF_CTRL_T_OPTS="--preview 'highlight --out-format=ansi {}'" 
+    # Uncomment to preview files using bat 
+    # export FZF_CTRL_T_OPTS="--preview 'bat --style=numbers --color=always --line-range :500 {}'"
     export FZF_COMPLETION_TRIGGER='**'
 fi
 
@@ -127,3 +130,14 @@ if [[ ! $COLORTERM =~ ^(truecolor|24bit)$ ]]; then
 fi
 
 test -e /Users/sodic/.config/zsh/.iterm2_shell_integration.zsh && source /Users/sodic/.config/zsh/.iterm2_shell_integration.zsh || true
+
+# Toggle between built-in-display and external monitory
+toggle-display () {
+    config_files=("Xresources" "rofi/config.rasi" "shell/env")
+    prefix="$HOME/dotfiles"
+    variant="$1"
+    for link in "${config_files[@]}"; do
+        rm "$prefix/$link"
+        ln -s "$prefix/$link.$variant" "$prefix/$link"
+    done
+}
