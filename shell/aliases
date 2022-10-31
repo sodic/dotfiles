@@ -85,7 +85,16 @@ alias gss='git status -s'
 alias gst='git status'
 alias gsps='git show --pretty=short --show-signature'
 
+# docker
+alias cocker='sudo docker'
+
 # monitors
 alias activate-monitors='xrandr --output eDP-1 --off --output DP-2 --mode 3840x2160 --output DP-3 --mode 3840x2160 --right-of DP-2'
 
+# wasp
+alias rwasp='cabal run wasp-cli'
+alias gwasp='/home/filip/.cache/cabal/bin/wasp-cli'
+setdb () {
+    export DATABASE_URL="postgresql://postgres:devpass1234@localhost:5432/$1"
+}
 
