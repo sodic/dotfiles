@@ -6,7 +6,7 @@ bold_is_bright = false
 #cell_width_scale = 1.0
 #clickable_url = true
 #dynamic_title = true
-font = DejaVuSansMono Nerd Font 11
+font = DejaVuSansMono Nerd Font 12
 #font = monospace 10
 # font = Monospace 10
 #fullscreen = true
@@ -75,8 +75,8 @@ background = #1d2021
 # background = #282828
 # soft contrast: background = #32302f
 
-# 20% background transparency (requires a compositor)
-#background = rgba(40, 40, 40, 1)
+# background transparency (requires a compositor)
+# background = rgba(29, 32, 33, 0.98)
 
 foreground = #ebdbb2
 foreground_bold = #ebdbb2

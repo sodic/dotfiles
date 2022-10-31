@@ -125,9 +125,13 @@ nnoremap <C-a> :NERDTreeToggle<CR>
 
 " theme settings
 let g:gruvbox_italic=1
-let g:gruvbox_contrast_dark="hard"
 colorscheme gruvbox
+
+let g:gruvbox_contrast_dark="hard"
+let g:gruvbox_contrast_light="hard"
+
 set background=dark
+" set background=light
 
 " uset background for transparency
 " hi! Normal ctermbg=NONE guibg=NONE

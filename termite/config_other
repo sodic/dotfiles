@@ -6,7 +6,7 @@ bold_is_bright = true
 #cell_width_scale = 1.0
 #clickable_url = true
 #dynamic_title = true
-font = DejaVuSansMono Nerd Font 11
+font = DejaVuSansMono Nerd Font 12
 #font = monospace 10
 # font = Monospace 10
 #fullscreen = true
@@ -43,9 +43,10 @@ cursor_shape = ibeam
 #scrollbar = off
 
 [colors]
-# hard contrast: background = #f9f5d7
+# hard contrast:
+background = #f9f5d7
 # normal contrast: 
-background = #fbf1c7
+# background = #fbf1c7
 # soft contrast: background = #f2e5bc
 foreground = #3c3836
 foreground_bold = #3c3836
