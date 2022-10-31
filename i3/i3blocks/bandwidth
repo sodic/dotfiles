@@ -18,10 +18,6 @@
 
 # Use the provided interface, otherwise the device used for the default route.
 
-markup () {
-    echo -n "$1"
-}
-
 if [[ -n $BLOCK_INSTANCE ]]; then
   INTERFACE=$BLOCK_INSTANCE
 else
@@ -33,7 +29,7 @@ if ! [ -e "/sys/class/net/${INTERFACE}/operstate" ] || ! [ "`cat /sys/class/net/
 then
     echo ""
     echo ""
-    echo ""
+    echo "#a89984"
     exit 0
 fi
 
@@ -76,7 +72,7 @@ tx_rate=$(( $tx_diff / $time_diff ))
 
 # incoming
 echo -n " " # space for the labels
-markup " "
+echo -n " "
 rx_kib=$(( $rx_rate >> 10 ))
 if [[ "$rx_rate" -gt 1048576 ]]; then
   printf '%sM' "`echo "scale=1; $rx_kib / 1024" | bc`"
@@ -87,7 +83,7 @@ fi
 echo -n " "
 
 # outgoing
-markup " "
+echo -n " "
 tx_kib=$(( $tx_rate >> 10 ))
 if [[ "$tx_rate" -gt 1048576 ]]; then
   printf '%sM' "`echo "scale=1; $tx_kib / 1024" | bc`"
