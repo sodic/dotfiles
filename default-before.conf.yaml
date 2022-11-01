@@ -16,6 +16,12 @@
   - ~/.local/share/zsh
   - ~/.local/share/tig
 
+- shell:
+  -
+    command: rm -f ~/.zprofile ~/.zshrc
+    stdout: true
+    description: Cleaning old config files from the home directory
+
 - link:
     ~/bin:
     ~/.gitconfig:
@@ -53,9 +59,3 @@
       path: ranger/plugins/*
       glob: true
     ~/.config/oh-my-zsh/themes/custom.zsh-theme: zsh/theme.zsh
-
-- shell:
-  -
-    command: rm -f ~/.zprofile ~/.zshrc
-    stdout: true
-    description: Cleaning old config files from the home directory
