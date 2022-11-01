@@ -13,7 +13,7 @@
     description: Updating the system 
     quiet: true
   -
-    command: grep -v '#' packages/always | xargs sudo apt install
+    command: grep -v '#' packages/always | xargs sudo apt -y install
     stdin: true
     stdout: true
     description: Installing packages
