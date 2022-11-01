@@ -1,5 +1,9 @@
 #!/bin/zsh
+
 # This file is executed by zsh login shells
-if [ -f "$XDG_CONFIG_HOME/shell/profile" ]; then
-    source "$XDG_CONFIG_HOME/shell/profile"
+
+# The home path is hardcoded because we can't rely on having XDG variables
+# already set (i.e., .profile is the one that eventually sets them).
+if [ -f "~/.profile" ]; then
+    source "~/.profile"
 fi
