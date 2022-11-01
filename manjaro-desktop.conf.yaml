@@ -1,6 +1,11 @@
 # Apply this config only on desktop computers that run Manjaro
 
 - shell:
+  - command: ln -fs theme.local.zsh zsh/theme.zsh
+    stdin: true
+    stdout: true
+    description: Linking zsh theme to local machine variant
+    quiet: true
   - 
     command: sudo pacman --noconfirm -Syyu
     stdin: true
