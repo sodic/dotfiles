@@ -2,7 +2,7 @@
 
 - shell:
   - 
-    command: sudo pacman -Syyu
+    command: sudo pacman --noconfirm -Syyu
     stdin: true
     stdout: true
     description: Updating the system 
