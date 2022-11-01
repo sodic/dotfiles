@@ -41,6 +41,7 @@
       # ... and map them as hidden
     ~/.config/zsh/.zshrc: zsh/zshrc
     ~/.config/zsh/.zprofile: zsh/zprofile
+    ~/.zprofile: zsh/zprofile
     ~/.config/ranger/:
       path: ranger/*
       glob: true
