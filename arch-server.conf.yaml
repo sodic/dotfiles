@@ -1,0 +1,16 @@
+# Apply this config only on servers that run Arch
+
+- shell:
+  - 
+    command: sudo pacman -Syyu
+    stdin: true
+    stdout: true
+    description: Updating the system 
+    quiet: true
+  -
+    command: sudo pacman --noconfirm -S zsh
+    stdin: true
+    stdout: true
+    description: Installing zsh
+    quiet: true
+
