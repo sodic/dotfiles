@@ -6,3 +6,6 @@ bind-tools
 
 # wifi cracking
 aircrack-ng
+
+# can't be in always, different name on ubuntu vs arch
+openbsd-netcat

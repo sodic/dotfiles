@@ -3,12 +3,12 @@ python
 git
 vim
 neovim
+bat
 htop
 zip
 unzip
 ranger
 fzf
-openbsd-netcat
 gdb
 tmux
 speedtest-cli

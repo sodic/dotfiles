@@ -1,1 +1,1 @@
-theme.remote.zsh
+theme.local.zsh
