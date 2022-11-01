@@ -2,15 +2,15 @@
 
 - shell:
   - 
-    command: sudo apt update && sudo apt upgrade
+    command: sudo apt update && sudo apt full-upgrade
     stdin: true
     stdout: true
     description: Updating the system 
     quiet: true
   -
-    command: sudo apt install zsh
+    command: grep -v '#' packages/always | xargs sudo apt install
     stdin: true
     stdout: true
-    description: Installing zsh
+    description: Installing packages
     quiet: true
 

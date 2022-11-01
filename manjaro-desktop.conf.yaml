@@ -1,5 +1,19 @@
 # Apply this config only on desktop computers that run Manjaro
 
+- shell:
+  - 
+    command: sudo pacman -Syyu
+    stdin: true
+    stdout: true
+    description: Updating the system 
+    quiet: true
+  -
+    command: cat packages/{always,gui} | grep -v '#' | xargs sudo pacman --noconfirm -S
+    stdin: true
+    stdout: true
+    description: Installing packages
+    quiet: true
+
 - defaults:
     link:
       relink: true
@@ -19,18 +33,3 @@
     ~/.config/systemd/user/:
         path: systemd/user/*
         glob: true
-
-- shell:
-  - 
-    command: sudo pacman -Syyu
-    stdin: true
-    stdout: true
-    description: Updating the system 
-    quiet: true
-  -
-    command: sudo pacman --noconfirm -S zsh
-    stdin: true
-    stdout: true
-    description: Installing zsh
-    quiet: true
-      
