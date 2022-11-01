@@ -9,7 +9,6 @@
 #umask 022
 
 # I source this here for reasons described inside 'dotfiles/zsh/zshenv'
-echo "Izvrsava se .profile: $SHELL" >> ~/informacije
 source ~/.config/shell/env
 
 # less/man colors
