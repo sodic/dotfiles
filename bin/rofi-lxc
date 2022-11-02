@@ -1,0 +1,51 @@
+#!/bin/bash
+
+declare -A icons=(
+    ["archlinux"]="archlinux-symbolic"
+    ["debian"]="debian-symbolic"
+    ["ubuntu"]="ubuntu-symbolic"
+    ["kali"]="kali-linux-symbolic"
+)
+
+function list_containers () {
+    lxc list -c ns,image.os,image.release -fcsv | grep -i running
+}
+
+function enable_markup () {
+    echo -en "\0markup-rows\x1ftrue\n"
+}
+
+function get_os_markup() {
+    image="$1"
+    release="$2"
+    echo "<small>(<i>${image^} ${release^}</i>)</small>"
+}
+
+function get_icon() {
+    image="$1"
+    image=$(echo "$image" | tr '[:upper:]' '[:lower:]')
+    echo "${icons[$image]:-tux-symbolic}"
+}
+
+function print_container_entry() {
+    container_info="$1"
+    read -r container _ image release <<<"$(echo "$container_info" | tr ',' ' ')"
+    icon="$(get_icon "$image")"
+    os_markup="$(get_os_markup "$image" "$release")"
+    echo -en "$container $os_markup\0info\x1f$container\x1ficon\x1f$icon\n";
+}
+
+if [ "$ROFI_RETV" = 0 ]; then
+    enable_markup
+    for container_info in $(list_containers); do
+        print_container_entry "$container_info"
+    done
+elif [ "$ROFI_RETV" = 1 ]; then
+    container="$ROFI_INFO"
+    # NOTE: you need to resize the window after opening the new terminal for
+    # terminal apps to scale correctly (i.e., take up the entire terminal).
+    # This is most likely due to termite not getting a chance to calculate its
+    # size before attaching to the container (or something like this), I
+    # couldn't find a fix yet
+    coproc (rofi-sensible-terminal -e "enter $container" > /dev/null 2>&1)
+fi

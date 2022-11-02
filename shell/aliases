@@ -85,6 +85,9 @@ alias gss='git status -s'
 alias gst='git status'
 alias gsps='git show --pretty=short --show-signature'
 
+# lxc
+alias containers='lxc list -c ns4tS -fcompact'
+
 # docker
 alias cocker='sudo docker'
 

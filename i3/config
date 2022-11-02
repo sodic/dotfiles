@@ -39,7 +39,7 @@ bindsym $mod+Shift+q kill
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
-bindsym $mod+d exec --no-startup-id rofi -show drun
+bindsym $mod+d exec --no-startup-id rofi -show lxc -modes 'lxc:rofi-lxc'
 bindsym $mod+space exec --no-startup-id rofi -show drun
 bindsym $mod+Shift+d exec --no-startup-id rofi -show ssh
 
@@ -215,7 +215,7 @@ bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
 ## Fix after i3 4.21 added titlebars to all windows
 # TODO: probably don't need the border specifier in the rest of the
 # 'for_window' commands
-for_window [class="^.*"] border pixel 1
+for_window [class="^.*"] border pixel 2
 
 for_window [title="alsamixer"] floating enable
 for_window [class="calamares"] floating enable

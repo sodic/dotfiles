@@ -1,0 +1,6 @@
+#!/bin/bash
+
+container="$1"
+user="${2:-filip}"
+
+lxc exec "$container" -- su --login "$user"
