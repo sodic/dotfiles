@@ -7,32 +7,41 @@ declare -A icons=(
     ["kali"]="kali-linux-symbolic"
 )
 
-function list_containers () {
-    lxc list -c ns,image.os,image.release -fcsv | grep -i running
+to_lowercase() {
+    echo "$1" | tr '[:upper:]' '[:lower:]'
 }
 
-function enable_markup () {
+list_containers () {
+    lxc list -c ns,image.os,image.release -fcsv
+}
+
+enable_markup () {
     echo -en "\0markup-rows\x1ftrue\n"
 }
 
-function get_os_markup() {
-    image="$1"
-    release="$2"
+get_os_markup() {
+    local image="$1"
+    local release="$2"
     echo "<small>(<i>${image^} ${release^}</i>)</small>"
 }
 
-function get_icon() {
-    image="$1"
-    image=$(echo "$image" | tr '[:upper:]' '[:lower:]')
+is_container_running() {
+    local lowercase_status="$(echo "$1" | tr '[:upper:]' '[:lower:]')"
+    [[ "running" =~  $lowercase_status ]]
+}
+
+get_icon() {
+    local image=$(to_lowercase "$1")
     echo "${icons[$image]:-tux-symbolic}"
 }
 
 function print_container_entry() {
-    container_info="$1"
-    read -r container _ image release <<<"$(echo "$container_info" | tr ',' ' ')"
-    icon="$(get_icon "$image")"
-    os_markup="$(get_os_markup "$image" "$release")"
-    echo -en "$container $os_markup\0info\x1f$container\x1ficon\x1f$icon\n";
+    local container_info="$1"
+    local container, status, image, release
+    read -r container status image release <<<"$(echo "$container_info" | tr ',' ' ')"
+    local icon="$(get_icon "$image")"
+    local os_markup="$(get_os_markup "$image" "$release")"
+    echo -en "$container $os_markup\t\t$status\0info\x1f$container,$status\x1ficon\x1f$icon\n";
 }
 
 if [ "$ROFI_RETV" = 0 ]; then
@@ -41,7 +50,12 @@ if [ "$ROFI_RETV" = 0 ]; then
         print_container_entry "$container_info"
     done
 elif [ "$ROFI_RETV" = 1 ]; then
-    container="$ROFI_INFO"
+    local container, status 
+    read -r container status <<<"$(echo "$ROFI_INFO" | tr ',' ' ')"
+
+    if [[ ! $(is_container_running "$status") ]]; then
+        lxc start $container
+    fi
     # NOTE: you need to resize the window after opening the new terminal for
     # terminal apps to scale correctly (i.e., take up the entire terminal).
     # This is most likely due to termite not getting a chance to calculate its
