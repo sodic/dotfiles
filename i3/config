@@ -111,6 +111,10 @@ bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
 
+# Focus monitors
+bindsym $mod+Control+h focus output left
+bindsym $mod+Control+l focus output right
+
 bindsym $mod+greater move workspace to output right
 bindsym $mod+less move workspace to output left
 bindsym $mod+slash move workspace to output next
@@ -157,8 +161,9 @@ bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
 # navigate workspaces next / previous
-bindsym $mod+n workspace prev
-bindsym $mod+m workspace next
+# Temporarily disabled for practice
+# bindsym $mod+n workspace prev
+# bindsym $mod+m workspace next
 bindsym $mod+Tab exec rofi -show window -show-icons
 
 # Workspace names

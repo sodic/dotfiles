@@ -132,7 +132,7 @@ fi
 test -e /Users/sodic/.config/zsh/.iterm2_shell_integration.zsh && source /Users/sodic/.config/zsh/.iterm2_shell_integration.zsh || true
 
 # Toggle between built-in-display and external monitory
-toggle-display () {
+td () {
     config_files=("Xresources" "rofi/config.rasi" "shell/env")
     prefix="$HOME/dotfiles"
     variant="$1"
