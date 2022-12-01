@@ -111,9 +111,6 @@ if colorterm =~# 'truecolor' || colorterm =~# '24bit'
   set termguicolors
 endif
 
-" Toggle nerdtree
-nnoremap <C-a> :NERDTreeToggle<CR>
-
 " currently sets materia
 " if filereadable(expand("~/.vimrc_background"))
 "   let base16colorspace=256
@@ -133,6 +130,9 @@ let g:gruvbox_contrast_light="hard"
 set background=dark
 " set background=light
 
+" Enables dimming when using tmux
+highlight Normal guibg=none
+
 " uset background for transparency
 " hi! Normal ctermbg=NONE guibg=NONE
 
@@ -150,5 +150,6 @@ vnoremap <C-c> "+y
 vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
 map <F2> :NERDTreeFocus<CR>
 map <F3> :NERDTreeToggle<CR>
-map <C-a> :NERDTreeFocus<CR>
+" Conflicts with increment
+" map <C-a> :NERDTreeFocus<CR>
 
