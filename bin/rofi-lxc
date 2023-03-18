@@ -5,6 +5,7 @@ declare -A icons=(
     ["debian"]="debian-symbolic"
     ["ubuntu"]="ubuntu-symbolic"
     ["kali"]="kali-linux-symbolic"
+    ["mint"]="linux-mint-symbolic"
 )
 
 to_lowercase() {
