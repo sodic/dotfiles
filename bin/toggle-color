@@ -27,5 +27,11 @@ swap_termite() {
     killall -USR1 termite
 }
 
+swap_tmux() {
+    config_root="/home/filip/.config/tmux/"
+    swap "$config_root/tmux.conf" "$config_root/tmux.conf_other"
+}
+
 swap_termite
+swap_tmux
 

@@ -130,9 +130,6 @@ let g:gruvbox_contrast_light="hard"
 set background=dark
 " set background=light
 
-" Enables dimming when using tmux
-highlight Normal guibg=none
-
 " uset background for transparency
 " hi! Normal ctermbg=NONE guibg=NONE
 
@@ -150,6 +147,7 @@ vnoremap <C-c> "+y
 vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
 map <F2> :NERDTreeFocus<CR>
 map <F3> :NERDTreeToggle<CR>
+imap jk <Esc>
 " Conflicts with increment
 " map <C-a> :NERDTreeFocus<CR>
 

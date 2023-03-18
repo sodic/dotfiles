@@ -1,0 +1,8 @@
+#!/bin/bash
+
+tmux new-session -d -c ~/Projects/wasp/wasp/waspc "ranger"
+tmux rename 'waspc'
+tmux renamew 'ranger'
+tmux new-window -n 'shell' -c ~/Projects/wasp/wasp/waspc -d
+tmux split-window -h -t 2. -c ~/Projects/wasp/wasp/waspc -d
+tmux attach -t waspc

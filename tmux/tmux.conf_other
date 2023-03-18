@@ -1,5 +1,5 @@
 # Improtant reference: https://github.com/ThePrimeagen/.dotfiles/blob/8214c54fa26ac709a1794389f06f99a32cef6366/tmux/.tmux.conf
-# Dark config
+# Light config
 
 set -s escape-time 0
 set -g mouse on
@@ -9,10 +9,10 @@ set -g mouse on
 set-option -ga terminal-overrides ",xterm-256color:Tc"
 
 # Toggle status bar
-bind g set -g status off
+bind g set -g status off 
 
 # Customizing the bar
-set-option -g status-position top
+set-option -g status-position bottom
 set-option -g status on
 set-option -g status-interval 1
 set-option -g status-justify "left"
@@ -20,7 +20,7 @@ set-option -g status-left-length 60
 set-option -g status-right-length 90
 set-option -g status-left "#(~/Repos/tmux-powerline/powerline_dark.sh left)"
 set-option -g status-right "#(~/Repos/tmux-powerline/powerline_dark.sh right)"
-set-hook -g session-created 'run-shell "~/Repos/tmux-powerline/powerline_dark.sh init"' # prettifies the window-status segments
+set-hook -g session-created 'run-shell "~/Repos/tmux-powerline/powerline_light.sh init"' # prettifies the window-status segments
 
 # Change prefix to Ctrl+a
 unbind C-b
@@ -57,8 +57,8 @@ bind -n M-9 select-window -t9
 bind -n M-0 select-window -t10
 
 # Dim inactive windows
-setw -g window-style bg=#282828
-setw -g window-active-style bg=#1d2021
+setw -g window-style bg=#f2e5bc
+setw -g window-active-style bg=#f9f5d7
 
 # Start windows and panes at 1, not 0
 set -g base-index 1
@@ -77,13 +77,11 @@ bind -T copy-mode-vi MouseDragEnd1Pane send-keys -X copy-pipe-and-cancel 'xclip 
 
 # Quickly starting common sessions
 bind-key -r f run-shell "tmux neww tmux-sessionizer"
-bind-key -r A run-shell "tmux-sessionizer ~"
-bind-key -r S run-shell "tmux-sessionizer ~/Projects/aoc-2022"
+bind-key -r A run-shell "tmux-sessionizer ~/Projects/aoc-2022"
 bind-key -r J run-shell "tmux-sessionizer ~/Projects/wasp/wasp/waspc"
 bind-key -r K run-shell "tmux-sessionizer ~/Projects/wasp/wasp/web"
 bind-key -r L run-shell "tmux-sessionizer ~/Projects/wasp/wasp/examples"
 bind-key -r R run-shell "tmux-sessionizer ~/Projects/wasp/reviews"
-bind-key -r F run-shell "tmux-sessionizer ~"
 bind-key -r H run-shell "puh"
 bind-key -r D run-shell "deamons"
 

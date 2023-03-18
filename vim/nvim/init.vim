@@ -2,6 +2,11 @@ set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath = &runtimepath
 source ~/.vimrc
 
+" Enables dimming when using tmux
+if exists('$TMUX')
+    highlight Normal guibg=none
+endif
+
 " If I don't reapeat all plugins here, nvim won't install the ones mentioned
 " in ~/.vimrc
 " Plugins will be downloaded under the specified directory.
@@ -29,6 +34,7 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
 call plug#end()
 
+nnoremap <C-p> <cmd>Telescope find_files<cr>
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
