@@ -3,7 +3,8 @@ autoload -U colors && colors
 
 setopt PROMPT_SUBST
 
-local ret_status="%(?:%{$fg_bold[green]%}❯ :%{$fg_bold[red]%}❯ )"
+local indicator=$(printf '❯%0.s' {1..$((RANGER_LEVEL + 1))})
+local ret_status="%(?:%{$fg_bold[green]%}$indicator :%{$fg_bold[red]%}$indicator )"
 local git_info='$(git_prompt_info)'
 local dir='%{$fg[blue]%}%c%{$reset_color%}'
 local reset_colors='%{$reset_color%}'
