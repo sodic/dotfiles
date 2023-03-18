@@ -1,0 +1,11 @@
+#!/bin/zsh
+
+command_output=$(command -v "$1")
+
+# exit if command_output failed
+if [ $? -eq 0 ]; then
+    bat "$command_output"
+else
+    echo ""$1" is not a command. Maybe it's a function or an alias."
+    exit 1
+fi
