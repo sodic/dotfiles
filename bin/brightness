@@ -1,0 +1,6 @@
+#!/bin/sh
+# Adjust brightness of external monitors using the DDC protocol
+level="$1"
+sudo ddcutil setvcp 10 "$level" --bus 12 --sleep-multiplier .5 &
+sudo ddcutil setvcp 10 "$level" --bus 14 --sleep-multiplier .5 &
+wait

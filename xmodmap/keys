@@ -1,0 +1,19 @@
+#!/bin/sh
+setxkbmap -layout us
+xmodmap -e "remove mod4 = Super_L Super_R"
+xmodmap -e "remove mod1 = Alt_L"
+
+# US only
+xmodmap -e "remove mod1 = Alt_R"
+
+# Ne dela
+# xmodmap -e 'remove mod5 = ISO_Level3_Shift'
+# xmodmap -e 'remove mod3 = ISO_Level5_Shift'
+# xmodmap -e 'add mod5 = Super_R'
+
+xmodmap -e "add mod1 = Super_L"
+xmodmap -e "add mod4 = Alt_L"
+xmodmap -e 'add control = Alt_R'
+ 
+# Print screen on lock
+xmodmap -e 'keycode 160 = Print Sys_Req Print Sys_Req'

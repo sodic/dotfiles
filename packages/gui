@@ -29,3 +29,9 @@ sysstat
 
 # customizing login
 # lightdm settings
+
+# bluetooth
+bluez bluez-utils
+
+# Keyboard remappings
+xorg-xev
