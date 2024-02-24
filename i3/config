@@ -281,7 +281,7 @@ mode "$mode_system" {
 }
 
 # Set quick access features
-bindsym $mod+semicolon mode "$work"
+# bindsym $mod+semicolon mode "$work"
 set $work (b)rowser, (c)ode, (d)iscord
 mode "$work" {
     bindsym b exec --no-startup-id google-chrome-stable --profile-directory="Profile 2", mode "default"
@@ -365,7 +365,7 @@ bar {
 }
 
 # hide/unhide i3status bar
-# bindsym $mod+semicolon bar mode toggle
+bindsym $mod+semicolon bar mode toggle
 
 
 #############################

@@ -1,0 +1,4 @@
+# price=$(curl --silent https://www.elipso.hr/audio__video/televizori/LG-OLED55C21LA.AEU/ | htmlq 'div.price.header.blue > div.row > div:nth-child(2) > p > b' -t)
+price=$(curl --silent https://www.elipso.hr/audio__video/televizori/LG-OLED55C31LA.AEU/ | htmlq 'div.price.header.blue > div.row > div:nth-child(2) > p > b' -t)
+
+printf "%s\n" "$price"

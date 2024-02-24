@@ -1,0 +1,27 @@
+#!/bin/bash
+
+name="puh"
+
+if tmux has-session -t="$name" 2> /dev/null; then
+    if [ -n "$TMUX" ]; then
+        tmux switch-client -t "$name"
+    else
+        tmux attach-session -t "$name"
+    fi
+    exit 0
+fi
+
+tmux new-session -d -c ~/Projects/puh-2022/ "ranger"
+tmux rename "$name" 
+tmux renamew 'ranger'
+
+my_students="erik-kranjec gregor-mihaljevic ivan-martinovic josip-hrvatic tena-skalec"
+ante_students="andi-skrgat david-kerman donik-vrsnak patrik-kukic"
+students="$my_students $ante_students"
+
+for student in $(echo "$students" | tr ' ' '\n'); do
+    first_name="$(echo "$student" | cut -d '-' -f1)"
+    tmux new-window -n "$first_name" -c ~/Projects/puh-2022/students/$student -d 
+done
+
+tmux attach -t puh
