@@ -1,6 +1,19 @@
 #!/bin/bash
+
 # This file is executed by bash login shells
 
-if [ -f "$XDG_CONFIG_HOME/shell/profile" ]; then
-    . "$XDG_CONFIG_HOME/shell/profile"
+# The home path is hardcoded because we can't rely on having XDG variables
+# already set (i.e., .profile is the one that eventually sets them).
+if [ -f "$HOME/.profile" ]; then
+    source "$HOME/.profile"
 fi
+
+# Shells that execute .bash_profile won't execute .bashrc (I guess?)
+if [ -f "$HOME/.bashrc" ]; then
+    source "$HOME/.bashrc"
+fi
+
+export NVM_DIR="$HOME/.local/share/nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
