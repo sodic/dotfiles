@@ -12,6 +12,7 @@
 source ~/.config/shell/env
 
 # less/man colors
+# See obsidian note for more info (search for names of these variables)
 export LESS=-R
 export LESS_TERMCAP_mb="$(printf '%b' '\e[1;36m')"; a="${a%_}"
 export LESS_TERMCAP_md="$(printf '%b' '\e[1;34m')"; a="${a%_}"
@@ -20,6 +21,7 @@ export LESS_TERMCAP_so="$(printf '%b' '\e[01;33m')"; a="${a%_}"
 export LESS_TERMCAP_se="$(printf '%b' '\e[0m')"; a="${a%_}"
 export LESS_TERMCAP_us=$(tput smul; tput bold; tput setaf 7) # white
 export LESS_TERMCAP_ue="$(printf '%b' '\e[0m')"; a="${a%_}"
+export MANROFFOPT=-c
 
 # This is here primarily to ensure consistent ls coloring on OS X
 # Something else sets this variable on Linux systems, I didn't figure out what
