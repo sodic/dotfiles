@@ -1,0 +1,24 @@
+#!/bin/bash
+
+name="Wasp"
+tmux_running=$(pgrep tmux)
+
+function create_session {
+    repo_root=~/Projects/wasp/wasp-repo
+    tmux new-session -s "$name" -c $repo_root/waspc -d
+    tmux renamew 'waspc'
+    tmux new-window -n "waspc/todoApp" -c $repo_root/waspc/examples/todoApp/ -d
+    tmux new-window -n "tasks" -c ~/Projects/wasp/tasks/ -d
+}
+
+if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
+    create_session
+    exit 0
+fi
+
+if ! tmux has-session -t="$name" 2> /dev/null; then
+    create_session
+fi
+
+tmux switch-client -t "$name"
+

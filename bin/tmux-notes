@@ -1,0 +1,22 @@
+#!/bin/bash
+
+name="Notes"
+tmux_running=$(pgrep tmux)
+
+function create_session {
+    root=~/Documents/notes/
+    tmux new-session -s "$name" -c $root -d 'nvim'
+    tmux renamew 'notes'
+}
+
+if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
+    create_session
+    exit 0
+fi
+
+if ! tmux has-session -t="$name" 2> /dev/null; then
+    create_session
+fi
+
+tmux switch-client -t "$name"
+

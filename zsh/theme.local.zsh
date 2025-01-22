@@ -6,7 +6,7 @@ setopt PROMPT_SUBST
 local indicator=$(printf '❯%0.s' {1..$((RANGER_LEVEL + 1))})
 local ret_status="%(?:%{$fg_bold[green]%}$indicator :%{$fg_bold[red]%}$indicator )"
 local git_info='$(git_prompt_info)'
-local dir='%{$fg[blue]%}%c%{$reset_color%}'
+local dir='%{$terminfo[bold]$fg[blue]%}%~%{$reset_color%}'
 local reset_colors='%{$reset_color%}'
 
 if [[ $UID -eq 0 ]]; then

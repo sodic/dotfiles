@@ -14,5 +14,5 @@ fi
 tmux new-session -d  -c /tmp 'systemctl start docker && systemctl status docker --no-pager && journalctl -u docker -f'
 tmux rename "$name"
 tmux renamew 'docker'
-tmux split-window "sudo docker run --rm --publish 5432:5432 -v my-app-data:/var/lib/postgresql/data --env POSTGRES_PASSWORD=devpass1234 postgres"
+tmux split-window "sudo docker run --rm --publish 5433:5432 -v my-app-data:/var/lib/postgresql/data --env POSTGRES_PASSWORD=devpass1234 postgres"
 tmux attach -t deamons

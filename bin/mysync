@@ -1,0 +1,81 @@
+#!/bin/bash
+
+function usage() {
+    echo "Usage: $0 {sync|compare} [--symmetric|--asymmetric] [--archive] [--verbose] source_dir target_dir"
+    exit 1
+}
+
+if [ "$#" -lt 4 ]; then
+    usage
+fi
+
+COMMAND="$1"
+shift
+
+# Ensure the command is either sync or compare
+if [[ "$COMMAND" != "sync" && "$COMMAND" != "compare" ]]; then
+    usage
+fi
+
+SYMMETRY=""
+ARCHIVE=""
+VERBOSE=""
+PROGRESS=""
+SOURCE=""
+TARGET=""
+
+# Parse remaining arguments using a for loop
+for arg in "$@"; do
+    case $arg in
+        --symmetric)
+            SYMMETRY="--delete"
+            ;;
+        --asymmetric)
+            SYMMETRY=" "
+            ;;
+        --archive)
+            ARCHIVE="--archive"
+            ;;
+        --no-archive)
+            ARCHIVE="--recursive"
+            ;;
+        --verbose)
+            VERBOSE="--verbose"
+            ;;
+        --progress)
+            PROGRESS="--info=progress2"
+            ;;
+        *)
+            if [ -z "$SOURCE" ]; then
+                SOURCE="${arg%/}/"
+            elif [ -z "$TARGET" ]; then
+                TARGET="${arg%/}/"
+            else
+                usage
+            fi
+            ;;
+    esac
+done
+
+if [ -z "$SOURCE" ] || [ -z "$TARGET" ]; then
+    echo fails on source or target
+    usage
+fi
+
+# Check if all mandatory flags are set
+if [ -z "$SYMMETRY" ] || [ -z "$ARCHIVE" ]; then
+    echo fails on flags
+    usage
+fi
+
+# Determine dry run based on command
+DRY_RUN=""
+if [ "$COMMAND" == "compare" ]; then
+    DRY_RUN="--dry-run"
+fi
+
+# Construct and execute the rsync command
+COMMAND="rsync $DRY_RUN $ARCHIVE --human-readable --checksum $SYMMETRY $VERBOSE $PROGRESS \"$SOURCE\" \"$TARGET\""
+echo Running: $COMMAND
+# execute the command
+eval "$COMMAND"

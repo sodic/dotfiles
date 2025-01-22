@@ -1,0 +1,41 @@
+#!/bin/bash
+
+set_union () {
+   sort "$1" "$2" | uniq
+}
+
+set_intersection () {
+   sort "$1" "$2" | uniq -d
+}
+
+set_difference () {
+   sort "$1" "$2" "$2" | uniq -u
+}
+
+set_symmetric_difference() {
+   sort "$1" "$2" "$2" | uniq -u
+}
+
+operation="$1"
+file1="$2"
+file2="$3"
+
+case "$operation" in
+    s|sub|subtract|minus)
+        set_difference "$file1" "$file2"
+        ;;
+    u|union)
+        set_union "$file1" "$file2"
+        ;;
+    i|intersect)
+        set_intersection "$file1" "$file2"
+        ;;
+    d|diff|symdiff)
+        set_symmetric_difference "$file1" "$file2"
+        ;;
+    *)
+        echo "Unknown operation: $operation"
+        echo "Supported operations: subtraction (s, sub, subract, minus), union (u, union), intersection (i, intersect), symetric difference (d, diff)"
+        ;;
+esac
+
