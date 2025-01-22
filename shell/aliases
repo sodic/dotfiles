@@ -93,7 +93,7 @@ alias lxcls='lxc ls -c ns4ts -fcompact'
 
 # docker
 alias cocker='sudo docker'
-alias lzd='sudo lazydocker'
+alias lzd='lazydocker'
 alias lzg='lazygit'
 
 # monitors
@@ -113,7 +113,7 @@ alias disconnect-monitors-office='td laptop && xrdb ~/.Xresources && i3-msg rest
 alias magic-keyboard='setxkbmap -layout us && bluetoothctl connect 1C:57:DC:94:60:39; apple-keymaps'
 alias laptop-keyboard='setxkbmap -layout us && bluetoothctl disconnect 1C:57:DC:94:60:39; laptop-keymaps'
 
-alias office='connect-monitors-office && magic-keyboard'
+alias office='connect-monitors-office && laptop-keyboard'
 alias mobile-office='disconnect-monitors-office && laptop-keyboard'
 alias mobile-home='disconnect-monitors-home && laptop-keyboard'
 alias home='connect-monitors-home && laptop-keyboard'
@@ -127,5 +127,17 @@ setdb () {
     export DATABASE_URL="postgresql://postgres:devpass1234@localhost:5432/$1"
 }
 
+# nvim
+# This is a little fragile. Ideally, I'd call `$TERMINAL` and I'd be able to
+# pass the directory I want to open: `nv .`, `nv someDir/`.
+# But it works for now.
+# Also, I'm using the dir argument it to know which window I'm in when used in
+# i3 tabbed mode. The only consequence is that Vim will open that folder in
+# file tree, which I don't mind.
+alias nv='termite -e "nvim $(pwd | rev | cut -d '/' -f1-3 | rev)" & disown'
+
 # overrides ghostscript, shouldn't matter
 alias gs='gss'
+
+# alias start-lecture='~/Projects/puh-2024/presentation/long-cable-large.sh && tmux -f ~/dotfiles/tmux/tmux.lecture.conf'
+alias simple='export PS1="$ "'
