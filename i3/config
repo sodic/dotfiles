@@ -18,7 +18,7 @@ hide_edge_borders none
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 font pango:FontAwesome5Free 10
-font pango:DejaVuSansMono Nerd Font 12
+font pango:DejaVuSansMNerdFont 12
 # font pango:DejaVu Sans Mono 12
 
 # Use Mouse+$mod to drag floating windows
@@ -320,24 +320,30 @@ exec_always --no-startup-id fix_xcursor
 # exec_always --no-startup-id ff-theme-util
 
 
-set $bg #1d2021
-set $red #cc241d
-set $green #98971a
-set $yellow #d79921
-set $blue #458588
-set $purple #b16286
-set $aqua #689d68
-set $gray #a89984
-set $darkgray #1d2021
+# everforest
+set $bg_dim #1e2326
+set $bg0 #272e33
+set $bg1 #2e383c
+set $fg #d3c6aa
+set $red #e67e80
+set $green #a7c080
+set $yellow #dbbc7f
+set $blue #7fbbb3
+set $purple #d699b6
+set $aqua #83c092
+set $orange #e69875
+set $gray0 #7a8478
+set $gray1 #859289
+set $gray2 #9da9a0
 
-
-set $bg-color 	         #282828
-set $focus-color         #98971a
-set $indicator-color     #b8bb26
-set $inactive-bg-color   #3c3838
-set $text-color          #f3f4f5
-set $inactive-text-color #676E7D
-set $urgent-bg-color     #E53935
+# gruvbox
+set $bg-color	         #272e33
+set $focus-color         #a7c080
+set $indicator-color     #e69875
+set $inactive-bg-color   #2e383c
+set $text-color          #1e2326
+set $inactive-text-color #859289
+set $urgent-bg-color     #e67e80
 
 # window colors
 #                       border              background         text                 indicator
@@ -354,14 +360,14 @@ bar {
     status_command i3blocks -c ~/.config/i3/i3blocks.conf
     colors {
         # bar background color
-        background $bg
+        background $bg_dim
         # text color used for blocks that do not have a color specified.
         statusline $yellow
         # workspaces section
         #                    border  backgr. text
-        focused_workspace    $yellow $yellow $darkgray
-        inactive_workspace   $darkgray $darkgray $yellow
-        active_workspace     $darkgray $darkgray $yellow
+        focused_workspace    $yellow $yellow $bg_dim
+        inactive_workspace   $bg_dim $bg_dim $yellow
+        active_workspace     $bg_dim $bg_dim $yellow
         urgent_workspace     $red $red $bg
     }
 }
