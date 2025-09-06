@@ -30,7 +30,8 @@
     ~/.config/ideavim:
     ~/.vimrc: vim/vimrc
     ~/.vimrc_background: vim/vimrc_background
-    ~/.config/nvim: vim/nvim
+    ~/.config/nvim: vim/tj
+    # ~/.config/nvim: vim/nvim
     ~/.config/ideavim: vim/ideavim
     ~/.config/bat:
     ~/.config/shell/:
@@ -79,6 +80,6 @@
 
 - shell:
   -
-    command: rm ~/{.zshrc,.shell.pre-oh-my-zsh}
+    command: rm -f ~/{.zshrc,.shell.pre-oh-my-zsh}
     stdout: true
     description: Cleaning old config files from the home directory

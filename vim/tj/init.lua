@@ -258,7 +258,7 @@ require('lazy').setup({
   --    require('Comment').setup({})
 
   -- "gc" to comment visual regions/lines
-  { 'numToStr/Comment.nvim',    opts = {} },
+  { 'numToStr/Comment.nvim', opts = {} },
 
   -- Here is a more advanced example where we pass configuration
   -- options to `gitsigns.nvim`. This is equivalent to the following Lua:
@@ -293,7 +293,7 @@ require('lazy').setup({
   -- after the plugin has been loaded:
   --  config = function() ... end
 
-  {                     -- Useful plugin to show you pending keybinds.
+  { -- Useful plugin to show you pending keybinds.
     'folke/which-key.nvim',
     event = 'VimEnter', -- Sets the loading event to 'VimEnter'
     config = function() -- This is the function that runs, AFTER loading
@@ -347,7 +347,7 @@ require('lazy').setup({
       { 'nvim-telescope/telescope-ui-select.nvim' },
 
       -- Useful for getting pretty icons, but requires a Nerd Font.
-      { 'nvim-tree/nvim-web-devicons',            enabled = vim.g.have_nerd_font },
+      { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
     },
     config = function()
       -- Telescope is a fuzzy finder that comes with a lot of different things that
@@ -448,11 +448,11 @@ require('lazy').setup({
 
       -- Useful status updates for LSP.
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-      { 'j-hui/fidget.nvim',       opts = {} },
+      { 'j-hui/fidget.nvim', opts = {} },
 
       -- `neodev` configures Lua LSP for your Neovim config, runtime and plugins
       -- used for completion, annotations and signatures of Neovim apis
-      { 'folke/neodev.nvim',       opts = {} },
+      { 'folke/neodev.nvim', opts = {} },
     },
     config = function()
       -- Brief aside: **What is LSP?**
@@ -945,8 +945,8 @@ require('lazy').setup({
         },
         -- End recording message setup
         presets = {
-          command_palette = true,       -- position the cmdline and popupmenu together
-          lsp_doc_border = true,        -- add a border to hover docs and signature help
+          command_palette = true, -- position the cmdline and popupmenu together
+          lsp_doc_border = true, -- add a border to hover docs and signature help
 
           long_message_to_split = true, -- long messages will be sent to a split
         },
@@ -961,8 +961,8 @@ require('lazy').setup({
     'sainnhe/everforest',
     name = 'everforest',
     init = function()
-      vim.cmd.colorscheme 'everforest'
       vim.g.everforest_background = 'hard'
+      vim.cmd.colorscheme 'everforest'
     end,
     priority = 1000,
   },
@@ -1041,7 +1041,14 @@ require('lazy').setup({
       'nvim-tree/nvim-web-devicons',
     },
     config = function()
-      require('nvim-tree').setup {}
+      require('nvim-tree').setup {
+        update_focused_file = {
+          enable = true,
+        },
+        diagnostics = {
+          enable = true,
+        },
+      }
     end,
   },
   {
@@ -1091,6 +1098,20 @@ require('lazy').setup({
     },
   },
 })
+
+-- Filip: treat mdx as markdown
+vim.filetype.add {
+  extension = {
+    mdx = 'markdown',
+  },
+}
+
+-- Fallback on terminal background to make dimming work in tmux. It worked but made certain UI elements ugly (LSP mesages, noice popups, etc.) so I disabled it.
+-- vim.api.nvim_set_hl(0, 'Normal', { bg = 'NONE' })
+-- vim.api.nvim_set_hl(0, 'NonText', { bg = 'NONE' })
+-- vim.api.nvim_set_hl(0, 'LineNr', { bg = 'NONE' })
+-- vim.api.nvim_set_hl(0, 'Folded', { bg = 'NONE' })
+-- vim.api.nvim_set_hl(0, 'EndOfBuffer', { bg = 'NONE' })
 
 vim.api.nvim_set_keymap('i', 'jk', '<Esc>', { noremap = true, silent = true })
 
