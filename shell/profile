@@ -48,6 +48,7 @@ prepend_to_path_even_if_nonexistant() {
 
 # set PATH so it includes user's private bin directories
 prepend_to_path_if_exists "$HOME/bin"
+prepend_to_path_if_exists "$HOME/bin/private"
 prepend_to_path_if_exists "/home/filip/.cache/cabal/bin/"
 prepend_to_path_even_if_nonexistant "$HOME/.local/bin"
 
