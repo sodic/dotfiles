@@ -13,7 +13,7 @@ set_difference () {
 }
 
 set_symmetric_difference() {
-   sort "$1" "$2" "$2" | uniq -u
+   sort $1 $2 | uniq -u
 }
 
 operation="$1"
