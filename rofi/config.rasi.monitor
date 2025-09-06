@@ -19,22 +19,39 @@ configuration {
     gruvbox-dark-gray:         #a89984;
     gruvbox-dark-blue:           #458588;
 
+    /* Everforest colors */
+    everforest-bg-dim:  #1e2326;
+    everforest-bg0:     #272e33;
+    everforest-bg1:     #2e383c;
+    everforest-fg:      #d3c6aa;
+    everforest-black:   #475258;
+    everforest-red:     #e67e80;
+    everforest-green:   #a7c080;
+    everforest-yellow:  #dbbc7f;
+    everforest-blue:    #6ab0a7;
+    everforest-magenta: #d699b6;
+    everforest-cyan:    #83c092;
+    everforest-white:   #d3c6aa;
+    everforest-bg-blue: #384b55;
+
     lines: 15;
     columns: 1;
-    background: @gruvbox-dark-bg0-hard; 
+    background: @everforest-bg0; 
     normal-background: @background;
     alternate-normal-background: @background;
     border-color: #00000000;
-    foreground: @gruvbox-dark-fg0;
-    selected-normal-background: @gruvbox-dark-blue;
-    selected-alternate-background: @gruvbox-dark-blue;
+    foreground: @everforest-fg;
+    selected-normal-foreground: @everforest-bg0;
+    selected-alternate-foreground: @everforest-bg-dim;
+    selected-normal-background: @everforest-green;
+    selected-alternate-background: @everforest-green;
     font: "sans-serif 20";
 }
 
 window {
     border: 2px;
-    border-radius: 8px;
-    border-color: @gruvbox-dark-blue;
+    border-radius: 10px;
+    border-color: @everforest-green;
     padding: 13px 33px;
     width: 20%;
     height: 40%;
@@ -56,7 +73,7 @@ listview {
 
 element {
     border: 0;
-    border-radius: 20px;
+    border-radius: 10px;
     padding: 7 0 7 13 ;
 }
 
