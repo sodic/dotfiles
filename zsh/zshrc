@@ -141,3 +141,8 @@ td () {
         ln -s "$prefix/$link.$variant" "$prefix/$link"
     done
 }
+
+# Private helpers not meant for version control
+if [[ -f ~/dotfiles/zsh/private.zsh ]]; then
+    source ~/dotfiles/zsh/private.zsh
+fi
