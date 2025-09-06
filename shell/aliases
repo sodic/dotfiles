@@ -11,7 +11,7 @@ alias t='i3-sensible-terminal & disown'
 alias nf='neofetch'
 alias sl='ls'
 alias copy='xclip -sel clip'
-alias init-nvm='. /usr/share/nvm/init-nvm.sh' # takes too long to init, use when needed
+alias init-nvm='. $NVM_DIR/nvm.sh' # takes too long to init, use when needed
 #alias node='node || [ $? -eq 127 ] && "To use node, you must first run init-nvm"'
 #alias npm='npm || [ $? -eq 127 ] && "To use npm, you must first run init-nvm"'
 alias cf='cf-tool'
@@ -99,11 +99,11 @@ alias lzg='lazygit'
 # monitors
 alias set-background="feh --bg-fill ~/Pictures/background --no-fehbg"
 
-alias activate-monitors-office='xrandr --output eDP-1 --off --output DP-3 --mode 3840x2160 --output DP-1 --mode 3840x2160 --right-of DP-3'
+alias activate-monitors-office='xrandr --output eDP-1 --off --output DP-1 --mode 3840x2160 --output DP-3 --mode 3840x2160 --right-of DP-1'
 alias deactivate-monitors-office='xrandr --output eDP-1 --mode 3840x2400 --output DP-3 --off --output DP-1 --off'
 
-alias activate-monitors-home='xrandr --output eDP-1 --off --output DP-2 --mode 3840x2160 --output DP-3 --mode 3840x2160 --right-of DP-2'
-alias deactivate-monitors-home='xrandr --output eDP-1 --mode 3840x2400 --output DP-3 --off --output DP-2 --off'
+alias activate-monitors-home='xrandr --output eDP-1 --off --output DP-2 --mode 3840x2160 --output DP-1 --mode 3840x2160 --right-of DP-2'
+alias deactivate-monitors-home='xrandr --output eDP-1 --mode 3840x2400 --output DP-1 --off --output DP-2 --off'
 
 alias connect-monitors-office='td monitor && xrdb ~/.Xresources && i3-msg restart && activate-monitors-office && set-background'
 alias connect-monitors-home='td monitor && xrdb ~/.Xresources && i3-msg restart && activate-monitors-home && set-background'
@@ -122,6 +122,7 @@ alias home='connect-monitors-home && laptop-keyboard'
 alias rwasp='cabal run wasp-cli'
 alias rw=rwasp
 alias gwasp='/home/filip/.cache/cabal/bin/wasp-cli'
+alias wrun='/home/filip/Projects/wasp/wasp-repo/waspc/run'
 alias gw=gwasp
 setdb () {
     export DATABASE_URL="postgresql://postgres:devpass1234@localhost:5432/$1"
@@ -134,7 +135,12 @@ setdb () {
 # Also, I'm using the dir argument it to know which window I'm in when used in
 # i3 tabbed mode. The only consequence is that Vim will open that folder in
 # file tree, which I don't mind.
-alias nv='termite -e "nvim $(pwd | rev | cut -d '/' -f1-3 | rev)" & disown'
+# The TERM=alacritty part is to properly display squiggly lines in nvim. Why
+# doesn't termite need this (it works with TERM=xterm-256color)?
+# FIXME: this doesn't work, I think alacritty overrides my TERM based on what it has in its toml file
+alias nv='export TERM=alacritty && alacritty --title="nvim $(pwd | rev | cut -d '/' -f1-3 | rev)" -e nvim . & disown'
+# Back when I was using termite, I used this
+# alias nv='termite -e nvim $(pwd | rev | cut -d '/' -f1-3 | rev) & disown
 
 # overrides ghostscript, shouldn't matter
 alias gs='gss'
