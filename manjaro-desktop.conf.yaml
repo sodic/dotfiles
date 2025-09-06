@@ -30,7 +30,6 @@
     ~/.config/i3:
     ~/.config/rofi:
     ~/.config/conky:
-    ~/.config/termite:
     ~/.config/alacritty:
     ~/.config/dunst:
     # Remove the compton config once everything adopts picom
