@@ -6,7 +6,7 @@ fi
 LIST="$1"
 COMMAND="$2"
 
-TODO_FILE="${HOME}/Documents/$LIST"
+TODO_FILE="${HOME}/Documents/notes/todos/$LIST"
 
 print_todos () {
     cat -b "$TODO_FILE"
