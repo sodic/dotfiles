@@ -8,3 +8,6 @@
 [submodule "ranger/plugins/devicons"]
 	path = ranger/plugins/devicons
 	url = https://github.com/alexanderjeurissen/ranger_devicons
+[submodule "tmux/tpm"]
+	path = tmux/tpm
+	url = https://github.com/tmux-plugins/tpm
