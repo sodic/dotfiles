@@ -5,6 +5,11 @@ flameshot
 rofi
 discord
 screenkey
+alacritty
+
+# Ranger dependencies
+xsel
+ueberzug
 
 # i3 bar
 i3blocks

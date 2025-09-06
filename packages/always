@@ -14,7 +14,7 @@ gdb
 tmux
 speedtest-cli
 jq
-neofetch
+fastfetch
 
 # ranger dependencies
 highlight
