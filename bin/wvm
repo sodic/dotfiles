@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# Wasp version manager :)
+
+version="$1"
+curl -sSL https://get.wasp-lang.dev/installer.sh | sh -s -- -v "$version" 
