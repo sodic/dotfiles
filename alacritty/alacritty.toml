@@ -1,0 +1,30 @@
+[general]
+# import = ["./dracula.toml"]
+import = ["./everforest.toml"]
+
+[cursor.style]
+shape = "Beam"
+
+[env]
+# causes vim to lose squiggly lines, but changing it causes ugly colors in tmux
+TERM = "xterm-256color"
+# transparent background
+
+
+[font]
+size = 11
+
+[font.normal]
+family = "DejaVuSansMNerdFont"
+
+# [window]
+# opacity = 0.95
+
+
+[window.padding]
+# I don't set anything because of tmux
+
+
+[colors]
+draw_bold_text_with_bright_colors = false
+

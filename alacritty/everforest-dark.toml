@@ -1,0 +1,36 @@
+# Colors (Everforest Dark)
+
+# Default colors
+[colors.primary]
+# background = '#272e33'
+# Darker variant with https://mdigi.tools/darken-color
+background = '#23292e'
+# My experiments
+# background = '#3a3735'
+# background = '#35352d'
+foreground = '#d3c6aa'
+
+# Normal colors
+[colors.normal]
+black   = '#475258'
+red     = '#da4245'
+green   = '#89ab55'
+yellow  = '#cca049'
+blue    = '#57a49a'
+magenta = '#c16591'
+cyan    = '#58aa6c'
+white   = '#d3c6aa'
+
+# Bright colors (same as normal colors, might be a problem)
+[colors.bright]
+# Changed this   to make autosuggestions legible
+# I looked at the palletes on https://github.com/sainnhe/everforest and picked
+black   = '#859289'
+red     = '#e67e80'
+green   = '#a7c080'
+yellow  = '#dbbc7f'
+blue    = '#7fbbb3'
+magenta = '#d699b6'
+cyan    = '#83c092'
+white   = '#d3c6aa'
+
