@@ -42,7 +42,7 @@ function print_container_entry() {
     read -r container status image release <<<"$(echo "$container_info" | tr ',' ' ')"
     local icon="$(get_icon "$image")"
     local os_markup="$(get_os_markup "$image" "$release")"
-    echo -en "$container $os_markup\t\t$status\0info\x1f$container,$status\x1ficon\x1f$icon\n";
+    echo -en "[$status]\t$container $os_markup\0info\x1f$container,$status\x1ficon\x1f$icon\n";
 }
 
 if [ "$ROFI_RETV" = 0 ]; then
