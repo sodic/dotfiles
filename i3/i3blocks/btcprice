@@ -1,0 +1,3 @@
+#!/bin/bash
+price="$(curl -s rate.sx/1BTC | cut -d . -f 1)"
+echo "$price USD"
