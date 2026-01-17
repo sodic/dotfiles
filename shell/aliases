@@ -11,9 +11,6 @@ alias t='i3-sensible-terminal & disown'
 alias nf='neofetch'
 alias sl='ls'
 alias copy='xclip -sel clip'
-alias init-nvm='. $NVM_DIR/nvm.sh' # takes too long to init, use when needed
-#alias node='node || [ $? -eq 127 ] && "To use node, you must first run init-nvm"'
-#alias npm='npm || [ $? -eq 127 ] && "To use npm, you must first run init-nvm"'
 alias cf='cf-tool'
 alias zconf="$EDITOR ${ZDOTDIR}/.zshrc"
 alias vimconf="$EDITOR ~/.vimrc"
@@ -111,7 +108,7 @@ alias disconnect-monitors-home='td laptop && xrdb ~/.Xresources && i3-msg restar
 alias disconnect-monitors-office='td laptop && xrdb ~/.Xresources && i3-msg restart && deactivate-monitors-office && set-background'
 
 alias magic-keyboard='setxkbmap -layout us && bluetoothctl connect 1C:57:DC:94:60:39; apple-keymaps'
-alias laptop-keyboard='setxkbmap -layout us && bluetoothctl disconnect 1C:57:DC:94:60:39; laptop-keymaps'
+alias laptop-keyboard='setxkbmap -layout us && echo "Skipping bluetoothctl disconnect 1C:57:DC:94:60:39"; laptop-keymaps'
 
 alias office='connect-monitors-office && laptop-keyboard'
 alias mobile-office='disconnect-monitors-office && laptop-keyboard'

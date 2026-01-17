@@ -26,7 +26,7 @@
     startup_notification = false
     # https://github.com/knopwob/dunst/issues/26#issuecomment-36159395
     icon_position = left
-    icon_theme="Gruvbox-Dark"
+    icon_theme="Everforest-Dark"
     enable_recursive_icon_lookup = true
     max_icon_size=128
     #icon_folders = /usr/share/icons/elementary/actions/16/

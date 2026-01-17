@@ -154,6 +154,7 @@ vim.opt.inccommand = 'split'
 vim.opt.cursorline = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
+-- Disable for lecture
 vim.opt.scrolloff = 10
 
 -- [[ Basic Keymaps ]]
@@ -629,6 +630,7 @@ require('lazy').setup({
           -- I should find a way to tell Mason not to download anything
           cmd = { '/home/filip/.local/bin/haskell-language-server-wrapper', '--lsp' },
         },
+        ts_ls = {},
         astro = {},
       }
 
@@ -956,7 +958,9 @@ require('lazy').setup({
   {
     'tpope/vim-fugitive',
   },
-
+  {
+    'tpope/vim-rhubarb',
+  },
   {
     'sainnhe/everforest',
     name = 'everforest',

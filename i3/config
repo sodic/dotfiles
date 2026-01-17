@@ -58,9 +58,11 @@ bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
 
 ################################################################################################
 
-# Screen brightness controls
-# bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
-# bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
+# Screen brightness controls (using brightnessctl with notifications)
+bindsym XF86MonBrightnessUp exec --no-startup-id ~/.config/i3/scripts/volume_brightness.sh brightness_up
+bindsym XF86MonBrightnessDown exec --no-startup-id ~/.config/i3/scripts/volume_brightness.sh brightness_down
+
+# Keyboard backlight controls - unnecessary, handled at the hardware level
 
 # Start Applications
 
@@ -303,7 +305,8 @@ bindsym $mod+Shift+x exec --no-startup-id blurlock
 # todo: Make sure to clean up if using on different
 # distibutinons
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec --no-startup-id nitrogen --restore; sleep 1; picom -b
+# Let's try to live without a compositor for a while
+# exec --no-startup-id nitrogen --restore; sleep 1; picom -b
 # exec --no-startup-id manjaro-hello
 exec --no-startup-id nm-applet
 exec --no-startup-id xfce4-power-manager
@@ -424,10 +427,10 @@ exec --no-startup-id "setxkbmap -layout hr -variant us"
 # exec --no-startup-id picom --config ~/.config/picom.conf -b
 
 # Control keys (sound and touchpad)
-# Pulse Audio controls
-# bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q -D pulse sset Master 5%+ unmute #increase sound volume
-# bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q -D pulse sset Master 5%- unmute #decrease sound volume
-# bindsym XF86AudioMute exec --no-startup-id amixer -q -D pulse sset Master toggle # mute sound
+# Volume controls (using EndeavourOS script with notifications)
+bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.config/i3/scripts/volume_brightness.sh volume_up
+bindsym XF86AudioLowerVolume exec --no-startup-id ~/.config/i3/scripts/volume_brightness.sh volume_down
+bindsym XF86AudioMute exec --no-startup-id ~/.config/i3/scripts/volume_brightness.sh volume_mute
 
 # Touchpad controls
 # bindsym XF86TouchpadToggle exec --no-startup-id ~/dotfiles/bin/touchpad # toggle touchpad

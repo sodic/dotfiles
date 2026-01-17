@@ -66,6 +66,7 @@ CASE_SENSITIVE="true"
 
 # Start replacing oh-my-zsh, this loads the plugins plugin
 . "$ZDOTDIR/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
+. "$ZDOTDIR/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 # too colorful for my taste
 # . "$ZDOTDIR/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
@@ -146,3 +147,6 @@ td () {
 if [[ -f ~/dotfiles/zsh/private.zsh ]]; then
     source ~/dotfiles/zsh/private.zsh
 fi
+
+# Mise - remove if too slow
+eval "$(~/.local/bin/mise activate zsh)"
