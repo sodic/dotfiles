@@ -21,17 +21,37 @@ swap_vim() {
 
 }
 
-swap_termite() {
-    config_root="/home/filip/.config/termite/"
-    swap "$config_root/config_other" "$config_root/config"
-    killall -USR1 termite
-}
-
 swap_tmux() {
     config_root="/home/filip/.config/tmux/"
     swap "$config_root/tmux.conf" "$config_root/tmux.conf_other"
+    tmux source-file "$config_root/tmux.conf"
 }
 
-swap_termite
+swap_alacritty() {
+    config="$HOME/.config/alacritty/alacritty.toml"
+    if grep -q 'everforest_light' "$config"; then
+        sed -i 's|everforest_light\.toml|everforest.toml|' "$config"
+    else
+        sed -i 's|everforest\.toml|everforest_light.toml|' "$config"
+    fi
+}
+
+swap_nvim() {
+    # Read the alacritty config (after swap_alacritty has run) to determine the
+    # new theme direction, then signal all running nvim instances via their RPC
+    # sockets to switch background accordingly.
+    config="$HOME/.config/alacritty/alacritty.toml"
+    if grep -q 'everforest_light' "$config"; then
+        bg='light'
+    else
+        bg='dark'
+    fi
+    for socket in /run/user/$(id -u)/nvim.*.0; do
+        [ -S "$socket" ] && nvim --server "$socket" --remote-expr "execute('set background=$bg')" &>/dev/null
+    done
+}
+
 swap_tmux
+swap_alacritty
+swap_nvim
 

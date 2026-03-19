@@ -1,6 +1,6 @@
 # Improtant reference: https://github.com/ThePrimeagen/.dotfiles/blob/8214c54fa26ac709a1794389f06f99a32cef6366/tmux/.tmux.conf
 # Another one: https://www.youtube.com/watch?v=DzNmUNvnB04
-# Dark config
+# Light config
 set -s escape-time 0
 set -g mouse on
 
@@ -21,9 +21,6 @@ set-option -g status-interval 1
 set-option -g status-justify "left"
 set-option -g status-left-length 60
 set-option -g status-right-length 90
-set-option -g status-left "#(~/Repos/tmux-powerline/powerline_dark.sh left)"
-set-option -g status-right "#(~/Repos/tmux-powerline/powerline_dark.sh right)"
-set-hook -g session-created 'run-shell "~/Repos/tmux-powerline/powerline_dark.sh init"' # prettifies the window-status segments
 
 # Change prefix to Ctrl+a
 unbind C-b
@@ -45,11 +42,11 @@ bind ^ last-window
 
 
 # testing
-unbind j 
-bind j display-popup -w 40% -E 'python3' 
+unbind j
+bind j display-popup -w 40% -E 'python3'
 
 unbind k
-bind k display-popup -w 40% -E 'nmtui' 
+bind k display-popup -w 40% -E 'nmtui'
 
 # Enable switching panes with Alt
 bind -n M-k select-pane -U
@@ -70,9 +67,14 @@ bind -n M-8 select-window -t8
 bind -n M-9 select-window -t9
 bind -n M-0 select-window -t10
 
+# Reset window tab styles (otherwise old values persist across reloads)
+setw -g window-status-style default
+setw -g window-status-current-style default
+
 # Dim inactive windows
-setw -g window-style bg=#282828
-setw -g window-active-style bg=#1d2021
+# Everforest light
+setw -g window-active-style bg=#fffbef
+setw -g window-style bg=#f2efdf
 
 # Start windows and panes at 1, not 0
 set -g base-index 1
@@ -100,8 +102,20 @@ bind-key -r N run-shell "tmux-notes"
 bind-key -r K run-shell "tmux-sessionizer ~/Projects/wasp/wasp-repo/web"
 bind-key -r L run-shell "tmux-sessionizer ~/Projects/wasp/wasp-repo/examples"
 bind-key -r R run-shell "tmux-sessionizer ~/Projects/wasp/reviews-repo"
-bind-key -r H run-shell "tmux-sessionizer ~/Projects/puh-2024"
+bind-key -r H run-shell "tmux-sessionizer ~/Projects/puh-2025"
 bind-key -r D run-shell "deamons"
 
 # Tmux cheat.sh
 bind-key -r i run-shell "tmux neww tmux-cht.sh"
+
+# Plugins
+set -g @plugin 'tmux-plugins/tpm'
+
+set -g @plugin 'niksingh710/minimal-tmux-status'
+set -g @minimal-tmux-fg "#272e33"
+set -g @minimal-tmux-bg "#e9dbb5"
+set -g @minimal-tmux-status "top"
+set -g @minimal-tmux-justify "centre"
+set -g @minimal-tmux-use-arrow true
+
+run '~/.config/tmux/tpm/tpm'
