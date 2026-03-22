@@ -1,0 +1,19 @@
+[global]
+    separator_color = "#3a94c5"
+    frame_color = "#3a94c5"
+    icon_theme = "Everforest-Light"
+
+[urgency_low]
+    background = "#fffbef"
+    foreground = "#5c6a72"
+    highlight = "#3a94c5"
+
+[urgency_normal]
+    background = "#fffbef"
+    foreground = "#5c6a72"
+    highlight = "#3a94c5"
+
+[urgency_critical]
+    background = "#fffbef"
+    foreground = "#5c6a72"
+    highlight = "#f85552"

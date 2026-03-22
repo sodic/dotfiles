@@ -20,20 +20,13 @@
     separator_height = 1
     padding = 8
     horizontal_padding = 8
-    separator_color = "#458588"
-    frame_color = "#458588"
     frame_width = 1
     startup_notification = false
     # https://github.com/knopwob/dunst/issues/26#issuecomment-36159395
     icon_position = left
-    icon_theme="Everforest-Dark"
     enable_recursive_icon_lookup = true
     max_icon_size=128
     #icon_folders = /usr/share/icons/elementary/actions/16/
-
-[frame]
-    width = 1
-    color = "#83a598"
 
 [shortcuts]
     close = ctrl+space
@@ -42,20 +35,11 @@
     context = ctrl+shift+period
 
 [urgency_low]
-    background = "#1d2021"
-    foreground = "#ebdbb2"
-    highlight = "#458588"
     timeout = 5
 
 [urgency_normal]
-    background = "#1d2021"
-    foreground = "#ebdbb2"
-    highlight = "#458588"
     timeout = 5
 
 [urgency_critical]
-    background = "#1d2021"
-    foreground = "#ebdbb2"
-    highlight = "#458588"
     timeout = 0
  vim: ft=cfg

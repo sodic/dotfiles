@@ -92,6 +92,16 @@ swap_gtk() {
     pkill -HUP xsettingsd
 }
 
+swap_dunst() {
+    ln -sf "$variant" "$DOTFILES/dunst/dunstrc.d/theme.conf"
+    dunstctl reload 2>/dev/null
+}
+
+swap_rofi() {
+    # Rofi is ephemeral (launched fresh each time), so no reload needed.
+    ln -sf "$variant.rasi" "$DOTFILES/rofi/theme.rasi"
+}
+
 variant=$(swap_freedesktop)
 
 swap_alacritty
@@ -99,3 +109,5 @@ swap_tmux
 swap_i3
 swap_nvim
 swap_gtk
+swap_dunst
+swap_rofi

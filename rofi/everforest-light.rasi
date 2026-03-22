@@ -1,0 +1,15 @@
+* {
+    background: #fffbef;
+    foreground: #5c6a72;
+    normal-background: @background;
+    alternate-normal-background: @background;
+    border-color: #00000000;
+    selected-normal-foreground: #fffbef;
+    selected-alternate-foreground: #f2efdf;
+    selected-normal-background: #8da101;
+    selected-alternate-background: #8da101;
+}
+
+window {
+    border-color: #8da101;
+}
