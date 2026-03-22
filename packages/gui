@@ -11,6 +11,9 @@
 xdg-desktop-portal
 xdg-desktop-portal-gtk
 
+# Clipboard manager
+rofi-greenclip
+
 xclip
 zathura
 zathura-pdf-poppler

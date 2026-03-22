@@ -313,12 +313,15 @@ exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id nm-applet
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id pamac-tray
-exec --no-startup-id clipit
 # exec --no-startup-id blueman-applet
 # exec_always --no-startup-id sbxkb
 # Needed to write a spcial script for this
 exec --no-startup-id xautolock -time 10 -locker lock
 exec_always --no-startup-id fix_xcursor
+
+# Clipboard manager
+exec --no-startup-id greenclip daemon
+bindsym $mod+v exec --no-startup-id rofi -modi "clipboard:greenclip print" -show clipboard
 
 # This came with the config but there was no such executable
 # It was causing errors in .xsession-errors so I commented it.
