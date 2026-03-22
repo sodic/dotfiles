@@ -38,3 +38,10 @@
     ~/.config/systemd/user/:
         path: systemd/user/*
         glob: true
+    ~/.config/xsettingsd:
+    ~/.config/gtk-3.0: gtk/gtk-3.0
+    ~/.config/gtk-4.0: gtk/gtk-4.0
+    ~/.local/share/themes/Current-Light: gtk/themes/Current-Light
+    ~/.local/share/themes/Current-Dark: gtk/themes/Current-Dark
+    ~/.local/share/icons/Current-Light: gtk/icons/Current-Light
+    ~/.local/share/icons/Current-Dark: gtk/icons/Current-Dark

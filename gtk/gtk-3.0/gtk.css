@@ -1,0 +1,4 @@
+/* This adds a nice padding on the edge of the terminal */
+#xfce4-terminal-notebook vte-terminal {
+    padding: 13px;
+}
