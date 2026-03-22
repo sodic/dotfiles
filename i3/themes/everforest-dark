@@ -1,0 +1,37 @@
+# Everforest dark palette
+set $bg_dim #1e2326
+set $bg0    #272e33
+set $bg1    #2e383c
+set $bg     #272e33
+set $fg     #d3c6aa
+set $red    #e67e80
+set $green  #a7c080
+set $yellow #dbbc7f
+set $blue   #7fbbb3
+set $purple #d699b6
+set $aqua   #83c092
+set $orange #e69875
+set $gray0  #7a8478
+set $gray1  #859289
+set $gray2  #9da9a0
+
+# Window colors       border   background text     indicator
+client.focused          #a7c080  #a7c080    #1e2326  #e69875
+client.unfocused        #2e383c  #2e383c    #859289  #2e383c
+client.focused_inactive #2e383c  #2e383c    #859289  #2e383c
+client.urgent           #e67e80  #e67e80    #1e2326  #e69875
+
+# Bar
+bar {
+    position bottom
+    status_command i3blocks -c ~/.config/i3/i3blocks.conf
+    colors {
+        background #1e2326
+        statusline #dbbc7f
+        #                   border   background text
+        focused_workspace   #dbbc7f  #dbbc7f    #1e2326
+        inactive_workspace  #1e2326  #1e2326    #dbbc7f
+        active_workspace    #1e2326  #1e2326    #dbbc7f
+        urgent_workspace    #e67e80  #e67e80    #272e33
+    }
+}

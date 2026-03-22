@@ -323,57 +323,7 @@ exec_always --no-startup-id fix_xcursor
 # exec_always --no-startup-id ff-theme-util
 
 
-# everforest
-set $bg_dim #1e2326
-set $bg0 #272e33
-set $bg1 #2e383c
-set $fg #d3c6aa
-set $red #e67e80
-set $green #a7c080
-set $yellow #dbbc7f
-set $blue #7fbbb3
-set $purple #d699b6
-set $aqua #83c092
-set $orange #e69875
-set $gray0 #7a8478
-set $gray1 #859289
-set $gray2 #9da9a0
-
-# gruvbox
-set $bg-color	         #272e33
-set $focus-color         #a7c080
-set $indicator-color     #e69875
-set $inactive-bg-color   #2e383c
-set $text-color          #1e2326
-set $inactive-text-color #859289
-set $urgent-bg-color     #e67e80
-
-# window colors
-#                       border              background         text                 indicator
-client.focused          $focus-color     $focus-color     $text-color          $indicator-color
-client.unfocused        $inactive-bg-color $inactive-bg-color $inactive-text-color 00ff00
-client.focused_inactive $inactive-bg-color $inactive-bg-color $inactive-text-color 00ff00
-client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color     $indicator-color
-
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-# groove bar
-bar {
-    position bottom
-    status_command i3blocks -c ~/.config/i3/i3blocks.conf
-    colors {
-        # bar background color
-        background $bg_dim
-        # text color used for blocks that do not have a color specified.
-        statusline $yellow
-        # workspaces section
-        #                    border  backgr. text
-        focused_workspace    $yellow $yellow $bg_dim
-        inactive_workspace   $bg_dim $bg_dim $yellow
-        active_workspace     $bg_dim $bg_dim $yellow
-        urgent_workspace     $red $red $bg
-    }
-}
+include ~/.config/i3/theme
 
 # hide/unhide i3status bar
 bindsym $mod+semicolon bar mode toggle

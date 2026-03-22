@@ -1,0 +1,37 @@
+# Everforest light hard palette (https://github.com/sainnhe/everforest)
+set $bg_dim #f2efdf
+set $bg0    #fffbef
+set $bg1    #f8f5e4
+set $bg     #fffbef
+set $fg     #5c6a72
+set $red    #f85552
+set $green  #8da101
+set $yellow #dfa000
+set $blue   #3a94c5
+set $purple #df69ba
+set $aqua   #35a77c
+set $orange #f57d26
+set $gray0  #a6b0a0
+set $gray1  #939f91
+set $gray2  #829181
+
+# Window colors       border   background text     indicator
+client.focused          #8da101  #8da101    #f2efdf  #f57d26
+client.unfocused        #f8f5e4  #f8f5e4    #939f91  #f8f5e4
+client.focused_inactive #f8f5e4  #f8f5e4    #939f91  #f8f5e4
+client.urgent           #f85552  #f85552    #f2efdf  #f57d26
+
+# Bar
+bar {
+    position bottom
+    status_command i3blocks -c ~/.config/i3/i3blocks.conf
+    colors {
+        background #fffbef
+        statusline #dfa000
+        #                   border   background text
+        focused_workspace   #dfa000  #dfa000    #f2efdf
+        inactive_workspace  #fffbef  #fffbef    #dfa000
+        active_workspace    #fffbef  #fffbef    #dfa000
+        urgent_workspace    #f85552  #f85552    #fffbef
+    }
+}
