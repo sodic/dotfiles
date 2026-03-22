@@ -1,83 +1,99 @@
 #!/bin/bash
 
+# This script assumes are theming symlinks are properly set up. Check README.md
+# for reference.
 
-scheme() {
-    gsettings get org.gnome.desktop.interface color-scheme
-}
+DOTFILES="$HOME/dotfiles"
 
 swap_freedesktop() {
-    # Toggle the FreeDesktop color-scheme preference — source of truth for everything else.
-    if [ "$(scheme)" = "'prefer-dark'" ]; then
+    # Electron apps (VS Code, Discord) and libadwaita apps detect dark mode
+    # via xdg-desktop-portal's org.freedesktop.portal.Settings D-Bus interface.
+    # The portal backend (xdg-desktop-portal-gtk on i3) reads this gsettings
+    # key internally and exposes it as org.freedesktop.appearance color-scheme.
+    # Most apps should pick up changes live.
+    # Requires xdg-desktop-portal + a backend installed (see packages/gui).
+    local current
+    current=$(gsettings get org.gnome.desktop.interface color-scheme)
+    if [ "$current" = "'prefer-dark'" ]; then
         gsettings set org.gnome.desktop.interface color-scheme 'prefer-light'
+        echo prefer-light
     else
         gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+        echo prefer-dark
     fi
 }
 
 swap_alacritty() {
-    dir="$HOME/.config/alacritty"
-    if [ "$(scheme)" = "'prefer-light'" ]; then
-        ln -sf "$dir/everforest_light.toml" "$dir/theme.toml"
-    else
-        ln -sf "$dir/everforest_dark.toml" "$dir/theme.toml"
-    fi
-    # Trigger alacritty to reload the config
-    touch "$dir/alacritty.toml"
+    ln -sf "$variant.toml" "$DOTFILES/alacritty/theme.toml"
+    # Touching the main config ensures Alacritty picks up the symlink change.
+    touch "$DOTFILES/alacritty/alacritty.toml"
 }
 
 swap_i3() {
-    dir="/home/filip/dotfiles/i3"
-    if [ "$(scheme)" = "'prefer-light'" ]; then
-        ln -sf "$dir/themes/everforest-light" "$dir/theme"
-        ln -sf "$dir/i3blocks-light.conf" "$dir/i3blocks.conf"
-    else
-        ln -sf "$dir/themes/everforest-dark" "$dir/theme"
-        ln -sf "$dir/i3blocks-dark.conf" "$dir/i3blocks.conf"
-    fi
+    ln -sf "themes/$variant" "$DOTFILES/i3/theme"
+    ln -sf "i3blocks/$variant.conf" "$DOTFILES/i3/i3blocks.conf"
+
     i3-msg reload &>/dev/null
+
+    # i3blocks reads its config once at startup and has no reload mechanism.
+    # Killing i3bar (which spawns i3blocks) and restarting it is the only way.
+    # Well, doing `i3-msg restart` instead of `i3-msg reload` would make this
+    # work without killing i3bar, but it flashes too much for my taste, so I'm
+    # sticking with this.
     pkill i3bar
     i3bar &>/dev/null &
     disown
 }
 
 swap_tmux() {
-    dir="$HOME/.config/tmux"
-    if [ "$(scheme)" = "'prefer-light'" ]; then
-        ln -sf "$dir/tmux-light.conf" "$dir/theme.conf"
-    else
-        ln -sf "$dir/tmux-dark.conf" "$dir/theme.conf"
-    fi
-    tmux source-file "$dir/tmux.conf"
+    # Swapping tmux is as simple as linking the theme file to the appropriate
+    # variant and sourcing the main config.
+    ln -sf "$variant.conf" "$DOTFILES/tmux/theme.conf"
+    tmux source-file "$HOME/.config/tmux/tmux.conf" 2>/dev/null
 }
 
 swap_nvim() {
-    # nvim uses 'light'/'dark' — extract from the prefer-light/prefer-dark value.
-    # Signal all running nvim instances via their RPC sockets.
-    bg=$(scheme | grep -o 'light\|dark')
+    # Nvim's colorscheme reacts to the 'background' option. New instances
+    # auto-detect light/dark by querying the terminal's background color (as
+    # long as Neovim config doesn't hardcode it explicitly, which it doesn't),
+    # so no static config change is needed. But already-running instances won't
+    # re-query, so we poke them through RPC sockets.
+    local bg="${variant#prefer-}"
     for socket in /run/user/$(id -u)/nvim.*.0; do
         [ -S "$socket" ] && nvim --server "$socket" --remote-expr "execute('set background=$bg')" &>/dev/null
     done
 }
 
 swap_gtk() {
-    local xconf="$HOME/.config/xsettingsd/xsettingsd.conf"
-    if [ "$(scheme)" = "'prefer-light'" ]; then
-        gsettings set org.gnome.desktop.interface gtk-theme 'Current-Light'
-        gsettings set org.gnome.desktop.interface icon-theme 'Current-Light'
-        sed -i 's/^Net\/ThemeName .*/Net\/ThemeName "Current-Light"/' "$xconf"
-        sed -i 's/^Net\/IconThemeName .*/Net\/IconThemeName "Current-Light"/' "$xconf"
-    else
-        gsettings set org.gnome.desktop.interface gtk-theme 'Current-Dark'
-        gsettings set org.gnome.desktop.interface icon-theme 'Current-Dark'
-        sed -i 's/^Net\/ThemeName .*/Net\/ThemeName "Current-Dark"/' "$xconf"
-        sed -i 's/^Net\/IconThemeName .*/Net\/IconThemeName "Current-Dark"/' "$xconf"
-    fi
-    killall xsettingsd 2>/dev/null
-    xsettingsd -c "$xconf" &
-    disown
+    # GTK on i3 (X11, no gnome-settings-daemon) is tricky. There are three
+    # independent channels and GTK apps may read from any of them:
+    #
+    # 1. XSettings (xsettingsd) — GTK3 and GTK4 apps on X11 read Net/ThemeName
+    #    from the XSettings protocol. This is the only channel that provides
+    #    live theme updates to running GTK apps (via X11 PropertyNotify).
+    #
+    # 2. gsettings (dconf) — GTK apps on X11 do NOT read gtk-theme from dconf
+    #    directly. We set it here anyway so dconf stays in sync. This is useful if
+    #    gsd or a portal ever reads it, and for tools like lxappearance that
+    #    inspect gsettings.
+    #
+    # 3. ~/.config/gtk-3.0/settings.ini / gtk-4.0/settings.ini — static
+    #    fallback, only used if xsettingsd isn't running. We don't update
+    #    these here; xsettingsd takes priority when it's running.
+
+    gsettings set org.gnome.desktop.interface gtk-theme "$variant"
+    gsettings set org.gnome.desktop.interface icon-theme "$variant"
+
+    local xconf="$DOTFILES/xsettingsd/xsettingsd.conf"
+    sed -i "s/^Net\/ThemeName .*/Net\/ThemeName \"$variant\"/" "$xconf"
+    sed -i "s/^Net\/IconThemeName .*/Net\/IconThemeName \"$variant\"/" "$xconf"
+
+    # SIGHUP tells xsettingsd to re-read its config and push changes.
+    pkill -HUP xsettingsd
 }
 
-swap_freedesktop
+variant=$(swap_freedesktop)
+
 swap_alacritty
 swap_tmux
 swap_i3

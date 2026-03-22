@@ -41,7 +41,8 @@
     ~/.config/xsettingsd:
     ~/.config/gtk-3.0: gtk/gtk-3.0
     ~/.config/gtk-4.0: gtk/gtk-4.0
-    ~/.local/share/themes/Current-Light: gtk/themes/Current-Light
-    ~/.local/share/themes/Current-Dark: gtk/themes/Current-Dark
-    ~/.local/share/icons/Current-Light: gtk/icons/Current-Light
-    ~/.local/share/icons/Current-Dark: gtk/icons/Current-Dark
+    # TODO: why not link the entire dirs here as well, is there a downside?
+    ~/.local/share/themes/prefer-light: gtk/themes/prefer-light
+    ~/.local/share/themes/prefer-dark: gtk/themes/prefer-dark
+    ~/.local/share/icons/prefer-light: gtk/icons/prefer-light
+    ~/.local/share/icons/prefer-dark: gtk/icons/prefer-dark
