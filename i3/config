@@ -300,6 +300,8 @@ mode "$work" {
 # Lock screen
 bindsym $mod+Shift+x exec --no-startup-id blurlock
 
+exec --no-startup-id xsettingsd -c ~/.config/xsettingsd/xsettingsd.conf
+
 # Autostart applications
 # Came with manjaro.
 # todo: Make sure to clean up if using on different

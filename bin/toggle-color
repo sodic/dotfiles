@@ -1,57 +1,85 @@
 #!/bin/bash
 
-swap () {
-    local tmp_file="tmp.$$"
-    mv "$1" "$tmp_file"
-    mv "$2" "$1"
-    mv "$tmp_file" "$2"
+
+scheme() {
+    gsettings get org.gnome.desktop.interface color-scheme
 }
 
-swap_vim() {
-    color=$(grep -E 'background=(light|dark)' | sed -E 's/.*(dark|light).*/\1/')
-    case $color in
-        'light')
-            color=dark
-        ;;
-        'dark')
-            color=light
-        ;;
-    esac
-    :w
-
-}
-
-swap_tmux() {
-    config_root="/home/filip/.config/tmux/"
-    swap "$config_root/tmux.conf" "$config_root/tmux.conf_other"
-    tmux source-file "$config_root/tmux.conf"
+swap_freedesktop() {
+    # Toggle the FreeDesktop color-scheme preference — source of truth for everything else.
+    if [ "$(scheme)" = "'prefer-dark'" ]; then
+        gsettings set org.gnome.desktop.interface color-scheme 'prefer-light'
+    else
+        gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+    fi
 }
 
 swap_alacritty() {
-    config="$HOME/.config/alacritty/alacritty.toml"
-    if grep -q 'everforest_light' "$config"; then
-        sed -i 's|everforest_light\.toml|everforest.toml|' "$config"
+    dir="$HOME/.config/alacritty"
+    if [ "$(scheme)" = "'prefer-light'" ]; then
+        ln -sf "$dir/everforest_light.toml" "$dir/theme.toml"
     else
-        sed -i 's|everforest\.toml|everforest_light.toml|' "$config"
+        ln -sf "$dir/everforest_dark.toml" "$dir/theme.toml"
     fi
+    # Trigger alacritty to reload the config
+    touch "$dir/alacritty.toml"
+}
+
+swap_i3() {
+    dir="/home/filip/dotfiles/i3"
+    if [ "$(scheme)" = "'prefer-light'" ]; then
+        ln -sf "$dir/themes/everforest-light" "$dir/theme"
+        ln -sf "$dir/i3blocks-light.conf" "$dir/i3blocks.conf"
+    else
+        ln -sf "$dir/themes/everforest-dark" "$dir/theme"
+        ln -sf "$dir/i3blocks-dark.conf" "$dir/i3blocks.conf"
+    fi
+    i3-msg reload &>/dev/null
+    pkill i3bar
+    i3bar &>/dev/null &
+    disown
+}
+
+swap_tmux() {
+    dir="$HOME/.config/tmux"
+    if [ "$(scheme)" = "'prefer-light'" ]; then
+        ln -sf "$dir/tmux-light.conf" "$dir/theme.conf"
+    else
+        ln -sf "$dir/tmux-dark.conf" "$dir/theme.conf"
+    fi
+    tmux source-file "$dir/tmux.conf"
 }
 
 swap_nvim() {
-    # Read the alacritty config (after swap_alacritty has run) to determine the
-    # new theme direction, then signal all running nvim instances via their RPC
-    # sockets to switch background accordingly.
-    config="$HOME/.config/alacritty/alacritty.toml"
-    if grep -q 'everforest_light' "$config"; then
-        bg='light'
-    else
-        bg='dark'
-    fi
+    # nvim uses 'light'/'dark' — extract from the prefer-light/prefer-dark value.
+    # Signal all running nvim instances via their RPC sockets.
+    bg=$(scheme | grep -o 'light\|dark')
     for socket in /run/user/$(id -u)/nvim.*.0; do
         [ -S "$socket" ] && nvim --server "$socket" --remote-expr "execute('set background=$bg')" &>/dev/null
     done
 }
 
-swap_tmux
-swap_alacritty
-swap_nvim
+swap_gtk() {
+    local xconf="$HOME/.config/xsettingsd/xsettingsd.conf"
+    if [ "$(scheme)" = "'prefer-light'" ]; then
+        gsettings set org.gnome.desktop.interface gtk-theme 'Current-Light'
+        gsettings set org.gnome.desktop.interface icon-theme 'Current-Light'
+        sed -i 's/^Net\/ThemeName .*/Net\/ThemeName "Current-Light"/' "$xconf"
+        sed -i 's/^Net\/IconThemeName .*/Net\/IconThemeName "Current-Light"/' "$xconf"
+    else
+        gsettings set org.gnome.desktop.interface gtk-theme 'Current-Dark'
+        gsettings set org.gnome.desktop.interface icon-theme 'Current-Dark'
+        sed -i 's/^Net\/ThemeName .*/Net\/ThemeName "Current-Dark"/' "$xconf"
+        sed -i 's/^Net\/IconThemeName .*/Net\/IconThemeName "Current-Dark"/' "$xconf"
+    fi
+    killall xsettingsd 2>/dev/null
+    xsettingsd -c "$xconf" &
+    disown
+}
 
+swap_freedesktop
+swap_alacritty
+swap_tmux
+swap_i3
+swap_nvim
+swap_gtk

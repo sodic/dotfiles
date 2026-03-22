@@ -1,3 +1,16 @@
+# xdg-desktop-portal exposes a D-Bus interface (org.freedesktop.portal.Settings)
+# that Electron apps (VS Code, Obsidian, Discord) and libadwaita apps use to read
+# the system color-scheme preference (prefer-dark/prefer-light).
+# xdg-desktop-portal-gtk is the GTK backend that bridges gsettings/dconf values
+# to the portal, so when toggle-color sets org.gnome.desktop.interface color-scheme
+# via gsettings, the portal picks it up and notifies apps over D-Bus.
+#
+# Both services are D-Bus activated — systemd starts them on demand when an app
+# first queries the portal, no manual enable/start needed. This is Claude's claim 
+# so if something isn't working, double check it.
+xdg-desktop-portal
+xdg-desktop-portal-gtk
+
 xclip
 zathura
 zathura-pdf-poppler
