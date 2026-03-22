@@ -1,6 +1,6 @@
 [general]
 # import = ["./dracula.toml"]
-import = ["./everforest.toml"]
+import = ["./theme.toml"]
 
 [cursor.style]
 shape = "Beam"
