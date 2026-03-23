@@ -21,7 +21,10 @@ The `bin/toggle-color` script switches between light and dark colorschemes. How 
 
 Every application's config follows the same symlink pattern.
 
-**Apps that support config imports** (Alacritty, i3, tmux):
+#### Apps that support config imports
+Most apps' configs can reference other files (e.g., Alacritty, i3, tmux).
+This allows us to separate theming from the main config and avoid duplication.
+Here's the setup:
 ```
 main config (file) ─imports─▶ theme (symlink)
                                  │
@@ -34,14 +37,14 @@ main config (file) ─imports─▶ theme (symlink)
 ```
 The leaf files here only contain theme settings.
 
-**Apps that don't support imports** (i3blocks):
+#### Apps that don't support imports
+Some apps only support single file configs (e.g., i3blocks), whcih means we have to duplicate the entire config across theme variants:
 ```
 main config (symlink)
        │
        ├──▶ prefer-light (symlink) ──▶ everforest-light (file, full config)
        └──▶ prefer-dark  (symlink) ──▶ everforest-dark  (file, full config)
 ```
-The leaf files here duplicate the full config across variants, but there's no alternative without import support.
 
 ### Why the two layers of symlinks?
 
