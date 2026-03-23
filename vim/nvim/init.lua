@@ -928,6 +928,9 @@ require('lazy').setup({
       --   If not available, we use `mini` as the fallback
       'rcarriga/nvim-notify',
     },
+    keys = {
+      { '<leader>n', '<cmd>Noice dismiss<cr>', desc = 'Dismiss notifications' },
+    },
     config = function()
       require('noice').setup {
         lsp = {
