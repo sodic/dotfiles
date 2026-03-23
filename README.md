@@ -59,3 +59,5 @@ Ok, but why the second layer? Why not just symlink `theme` directly to `everfore
 Because the `prefer-*` middle layer decouples the toggle script from a specific colorscheme:
  - To switch from Everforest to Gruvbox, you can repoint the `prefer-*` symlinks - without touching `toggle-color` or disrupting the current light/dark state.
  - To switch from light to dark, you can repoint the `theme` symlink to `prefer-dark` or `prefer-light` without knowing which colorscheme is active.
+
+For the full per-application breakdown (config locations, symlink chains, reload mechanisms, communication buses), see [theming/README.md](theming/README.md).
